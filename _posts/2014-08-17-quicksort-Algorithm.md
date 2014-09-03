@@ -143,10 +143,14 @@ tags: [快速排序]
 	                mid = (left+right)/2;
 	                i=left-1;
 	                j=right+1;
-	                while(i<j)
+	                while(1)
 	                {
-	                    while(i<j&&a[++i]<a[mid]);
-	                    while(i<j&&a[--j]>a[mid]);
+	                    while(a[++i]<a[mid]);
+	                    while(a[--j]>a[mid]);
+	                    if(i>=j)
+	                    {
+	                    	break;
+	                    }
 	                    swap(&a[i],&a[j]);
 	                }
 	                quicksort4(a,left,i-1);
