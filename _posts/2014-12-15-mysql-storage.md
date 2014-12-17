@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "MYSQL存储引擎"
-description:"MYSQL表结构"
-keywords:"MySQL存储引擎"
-category:MYSQL
-tags: [MyISAM,InnoDB]
+description: "MYSQL表结构"
+keywords: "MySQL存储引擎"
+category: MYSQL
+tags: [MyISAM,InnoDB,mysql]
 ---
 {% include JB/setup %}
 

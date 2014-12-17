@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "lnmp环境及navicat配置安装"
-description:"lnmp"
-keywords:"Nginx,mysql"
-category:linux
-tags: [Nginx,php]
+description: "lnmp"
+keywords: "Nginx,mysql"
+category: linux
+tags: [Nginx,mysql,php]
 ---
-{{% include JB/setup %}
+{% include JB/setup %}
 
 ####lnmp环境安装及解决遇到的问题
 
