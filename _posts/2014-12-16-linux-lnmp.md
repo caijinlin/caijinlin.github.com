@@ -60,7 +60,7 @@ Ubuntu系统下执行：wget -c http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz &
 
 ####3.使用数据库管理工具navicat连接远程数据库出现无法连接的问题
 
-	![远程连接错误](assets\images\Linkerror.png)
+![远程连接错误](assets\images\Linkerror.png)
 
 排查错误：
 	
