@@ -6,7 +6,7 @@ keywords:"MySQL存储引擎"
 category:MYSQL
 tags: [MyISAM,InnoDB]
 ---
-{{% include JB/setup %}
+{% include JB/setup %}
 
 ###MYSQL两种最常用的存储引擎
 
