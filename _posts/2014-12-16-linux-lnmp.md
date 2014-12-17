@@ -8,7 +8,7 @@ tags: [Nginx,mysql,php]
 ---
 {% include JB/setup %}
 
-####lnmp环境安装及解决遇到的问题
+###lnmp环境安装及解决遇到的问题
 
 今天搭建了2台linux服务器lnmp环境，安装的过程中也是遇到一些问题。总结一下：如果nginx，mysql，php安装了多次，即使卸载，但是进程仍然在运行，所以每次重新安装的时候，最好kill掉原进程。在解决问题的过程中，还学了一些平时没怎么用的linux命令，算是另外的收获吧，折腾一天也值了。
 
@@ -59,7 +59,6 @@ Ubuntu系统下执行：wget -c http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz &
 	mysql -u root p123456   <!-- 假设root为数据库用户名，123456为数据库密码-->
 
 ####3.使用数据库管理工具navicat连接远程数据库出现无法连接的问题
-
 ![远程连接错误](assets\images\Linkerror.png)
 
 排查错误：
