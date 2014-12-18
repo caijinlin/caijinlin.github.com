@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "轻松实现多台服务器数据库备份"
-description:"linux"
-keywords:"Nginx,mysql"
-category:linux
-tags: [Nginx,php]
+description: "linux"
+keywords: "Nginx,mysql"
+category: linux
+tags: [Nginx,php,mysql]
 ---
 {% include JB/setup %}
 
