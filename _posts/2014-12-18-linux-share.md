@@ -6,7 +6,7 @@ keywords:"Nginx,mysql"
 category:linux
 tags: [Nginx,php]
 ---
-{{% include JB/setup %}
+{% include JB/setup %}
 
 ####linux下两台服务器数据库导入导出
 

@@ -1,12 +1,11 @@
 ---
-layout post
+layout: post
 title: "mysql主从复制配置"
 description: "mysql主从"
 keywords: "mysql主从"
 category: mysql
 tags: [mysql]
 ---
-
 {% include JB/setup %}
 
 ###mysql主从配置步骤

@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "Sublime JsFormat插件安装及使用"
-description:"Js代码格式化"
-keywords:"JsFormat"
-category:工具
+description: "Js代码格式化"
+keywords: "JsFormat"
+category: 工具
 tags: [Sublime]
 ---
-{{% include JB/setup %}
+{% include JB/setup %}
 
 ###安装及使用Sublime插件JsFormat
 
