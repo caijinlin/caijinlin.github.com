@@ -59,6 +59,7 @@ Ubuntu系统下执行：wget -c http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz &
 	mysql -u root p123456   <!-- 假设root为数据库用户名，123456为数据库密码-->
 
 ####3.使用数据库管理工具navicat连接远程数据库出现无法连接的问题
+
 ![远程连接错误](/assets/images/Linkerror.png)
 
 排查错误：
@@ -66,6 +67,8 @@ Ubuntu系统下执行：wget -c http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz &
 1.远程服务器端口3306是否打开
 	
 	step1:客户机上 telnet ipAddress 3306，看服务器的3306端口是否被打开
+
+![mysql port](/assets/images/mysqlport.png)
 
 2.远程服务器是否不允许从远程登陆
 

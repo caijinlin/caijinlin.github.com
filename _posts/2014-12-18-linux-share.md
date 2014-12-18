@@ -41,7 +41,7 @@ tags: [Nginx,php,mysql]
 
 以下情形没有打开80端口，3306和22端口是开放的
 
-	![防火墙设置](/assets/images/firewallPort.png)
+![防火墙设置](/assets/images/firewallPort.png)
 
 这时需要自行进行防火墙设置，可以开启80端口
 
