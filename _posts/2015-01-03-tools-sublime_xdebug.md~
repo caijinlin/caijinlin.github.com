@@ -1,12 +1,12 @@
 ---
 layout: post
 title: "Sublime下XDebug安装及使用"
-description: "XDebug"
-keywords: "XDebug"
-category: 工具
-tags: [Sublime,php]
+description:"XDebug"
+keywords:"XDebug"
+category:工具
+tags: [Sublime]
 ---
-{% include JB/setup %}
+{{% include JB/setup %}
 
 ###Windows下安装及使用Sublime Text2/3 插件XDebug Client
 
