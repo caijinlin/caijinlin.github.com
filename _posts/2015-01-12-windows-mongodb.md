@@ -8,11 +8,11 @@ tags: [php,mongodb]
 ---
 {% include JB/setup %}
 
+###Windows下mongodb安装及使用
+
 对于开发人员来说，安装环境应该是一件很简单的事情，可每次都搞得这么臃肿，关键在于没能理会其精华。如果你的阅历还不够，可能会有很多坑在等着你。今天在安装Mongodb的时候就遇到了用MongoVUE连接远程mongodb的坑。
 
 <!-- more -->
-
-###Windows下mongodb安装及使用
 
 上一篇文章讲述<a href="http://caijinlin.github.io/php/2015-01/linux-mongodb.html" target="_blank">linux下mongodb安装及使用</a>，这一篇讲windows下Mongodb安装以及所遇到的坑。
 
