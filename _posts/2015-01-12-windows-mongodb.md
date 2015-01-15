@@ -1,4 +1,4 @@
- ---
+---
 layout: post
 title: "mongodb安装及使用(二)"
 description: "mongodb"
