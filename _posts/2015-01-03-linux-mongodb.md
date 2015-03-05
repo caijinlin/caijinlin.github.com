@@ -46,7 +46,7 @@ step7.进入mongodb命令行模式
 	cd /usr/local/mongodb/bin
 	./mongo
 
-step8.开启php的Mongodb扩展(网上很多教程),就可以在php代码中使用Monggodb了
+step8.<a href="http://www.111cn.net/sys/linux/58162.htm" target="_blank">开启php的Mongodb扩展</a> 就可以在php代码中使用Monggodb了
 
 
 step9.全面学习Mongodb(<a href="http://blog.csdn.net/yiqijinbu/article/details/9053467" target="_blank">http://blog.csdn.net/yiqijinbu/article/details/9053467</a>)
