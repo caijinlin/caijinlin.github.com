@@ -31,6 +31,7 @@ Usage:
       	{% else %}
       	<li><a href="{{ BASE_PATH }}{{node.url}}">{{node.title}}</a></li>
       	{% endif %}
+      	<li><a href="http://www.lingxi360.com/">灵析</a></li>
       {% endif %}
     {% endif %}
   {% endfor %}
