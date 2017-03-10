@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mac高效工具配置 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="vim语法高亮在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中添加一行syntax on即可。
+iterm2 + zshstep1.安装iterm2
+https://www.iterm2.com/
+step2.安装zsh, oh-my-zsh
+http://macshuo.com/?p=676
+step3.设置默认shell为zsh
+chsh -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mac高效工具配置">
+<meta property="og:url" content="http://www.caijinlin.com/2016/04/12/mac-tool/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="vim语法高亮在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中添加一行syntax on即可。
+iterm2 + zshstep1.安装iterm2
+https://www.iterm2.com/
+step2.安装zsh, oh-my-zsh
+http://macshuo.com/?p=676
+step3.设置默认shell为zsh
+chsh -">
+<meta property="og:updated_time" content="2017-03-08T12:14:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mac高效工具配置">
+<meta name="twitter:description" content="vim语法高亮在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中添加一行syntax on即可。
+iterm2 + zshstep1.安装iterm2
+https://www.iterm2.com/
+step2.安装zsh, oh-my-zsh
+http://macshuo.com/?p=676
+step3.设置默认shell为zsh
+chsh -">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mac-tool" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/12/mac-tool/" class="article-date">
+  <time datetime="2016-04-12T00:00:00.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mac高效工具配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="vim语法高亮"><a href="#vim语法高亮" class="headerlink" title="vim语法高亮"></a>vim语法高亮</h3><p>在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中添加一行syntax on即可。</p>
+<h3 id="iterm2-zsh"><a href="#iterm2-zsh" class="headerlink" title="iterm2 + zsh"></a>iterm2 + zsh</h3><p>step1.安装iterm2</p>
+<p><a href="https://www.iterm2.com/" target="_blank" rel="external">https://www.iterm2.com/</a></p>
+<p>step2.安装zsh, oh-my-zsh</p>
+<p><a href="http://macshuo.com/?p=676" target="_blank" rel="external">http://macshuo.com/?p=676</a></p>
+<p>step3.设置默认shell为zsh</p>
+<pre><code>chsh -s /bin/zsh
+</code></pre><h3 id="chrome-lastpass插件"><a href="#chrome-lastpass插件" class="headerlink" title="chrome lastpass插件"></a>chrome lastpass插件</h3><pre><code>记住网站密码，不用重复输入密码
+</code></pre><h3 id="ssh免密码登录-参考"><a href="#ssh免密码登录-参考" class="headerlink" title="ssh免密码登录 参考"></a>ssh免密码登录 <a href="http://dhq.me/use-ssh-config-manage-ssh-session" target="_blank" rel="external">参考</a></h3><p>step1.生成密钥 </p>
+<pre><code>ssh-keygen -t rsa -C &quot;caijinlin2012@gmail.com&quot;
+这里使用 rsa 的加密方式（另外一种加密方式是 dsa），中间会询问密钥生成的位置，这里只输入 cjb，在当前位置生成名为 cjb 的密钥，接着会询问是否要设置一个密码(passphrase)，这里留空，直接按回车就行（本来就不想登陆输入密码了...），最后，会在当前目录路径下生成一个名为 cjb 的私钥，一个名为cjb.pub 的公钥。
+</code></pre><p>step2.上传公钥到服务器 (如果方法一不行采用第二种)</p>
+<pre><code>方法1.使用ssh-copy-id 
+    安装ssh-copy-id: curl -L https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh 
+    ssh-copy-id i ~/.ssh/cjl.pub root@182.92.5.70
+
+方法2.
+    把公钥 cjb.pub 上传到远程 cjb 服务器的 ~/.ssh/ 目录下：
+    scp cjl.pub root@182.92.5.70:~/.ssh/
+    上传完后，登录到服务器，把公钥 cjb.pub 的内容复制到 authorized_keys 文件里（不存在则新创建一个）：
+    cat cjb.pub &gt;&gt; authorized_keys
+</code></pre><p>step3. 加入配置文件</p>
+<pre><code>~/.ssh下新建配置文件config
+    Host        cjb
+        HostName        216.194.70.6
+        Port            22
+        User            user
+        IdentityFile    ~/.ssh/cjb  
+    Host        cjh
+        HostName    182.92.5.70
+        Port        22
+        User        user
+</code></pre><p>step4. ssh cjh </p>
+<pre><code>登录成功说明免密码登录成功了
+</code></pre><h3 id="sublime过滤文件夹搜索"><a href="#sublime过滤文件夹搜索" class="headerlink" title="sublime过滤文件夹搜索"></a>sublime过滤文件夹搜索</h3><pre><code>sublime text =&gt; Preferences =&gt; Setting - User 加入配置，过滤文件夹和文件类型
+
+&quot;folder_exclude_patterns&quot;: [&quot;Runtime&quot;, &quot;._d&quot;, &quot;.metadata&quot;, &quot;.settings&quot;],
+&quot;file_exclude_patterns&quot;: [&quot;*.pyc&quot;, &quot;*.pyo&quot;, &quot;.project&quot;]
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2016/04/12/mac-tool/" data-id="cj00xegq20002wfs6tvvalfxu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/12/solve-node-sass-install-failed/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          node-sass 安装失败解决方法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/01/php-emoji/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">php处理emoji表情</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>高精度算法 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="高精度算法（包含精度计算乘法、精度计算加法等）高数精度算法，属于处理大数字的数学计算方法。在一般的科学计算中，会经常算到小数点后几百位或者更多，当然也可能是几千亿几百亿的大数字。一般这类数字我们统称为高精度数，高精度算法是用计算机对于超大数据的一种模拟加，减，乘，除，乘方，阶乘，开方等运算。对于非常庞大的数字无法在计算机中正常存储，于是，将这个数字拆开，拆成一位一位的，或者是四位四位的存储到一个数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高精度算法">
+<meta property="og:url" content="http://www.caijinlin.com/2014/06/18/高精度算法/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="高精度算法（包含精度计算乘法、精度计算加法等）高数精度算法，属于处理大数字的数学计算方法。在一般的科学计算中，会经常算到小数点后几百位或者更多，当然也可能是几千亿几百亿的大数字。一般这类数字我们统称为高精度数，高精度算法是用计算机对于超大数据的一种模拟加，减，乘，除，乘方，阶乘，开方等运算。对于非常庞大的数字无法在计算机中正常存储，于是，将这个数字拆开，拆成一位一位的，或者是四位四位的存储到一个数">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/precision.png">
+<meta property="og:updated_time" content="2017-03-08T15:29:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="高精度算法">
+<meta name="twitter:description" content="高精度算法（包含精度计算乘法、精度计算加法等）高数精度算法，属于处理大数字的数学计算方法。在一般的科学计算中，会经常算到小数点后几百位或者更多，当然也可能是几千亿几百亿的大数字。一般这类数字我们统称为高精度数，高精度算法是用计算机对于超大数据的一种模拟加，减，乘，除，乘方，阶乘，开方等运算。对于非常庞大的数字无法在计算机中正常存储，于是，将这个数字拆开，拆成一位一位的，或者是四位四位的存储到一个数">
+<meta name="twitter:image" content="http://www.caijinlin.com/assets/images/precision.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-高精度算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/18/高精度算法/" class="article-date">
+  <time datetime="2014-06-18T00:00:00.000Z" itemprop="datePublished">2014-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      高精度算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="高精度算法（包含精度计算乘法、精度计算加法等）"><a href="#高精度算法（包含精度计算乘法、精度计算加法等）" class="headerlink" title="高精度算法（包含精度计算乘法、精度计算加法等）"></a>高精度算法（包含精度计算乘法、精度计算加法等）</h3><p>高数精度算法，属于处理大数字的数学计算方法。在一般的科学计算中，会经常算到小数点后几百位或者更多，当然也可能是几千亿几百亿的大数字。一般这类数字我们统称为高精度数，高精度算法是用计算机对于超大数据的一种模拟加，减，乘，除，乘方，阶乘，开方等运算。对于非常庞大的数字无法在计算机中正常存储，于是，将这个数字拆开，拆成一位一位的，或者是四位四位的存储到一个数组中， 用一个数组去表示一个字，这样这个数字就被称谓是高精度数。高精度算法就是能处理高精度数各种运算的算法。</p>
+<p><img src="/assets/images/precision.png" alt="蔡金林的博客之高精度算法"></p>
+<p>在acmer眼里看来，大数字之间的运算一般都会用字符串的形式来处理，例如大数求阶乘，乘法，加法等。</p>
+<p>北电上一道关于高精度算法的算法题，题目链接<a href="http://poj.org/problem?id=1001" target="_blank" rel="external">http://poj.org/problem?id=1001</a>，用了一下午的时间开始搜集各方面code，发现大多数杂而乱，在绞尽脑汁后，自己动手写了个，终于一次性AC。<br>源代码实现c++版：/<em>注释的代码是为了记录某些值，进行排错</em>/</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span>;</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">add</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span><span class="comment">//参与运算的两个数字串</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i,j,k,up,x,y,z;</div><div class="line">	<span class="built_in">string</span> c;<span class="comment">//存放相加结果的字符串</span></div><div class="line">	i=a.length()<span class="number">-1</span>;</div><div class="line">	j=b.length()<span class="number">-1</span>;</div><div class="line">	up=<span class="number">0</span>;<span class="comment">//进位</span></div><div class="line">	<span class="keyword">while</span>(i&gt;=<span class="number">0</span>||j&gt;=<span class="number">0</span>)</div><div class="line">	&#123;</div><div class="line">        <span class="keyword">if</span>(i&lt;<span class="number">0</span>) x=<span class="string">'0'</span>; <span class="keyword">else</span> x=a[i];</div><div class="line">        <span class="keyword">if</span>(j&lt;<span class="number">0</span>) y=<span class="string">'0'</span>; <span class="keyword">else</span> y=b[j];</div><div class="line">        z=x-<span class="string">'0'</span>+y-<span class="string">'0'</span>;</div><div class="line">        <span class="keyword">if</span>(up) z+=<span class="number">1</span>;<span class="comment">//上一位加法产生的进位</span></div><div class="line">        <span class="keyword">if</span>(z&gt;<span class="number">9</span>)</div><div class="line">        &#123;</div><div class="line">            up=<span class="number">1</span>;</div><div class="line">            z%=<span class="number">10</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">            up=<span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        c.push_back(z+<span class="string">'0'</span>);<span class="comment">//压入字符串</span></div><div class="line">        i--;</div><div class="line">        j--;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(up)<span class="comment">//判断最高位产生的进位</span></div><div class="line">	&#123;</div><div class="line">	     c.push_back(<span class="string">'1'</span>);</div><div class="line">	&#125;</div><div class="line">	reverse(c.begin(),c.end());<span class="comment">//字符串反转</span></div><div class="line">	<span class="keyword">return</span> c;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="function"><span class="built_in">string</span> <span class="title">multiple</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span>  <span class="comment">//计算两高精度数乘积</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> i, j,k;</div><div class="line">	<span class="built_in">string</span> result = <span class="string">"0"</span>;</div><div class="line">	<span class="keyword">for</span>(i = a.length() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</div><div class="line">	&#123;</div><div class="line">	    <span class="keyword">int</span> remain = <span class="number">0</span>;</div><div class="line">	    <span class="built_in">string</span> str = <span class="string">""</span>;</div><div class="line">	    <span class="keyword">for</span>(j = b.length() - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--)</div><div class="line">	    &#123;</div><div class="line">	        <span class="keyword">int</span> tmp = (a[i] - <span class="string">'0'</span>) * (b[j] - <span class="string">'0'</span>) + remain;</div><div class="line">	        remain = tmp / <span class="number">10</span>;</div><div class="line">	        str = (<span class="keyword">char</span>)(tmp % <span class="number">10</span> + <span class="string">'0'</span>) + str;</div><div class="line">	    &#125;</div><div class="line">	    <span class="keyword">if</span>(remain != <span class="number">0</span>)</div><div class="line">	    &#123;</div><div class="line">	        str = (<span class="keyword">char</span>)(remain + <span class="string">'0'</span>) + str;</div><div class="line">	    &#125;</div><div class="line">	    <span class="keyword">for</span>(k=i;k&amp;lt;a.length()<span class="number">-1</span>;k++)</div><div class="line">	    &#123;</div><div class="line">	        str=str+<span class="string">'0'</span>;</div><div class="line">	    &#125;</div><div class="line">	   result=add(str,result);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> result;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="built_in">string</span> s1,s2;</div><div class="line">	<span class="keyword">int</span> i,n,pos,j=<span class="number">0</span>;</div><div class="line">	<span class="built_in">string</span> res=<span class="string">"1"</span>;</div><div class="line">	<span class="built_in">string</span>::iterator its;</div><div class="line">	<span class="keyword">char</span> ch1[<span class="number">81</span>];</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%s %d"</span>,ch1,&amp;amp;n)!=EOF)</div><div class="line">	&#123;</div><div class="line">	    s1=ch1;</div><div class="line">	    i=<span class="number">0</span>;</div><div class="line">	    pos=<span class="number">0</span>;</div><div class="line">	    <span class="keyword">for</span>(its=s1.begin();its!=s1.end();its++)</div><div class="line">	    &#123;</div><div class="line">	        <span class="keyword">if</span>(*its==<span class="string">'.'</span>) <span class="comment">//如果包含小数点，删除小数点，当作整数处理</span></div><div class="line">	        &#123;</div><div class="line">	            pos=i;</div><div class="line">	            s1.erase(its);</div><div class="line">	            <span class="keyword">break</span>;</div><div class="line">	        &#125;</div><div class="line">	        i++;</div><div class="line">	    &#125;</div><div class="line">	    <span class="comment">/*</span></div><div class="line">	    for(i=0;i&lt;s1.size();i++)</div><div class="line">	    &#123;</div><div class="line">	        cout&lt;&lt;s1[i];</div><div class="line">	    &#125;</div><div class="line">	    cout&lt;&lt;endl;</div><div class="line">	    */</div><div class="line">	    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)<span class="comment">//循环作乘法</span></div><div class="line">	    &#123;</div><div class="line">	        res=multiple(s1,res);</div><div class="line">	    &#125;</div><div class="line">	    <span class="keyword">if</span>(pos!=<span class="number">0</span>)<span class="comment">//判断是否包含小数点</span></div><div class="line">	    &#123;</div><div class="line">	          j=s1.size()-pos;<span class="comment">//取得小数点后面数的个数</span></div><div class="line">	          j=j*n;<span class="comment">//输出时将要移动的小数点位数</span></div><div class="line">	    &#125;</div><div class="line">	    <span class="comment">/*</span></div><div class="line">	    cout&lt;&lt;"j:"&lt;&lt;j&lt;&lt;endl;</div><div class="line">	    cout&lt;&lt;"res:";</div><div class="line">	    for(i=0;i&lt;res.size();i++)</div><div class="line">	    &#123;</div><div class="line">	         cout&lt;&lt;res[i];</div><div class="line">	    &#125;</div><div class="line">	    cout&lt;&lt;endl;</div><div class="line">	    */</div><div class="line">	   <span class="built_in">string</span>::iterator it=res.begin();</div><div class="line">	   <span class="keyword">if</span>(pos!=<span class="number">0</span>)</div><div class="line">	   &#123;</div><div class="line">	        res.insert(it+res.size()-j,<span class="string">'.'</span>);</div><div class="line">	        it=res.begin();</div><div class="line">	        <span class="keyword">if</span>(res[<span class="number">0</span>]==<span class="string">'0'</span>&amp;&amp; res[<span class="number">1</span>]==<span class="string">'.'</span>) <span class="comment">//删除0.0001中的小树点前面的0</span></div><div class="line">	        &#123;</div><div class="line">	            res.erase(it);</div><div class="line">	        &#125;</div><div class="line">	        <span class="keyword">while</span>(res[res.size()<span class="number">-1</span>]==<span class="string">'0'</span>) <span class="comment">//删除0.5000中小数点后面的0</span></div><div class="line">	        &#123;</div><div class="line">	            it=res.begin()+res.size()<span class="number">-1</span>;</div><div class="line">	            res.erase(it);</div><div class="line">	        &#125;</div><div class="line">	        <span class="keyword">if</span>(res[res.size()<span class="number">-1</span>]==<span class="string">'.'</span>)<span class="comment">//如果为整数，去掉小数点</span></div><div class="line">	        &#123;</div><div class="line">	            it=res.begin()+res.size()<span class="number">-1</span>;</div><div class="line">	            res.erase(it);</div><div class="line">	        &#125;</div><div class="line">	   &#125;</div><div class="line">	    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;res.size();i++)<span class="comment">//直接输出</span></div><div class="line">	    &#123;</div><div class="line">	        <span class="built_in">printf</span>(<span class="string">"%c"</span>,res[i]);</div><div class="line">	    &#125;</div><div class="line">	    <span class="built_in">cout</span>&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">	    s1.clear();</div><div class="line">	    res=<span class="string">"1"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/06/18/高精度算法/" data-id="cizzps5vj001loa5p2uefrfat" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/06/19/我们眼中的计算机学院毕业生——男会修电脑，女会上淘宝？/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          我们眼中的计算机学院毕业生——男会修电脑，女会上淘宝？
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/12/动态规划算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">动态规划算法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

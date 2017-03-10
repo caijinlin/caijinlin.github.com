@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>centos搭建reviewboard | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="centos下搭建reviewboard">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos搭建reviewboard">
+<meta property="og:url" content="http://www.caijinlin.com/2015/02/15/centos搭建reviewboard/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="centos下搭建reviewboard">
+<meta property="og:updated_time" content="2017-03-10T14:09:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="centos搭建reviewboard">
+<meta name="twitter:description" content="centos下搭建reviewboard">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-centos搭建reviewboard" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/02/15/centos搭建reviewboard/" class="article-date">
+  <time datetime="2015-02-15T00:00:00.000Z" itemprop="datePublished">2015-02-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      centos搭建reviewboard
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="centos下搭建reviewboard"><a href="#centos下搭建reviewboard" class="headerlink" title="centos下搭建reviewboard"></a>centos下搭建reviewboard</h3><a id="more"></a>
+<h4 id="安装apache-php-mysql-phpmyadmin-memcache"><a href="#安装apache-php-mysql-phpmyadmin-memcache" class="headerlink" title="安装apache,php,mysql,phpmyadmin,memcache"></a>安装apache,php,mysql,phpmyadmin,memcache</h4><p>  yum install httpd<br>  yum install php<br>  yum -y install mysql-server<br>  yum  -y install memcached<br>  yum  -y install phpmyadmin<br>  service memcached restart<br>  /etc/init.d/mysqld restart<br>  /etc/init.d/httpd restart<br>  cp -R /usr/share/phpMyAdmin/ /var/www/html/</p>
+<p>  #find deny from all and comment it in the entire file<br>  vim /etc/init.d/httpd/phpmyadmin.conf</p>
+<h4 id="安装sendmail"><a href="#安装sendmail" class="headerlink" title="安装sendmail"></a>安装sendmail</h4><pre><code>yum -y install sendmail
+</code></pre><h4 id="安装EPEL软件包"><a href="#安装EPEL软件包" class="headerlink" title="安装EPEL软件包"></a>安装EPEL软件包</h4><p>   wget <a href="http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm" target="_blank" rel="external">http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm</a><br>   sudo rpm -ivh epel-release-6-8.noarch.rpm</p>
+<h4 id="安装reviewboard"><a href="#安装reviewboard" class="headerlink" title="安装reviewboard"></a>安装reviewboard</h4><pre><code>yum -y install ReviewBoard
+</code></pre><h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><p>  mysql -uroot -p123456;<br>  create database reviewboard default charset utf8 collate utf8_general_ci;</p>
+<h4 id="创建站点"><a href="#创建站点" class="headerlink" title="创建站点"></a>创建站点</h4><p>  rb-site install /var/www/reviewboard</p>
+<p>  #更改文件拥有者为apache（web服务器）（在site创建完成时，会提示做如下更改）<br>  chown -R apache /var/www/reviewboard/htdocs/media/uploaded<br>  chown -R apache /var/www/reviewboard/htdocs/media/ext/<br>  chown -R apache /var/www/reviewboard/data/</p>
+<p>  #将reviewboard的配置文件拷贝到apache配置文件下</p>
+<h1 id="cp-var-www-reviewboard-conf-apache-wsgi-conf-etc-httpd-conf-d"><a href="#cp-var-www-reviewboard-conf-apache-wsgi-conf-etc-httpd-conf-d" class="headerlink" title="cp /var/www/reviewboard/conf/apache-wsgi.conf /etc/httpd/conf.d"></a>cp /var/www/reviewboard/conf/apache-wsgi.conf /etc/httpd/conf.d</h1><h4 id="重启apache"><a href="#重启apache" class="headerlink" title="重启apache"></a>重启apache</h4><p>  /etc/init.d/httpd restart</p>
+<h4 id="reviewboard使用"><a href="#reviewboard使用" class="headerlink" title="reviewboard使用"></a>reviewboard使用</h4><p>  如果添加repo的时候出现错误permission denied accessing the local Git repository, 可能原因是git仓库地址的权限问题，改下权限就行，以便apache用户组也能访问</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/02/15/centos搭建reviewboard/" data-id="cizzps5th000foa5peji521xe" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/03/01/start-hexo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          开始使用hexo写博客
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/02/12/话题社区项目总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">话题社区项目总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

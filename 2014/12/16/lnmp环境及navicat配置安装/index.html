@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>lnmp环境及navicat配置安装 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="lnmp环境安装及解决遇到的问题今天搭建了2台linux服务器lnmp环境，安装的过程中也是遇到一些问题。总结一下：如果nginx，mysql，php安装了多次，即使卸载，但是进程仍然在运行，所以每次重新安装的时候，最好kill掉原进程。在解决问题的过程中，还学了一些平时没怎么用的linux命令，算是另外的收获吧，折腾一天也值了。
+shell命令一键安装lnmp：CentOS系统下执行：wget">
+<meta property="og:type" content="article">
+<meta property="og:title" content="lnmp环境及navicat配置安装">
+<meta property="og:url" content="http://www.caijinlin.com/2014/12/16/lnmp环境及navicat配置安装/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="lnmp环境安装及解决遇到的问题今天搭建了2台linux服务器lnmp环境，安装的过程中也是遇到一些问题。总结一下：如果nginx，mysql，php安装了多次，即使卸载，但是进程仍然在运行，所以每次重新安装的时候，最好kill掉原进程。在解决问题的过程中，还学了一些平时没怎么用的linux命令，算是另外的收获吧，折腾一天也值了。
+shell命令一键安装lnmp：CentOS系统下执行：wget">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/Linkerror.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/mysqlport.png">
+<meta property="og:updated_time" content="2017-03-10T14:00:01.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="lnmp环境及navicat配置安装">
+<meta name="twitter:description" content="lnmp环境安装及解决遇到的问题今天搭建了2台linux服务器lnmp环境，安装的过程中也是遇到一些问题。总结一下：如果nginx，mysql，php安装了多次，即使卸载，但是进程仍然在运行，所以每次重新安装的时候，最好kill掉原进程。在解决问题的过程中，还学了一些平时没怎么用的linux命令，算是另外的收获吧，折腾一天也值了。
+shell命令一键安装lnmp：CentOS系统下执行：wget">
+<meta name="twitter:image" content="http://www.caijinlin.com/assets/images/Linkerror.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-lnmp环境及navicat配置安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/16/lnmp环境及navicat配置安装/" class="article-date">
+  <time datetime="2014-12-16T00:00:00.000Z" itemprop="datePublished">2014-12-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      lnmp环境及navicat配置安装
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="lnmp环境安装及解决遇到的问题"><a href="#lnmp环境安装及解决遇到的问题" class="headerlink" title="lnmp环境安装及解决遇到的问题"></a>lnmp环境安装及解决遇到的问题</h3><p>今天搭建了2台linux服务器lnmp环境，安装的过程中也是遇到一些问题。总结一下：如果nginx，mysql，php安装了多次，即使卸载，但是进程仍然在运行，所以每次重新安装的时候，最好kill掉原进程。在解决问题的过程中，还学了一些平时没怎么用的linux命令，算是另外的收获吧，折腾一天也值了。</p>
+<h4 id="shell命令一键安装lnmp："><a href="#shell命令一键安装lnmp：" class="headerlink" title="shell命令一键安装lnmp："></a>shell命令一键安装lnmp：</h4><p>CentOS系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="external">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./centos.sh</p>
+<p>Debian系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="external">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./debian.sh</p>
+<p>Ubuntu系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="external">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./ubuntu.sh</p>
+<p>更多了解访问<a href="http://lnmp.org/install.html" target="_blank">lnmp官网</a></p>
+<p>测试lnmp安装是否成功：</p>
+<pre><code>service nginx status;
+service mysql status;
+</code></pre><h4 id="navicat软件下载-数据库管理软件-可以连接远程数据库"><a href="#navicat软件下载-数据库管理软件-可以连接远程数据库" class="headerlink" title="navicat软件下载(数据库管理软件,可以连接远程数据库)"></a>navicat软件下载(数据库管理软件,可以连接远程数据库)</h4><p><a href="http://pan.baidu.com/s/1qW6uj5y" target="_blank" rel="external">点击下载</a></p>
+<h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><h4 id="1-mysql-Unknown-OS-character-set-‘GB18030’"><a href="#1-mysql-Unknown-OS-character-set-‘GB18030’" class="headerlink" title="1.mysql: Unknown OS character set ‘GB18030’."></a>1.mysql: Unknown OS character set ‘GB18030’.</h4><pre><code>mysql: Switching to the default character set &apos;latin1&apos;.
+</code></pre><p>问题所在：操作系统编码问题</p>
+<p>解决方案：</p>
+<pre><code>step1.更改操作系统字符集(shell命令)
+
+    vim /etc/sysconfig/i18n   将LANG=&quot;zh_CN.GB18030&quot;改成LANG=&quot;zh_CN.UTF-8&quot;
+
+step2.设置环境变量(shell命令)
+
+    exoport LANG = &quot;zh_CN.UTF-8&quot;
+
+step3.立刻生效环境更改
+
+    source /etc/profile
+</code></pre><h4 id="2-mysql登录"><a href="#2-mysql登录" class="headerlink" title="2.mysql登录"></a>2.mysql登录</h4><pre><code>mysql -u root p123456   &lt;!-- 假设root为数据库用户名，123456为数据库密码--&gt;
+</code></pre><h4 id="3-使用数据库管理工具navicat连接远程数据库出现无法连接的问题"><a href="#3-使用数据库管理工具navicat连接远程数据库出现无法连接的问题" class="headerlink" title="3.使用数据库管理工具navicat连接远程数据库出现无法连接的问题"></a>3.使用数据库管理工具navicat连接远程数据库出现无法连接的问题</h4><p><img src="/assets/images/Linkerror.png" alt="远程连接错误"></p>
+<p>排查错误：</p>
+<p>1.远程服务器端口3306是否打开</p>
+<pre><code>step1:客户机上 telnet ipAddress 3306，看服务器的3306端口是否被打开
+</code></pre><p><img src="/assets/images/mysqlport.png" alt="mysql port"></p>
+<p>2.远程服务器是否不允许从远程登陆</p>
+<pre><code>运行shell命令：netstat -an | grep 3306
+
+如果上图红色部分为127.0.0.1，则说明只能本机访问，不被允许远程访问
+</code></pre><p>解决方案：登录服务器mysql，设置允许客户机192.168.30.105以用户root,密码root登陆</p>
+<pre><code>GRANT ALL PRIVILEGES ON *.* TO &apos;root&apos;@&apos;192.168.30.105&apos; IDENTIFIED BY &apos;root&apos; WITH GRANT OPTION;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/12/16/lnmp环境及navicat配置安装/" data-id="cizzps5ti000goa5pht1ewe30" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/17/砸向自己的巨人坑/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          砸向自己的巨人坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/15/MYSQL存储引擎/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">MYSQL存储引擎</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

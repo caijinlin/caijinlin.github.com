@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mongodb安装及使用(二) | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Windows下mongodb安装及使用对于开发人员来说，安装环境应该是一件很简单的事情，可每次都搞得这么臃肿，关键在于没能理会其精华。如果你的阅历还不够，可能会有很多坑在等着你。今天在安装Mongodb的时候就遇到了用MongoVUE连接远程mongodb的坑。
+上一篇文章讲述linux下mongodb安装及使用，这一篇讲windows下Mongodb安装以及所遇到的坑。
+step1.Downl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongodb安装及使用(二)">
+<meta property="og:url" content="http://www.caijinlin.com/2015/01/12/mongodb安装及使用-二/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="Windows下mongodb安装及使用对于开发人员来说，安装环境应该是一件很简单的事情，可每次都搞得这么臃肿，关键在于没能理会其精华。如果你的阅历还不够，可能会有很多坑在等着你。今天在安装Mongodb的时候就遇到了用MongoVUE连接远程mongodb的坑。
+上一篇文章讲述linux下mongodb安装及使用，这一篇讲windows下Mongodb安装以及所遇到的坑。
+step1.Downl">
+<meta property="og:updated_time" content="2017-03-10T14:07:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongodb安装及使用(二)">
+<meta name="twitter:description" content="Windows下mongodb安装及使用对于开发人员来说，安装环境应该是一件很简单的事情，可每次都搞得这么臃肿，关键在于没能理会其精华。如果你的阅历还不够，可能会有很多坑在等着你。今天在安装Mongodb的时候就遇到了用MongoVUE连接远程mongodb的坑。
+上一篇文章讲述linux下mongodb安装及使用，这一篇讲windows下Mongodb安装以及所遇到的坑。
+step1.Downl">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mongodb安装及使用-二" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/01/12/mongodb安装及使用-二/" class="article-date">
+  <time datetime="2015-01-12T00:00:00.000Z" itemprop="datePublished">2015-01-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mongodb安装及使用(二)
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Windows下mongodb安装及使用"><a href="#Windows下mongodb安装及使用" class="headerlink" title="Windows下mongodb安装及使用"></a>Windows下mongodb安装及使用</h3><p>对于开发人员来说，安装环境应该是一件很简单的事情，可每次都搞得这么臃肿，关键在于没能理会其精华。如果你的阅历还不够，可能会有很多坑在等着你。今天在安装Mongodb的时候就遇到了用MongoVUE连接远程mongodb的坑。</p>
+<p>上一篇文章讲述<a href="http://caijinlin.github.io/php/2015-01/linux-mongodb.html" target="_blank">linux下mongodb安装及使用</a>，这一篇讲windows下Mongodb安装以及所遇到的坑。</p>
+<p>step1.Download</p>
+<p><a href="http://pan.baidu.com/s/1bnjKMkf" target="_blank" rel="external">点击下载</a></p>
+<p>step2.Install</p>
+<p>解压下载文件到D:\mongodb(比如)</p>
+<p>step3.Start Server(在D:\mongodb下)</p>
+<pre><code>mkdir data
+mkdir logs
+cd bin
+mongod --dbpath D:\mongodb\data  (启动服务器端)
+</code></pre><p>step4.Start Client(在D:\mongodb下)</p>
+<pre><code>cd bin
+mongo
+show dbs;
+use admin
+db.addUser(&quot;root&quot;,123456)     //添加mongo用户，可以作为登录名
+db.auth(&quot;root&quot;,&apos;123456&apos;);     //认证是否登录成功
+</code></pre><p>step5.Install Servicet(在D:\mongodb下)</p>
+<p>每次开机运行都需要在（cmd）下面手动运行Mongodb,所以将Mongo数据库安装成为Windows服务.</p>
+<p>   D:\mongodb\bin&gt;mongod –logpath D:\mongodb\logs\MongoDB.log –logappend –dbpath D:\mongodb\data –directoryperdb –serviceName MongoDB –install</p>
+<font style="font:red">注意：必须为管理员权限， 否则无法创建服务</font>
+
+<p>安装服务成功后：</p>
+<pre><code>启动MongoDB：net start MongoDB
+停止MongoDB：net stop MongoDB
+删除MongoDB：sc delete MongoDB
+</code></pre><h3 id="安装MongoVUE"><a href="#安装MongoVUE" class="headerlink" title="安装MongoVUE"></a>安装MongoVUE</h3><p>为了使mongodb可视化，安装Mongodb图形化管理工具,<a href="http://pan.baidu.com/s/1hqpaxMk" target="_blank">点击下载Mongodb客户端</a></p>
+<p>注意：连接时几个选项:</p>
+<pre><code>Server：主机名或者ip
+Port：端口，一般为27017
+Username:当连本机时，可以不填；远程就填刚才在Mongo中创建的admin用户，不是计算机用户
+Password:当连本机时，可以不填；远程就填刚才在Mongo中创建的admin密码，不是计算机密码
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/01/12/mongodb安装及使用-二/" data-id="cizzps5tp000loa5px2r1o2gy" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/02/06/砸向自己的巨人坑（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          砸向自己的巨人坑（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/01/03/Sublime下XDebug安装及使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Sublime下XDebug安装及使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

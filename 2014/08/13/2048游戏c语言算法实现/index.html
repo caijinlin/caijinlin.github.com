@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>2048游戏c语言算法实现 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2048游戏玩儿过这款游戏后，小编才知道什么叫“根本停不下来”。在4X4的棋盘上，每次会增加一个数字，你可以选择四个方向，然后数字会按方向移动，遇到相同的数字就会合并，游戏的目的就是合并出2048这个数字，最终看你获得了多少总分。2048也就是2的11次方，即合并11次。原本1024就已经不容易了，升级到2048，一旦停下来就还真的不好完成了！像小编这种数学是体育老师教的，看着这款好玩到爆的游戏只">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2048游戏c语言算法实现">
+<meta property="og:url" content="http://www.caijinlin.com/2014/08/13/2048游戏c语言算法实现/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="2048游戏玩儿过这款游戏后，小编才知道什么叫“根本停不下来”。在4X4的棋盘上，每次会增加一个数字，你可以选择四个方向，然后数字会按方向移动，遇到相同的数字就会合并，游戏的目的就是合并出2048这个数字，最终看你获得了多少总分。2048也就是2的11次方，即合并11次。原本1024就已经不容易了，升级到2048，一旦停下来就还真的不好完成了！像小编这种数学是体育老师教的，看着这款好玩到爆的游戏只">
+<meta property="og:updated_time" content="2017-03-10T13:53:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2048游戏c语言算法实现">
+<meta name="twitter:description" content="2048游戏玩儿过这款游戏后，小编才知道什么叫“根本停不下来”。在4X4的棋盘上，每次会增加一个数字，你可以选择四个方向，然后数字会按方向移动，遇到相同的数字就会合并，游戏的目的就是合并出2048这个数字，最终看你获得了多少总分。2048也就是2的11次方，即合并11次。原本1024就已经不容易了，升级到2048，一旦停下来就还真的不好完成了！像小编这种数学是体育老师教的，看着这款好玩到爆的游戏只">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2048游戏c语言算法实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/13/2048游戏c语言算法实现/" class="article-date">
+  <time datetime="2014-08-13T00:00:00.000Z" itemprop="datePublished">2014-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      2048游戏c语言算法实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="2048游戏"><a href="#2048游戏" class="headerlink" title="2048游戏"></a>2048游戏</h3><p>玩儿过这款游戏后，小编才知道什么叫“根本停不下来”。在4X4的棋盘上，每次会增加一个数字，你可以选择四个方向，然后数字会按方向移动，遇到相同的数字就会合并，游戏的目的就是合并出2048这个数字，最终看你获得了多少总分。2048也就是2的11次方，即合并11次。原本1024就已经不容易了，升级到2048，一旦停下来就还真的不好完成了！像小编这种数学是体育老师教的，看着这款好玩到爆的游戏只能一声长叹，两行清泪划过脸颊。</p>
+<a id="more"></a>
+<p>判断输赢：表格填满数字且无法通过移动来合并数字时，游戏退出</p>
+<p>源代码实现c算法版：</p>
+<pre><code>/*
+    2048游戏
+*/
+#include &lt;stdio.h&gt;
+#include &lt;memory.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;time.h&gt;
+#define MAX 4
+int row=0,col=0;//元素下标
+int loop=0;//排数
+int i = 0, j = 0;//下标
+int map[MAX][MAX] = {0};
+
+/*初始化数组*/
+void init()
+{
+    memset(map,0,sizeof(map));
+}
+
+/*在某一个空的位置创建随机数*/
+void CreateRandNumber()
+{
+    int flag =0,pos=0;
+    srand(time(0));
+    int x =0 ,y = 0;
+    int r[MAX*MAX];
+    int c[MAX*MAX];
+    int k = 0;
+    /*判断哪些位置可空*/
+    for(row=0;row&lt;MAX;row++)
+    {
+        for(col=0;col&lt;MAX;col++)
+        {
+            if(map[row][col]==0)
+            {
+                r[k]=row;
+                c[k]=col;
+                k++;
+
+            }
+        }
+    }
+    if(k==0)
+    {
+        printf(&quot;游戏结束\n&quot;);
+        exit(0);
+    }
+    printf(&quot;\n&quot;);
+    pos = rand()%k;
+    x = r[pos];
+    y = c[pos];
+    map[x][y] = (rand()%2+1)*2;
+    printf(&quot;产生随机数map[%d][%d]=%d\n&quot;,x,y,map[x][y]);
+    /*从空的位置中产生一个随机数2或者4*/
+}
+
+/*显示游戏盘*/
+void show_map()
+{
+    CreateRandNumber();
+    for(row=0;row&lt;4;row++)
+    {
+        for(loop=0;loop&lt;4;loop++)
+        {
+            printf(&quot;----+&quot;);
+        }
+        printf(&quot;\n&quot;);
+        for(col=0;col&lt;4;col++)
+        {
+            if(map[row][col]==0)
+            {
+                printf(&quot;    |&quot;);
+            }
+            else
+            {
+                 printf(&quot;%-4d|&quot;,map[row][col]);
+            }
+        }
+        printf(&quot;\n&quot;);
+    }
+    for(loop=0;loop&lt;4;loop++)
+    {
+        printf(&quot;----+&quot;);
+    }
+    printf(&quot;\n&quot;);
+}
+/*向左移动*/
+void toward_left()
+{
+    printf(&quot;正在向左移动\n&quot;);
+    for(loop=0;loop&lt;4;loop++)
+    {
+        //移动数字
+        for(i=1;i&lt;=3;i++)
+        {
+            for(j=i;j&gt;0;j--)
+            {
+                if(map[loop][j-1]==0)
+                {
+                    map[loop][j-1]=map[loop][j];
+                    map[loop][j]=0;
+                }
+            }
+        }
+        //合并相同数字
+        for(i=1;i&lt;=3;i++)
+        {
+            if((map[loop][i]==map[loop][i-1]) &amp;&amp; (map[loop][i-1]!=0))
+            {
+                map[loop][i-1]=2*map[loop][i-1];
+                map[loop][i]=0;
+            }
+        }
+    }
+}
+/*向上移动*/
+void toward_up()
+{
+    printf(&quot;正在向上移动\n&quot;);
+    for(loop=0;loop&lt;4;loop++)
+    {
+        //移动数字
+        for(i=1;i&lt;=3;i++)
+        {
+            for(j=i;j&gt;0;j--)
+            {
+                if(map[j-1][loop]==0)
+                {
+                    map[j-1][loop]=map[j][loop];
+                    map[j][loop]=0;
+                }
+            }
+        }
+        //合并相同数字
+        for(i=1;i&lt;=3;i++)
+        {
+            if((map[i-1][loop]==map[i][loop]) &amp;&amp; (map[i-1][loop]!=0))
+            {
+                map[i-1][loop]*=2;
+                map[i][loop]=0;
+            }
+        }
+    }
+
+}
+/*向下移动*/
+void toward_down()
+{
+    printf(&quot;正在向下移动\n&quot;);
+    for(loop=0;loop&lt;4;loop++)
+    {
+        //移动数字
+        for(i=3;i&gt;0;i--)
+        {
+            for(j=i;j&lt;=3;j++)
+            {
+                if(map[j][loop]==0)
+                {
+                    map[j][loop]=map[j-1][loop];
+                    map[j-1][loop]=0;
+                }
+            }
+        }
+        //合并相同数字
+        for(i=3;i&gt;0;i--)
+        {
+            if((map[i][loop]==map[i-1][loop]) &amp;&amp; (map[i][loop]!=0))
+            {
+                map[i][loop]*=2;
+                map[i-1][loop]=0;
+            }
+        }
+    }
+
+}
+/*向右移动*/
+void toward_right()
+{
+    printf(&quot;正在向右移动\n&quot;);
+    for(loop=0;loop&lt;4;loop++)//四排
+    {
+        //移动数字
+        i = 2;
+        while(i&gt;=0)
+        {
+            for(j=i;j&lt;3;j++)
+            {
+                if(map[loop][j+1]==0)
+                {
+                    map[loop][j+1]=map[loop][j];
+                    map[loop][j]=0;
+                }
+            }
+            i--;
+        }
+        //合并相同数字
+        for(i=2;i&gt;=0;i--)
+        {
+            if((map[loop][i+1]==map[loop][i]) &amp;&amp; (map[loop][i+1]!=0))
+            {
+                map[loop][i+1]=2*map[loop][i+1];
+                map[loop][i]=0;
+            }
+        }
+    }
+
+}
+/*开始游戏*/
+void play()
+{
+    show_map();
+    char direction = &apos; &apos;;
+    while(1)
+    {
+        printf(&quot;h代表向左，j代表向向上，k代表向下，l代表向右:\n&quot;);
+        printf(&quot;输入方向：&quot;);
+        scanf(&quot;%c&quot;,&amp;direction);
+        scanf(&quot;%*[^\n]&quot;);
+        scanf(&quot;%*c&quot;);
+        switch(direction)
+        {
+            case &apos;h&apos;:toward_left(); show_map();break;
+            case &apos;j&apos;:toward_up(); show_map();break;
+            case &apos;k&apos;:toward_down(); show_map();break;
+            case &apos;l&apos;:toward_right(); show_map();break;
+            default:break;
+        }
+    }
+}
+int main()
+{
+    init();
+    play();
+    return 0;
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/08/13/2048游戏c语言算法实现/" data-id="cizzps5sf0002oa5p93gak1qs" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/08/14/计算机内存分配方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          计算机内存分配方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/08/12/五子棋c语言算法实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">五子棋c语言算法实现</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

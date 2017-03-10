@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>砸向自己的巨人坑 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="不要乱写注释为了体现自己的专业，在写代码的时候，我会尽量写注释。可是今天却被自己写的注释整整坑了6个小时。当php注释风格遭遇html注释风格的时候，我想很少有像我这样的逗逼掉进了陷阱吧。
+坑的来源(注释风格迥异)php注释风格： // 单行注释 ; /**/ 多行注释
+html注释风格：&amp;lt;!-- --&amp;gt;
+开始挖坑今天我在写一个ajax异步请求的时候，主要是测试一段代码。
+业务逻辑很简">
+<meta property="og:type" content="article">
+<meta property="og:title" content="砸向自己的巨人坑">
+<meta property="og:url" content="http://www.caijinlin.com/2014/12/17/砸向自己的巨人坑/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="不要乱写注释为了体现自己的专业，在写代码的时候，我会尽量写注释。可是今天却被自己写的注释整整坑了6个小时。当php注释风格遭遇html注释风格的时候，我想很少有像我这样的逗逼掉进了陷阱吧。
+坑的来源(注释风格迥异)php注释风格： // 单行注释 ; /**/ 多行注释
+html注释风格：&amp;lt;!-- --&amp;gt;
+开始挖坑今天我在写一个ajax异步请求的时候，主要是测试一段代码。
+业务逻辑很简">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/JqueryAjax.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/parseerror.png">
+<meta property="og:updated_time" content="2017-03-10T14:01:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="砸向自己的巨人坑">
+<meta name="twitter:description" content="不要乱写注释为了体现自己的专业，在写代码的时候，我会尽量写注释。可是今天却被自己写的注释整整坑了6个小时。当php注释风格遭遇html注释风格的时候，我想很少有像我这样的逗逼掉进了陷阱吧。
+坑的来源(注释风格迥异)php注释风格： // 单行注释 ; /**/ 多行注释
+html注释风格：&amp;lt;!-- --&amp;gt;
+开始挖坑今天我在写一个ajax异步请求的时候，主要是测试一段代码。
+业务逻辑很简">
+<meta name="twitter:image" content="http://www.caijinlin.com/assets/images/JqueryAjax.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-砸向自己的巨人坑" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/17/砸向自己的巨人坑/" class="article-date">
+  <time datetime="2014-12-17T00:00:00.000Z" itemprop="datePublished">2014-12-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      砸向自己的巨人坑
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="不要乱写注释"><a href="#不要乱写注释" class="headerlink" title="不要乱写注释"></a>不要乱写注释</h3><p>为了体现自己的专业，在写代码的时候，我会尽量写注释。可是今天却被自己写的注释整整坑了6个小时。当php注释风格遭遇html注释风格的时候，我想很少有像我这样的逗逼掉进了陷阱吧。</p>
+<h4 id="坑的来源-注释风格迥异"><a href="#坑的来源-注释风格迥异" class="headerlink" title="坑的来源(注释风格迥异)"></a>坑的来源(注释风格迥异)</h4><pre><code>php注释风格： // 单行注释 ; /**/ 多行注释
+html注释风格：&lt;!-- --&gt;
+</code></pre><h4 id="开始挖坑"><a href="#开始挖坑" class="headerlink" title="开始挖坑"></a>开始挖坑</h4><p>今天我在写一个ajax异步请求的时候，主要是测试一段代码。</p>
+<p>业务逻辑很简单： 入口页面填写用户名和密码，点击注册按钮，触发引入js文件中的ajax的异步请求，向远程数据库插入数据。</p>
+<p>连接数据库连接部分还是一如既往写了一个类，还写了4行注释，现在来看，这样来连数据库绝对是菜鸟。由于这4行不在&lt;?php ?&gt;标签内，所以是<b><color="red">html注释</color="red"></b>。</p>
+<pre><code>&lt;!--
+    数据库类
+    author:caijl
+    date:2014/12/17;
+--&gt;
+&lt;?php
+    class ConnectionMySQL{
+
+        //主机
+        private $host=&quot;localhost&quot;;
+
+        //数据库用户
+        private $name = &quot;root&quot;;
+
+        //数据库服务器密码
+
+        private $password = &quot;root&quot;;
+
+        //数据库名称
+
+        private $database = &quot;&quot;; 
+
+        //连接
+
+        private $conn =&quot;&quot;;
+
+        //构造函数
+
+        function __construct($host, $name, $password, $database){
+            $this-&gt;host = $host;
+            $this-&gt;name = $name;
+            $this-&gt;password = $password;
+            $this-&gt;database = $database;
+            $this-&gt;connect();
+        }
+
+        //连接函数
+        function connect()
+        {
+            $this-&gt;conn = mysql_connect($this-&gt;host, $this-&gt;name, $this-&gt;password);
+            mysql_select_db($this-&gt;database);
+            mysql_query(&quot;set names utf8&quot;);
+        }
+
+        //处理函数
+        function query($sql)
+        {
+            return mysql_query($sql);
+        }
+        //关闭连接
+        function close()
+        {
+            mysql_close();
+        }
+        //获取连接
+        function getDb()
+        {
+            return $this-&gt;conn;
+        }
+    }   
+?&gt;
+</code></pre><p>在处理请求的文件中，我是这样处理来自入口页面的请求的</p>
+<pre><code>&lt;?php
+  require(&quot;conn.php&quot;);
+  header(&apos;Content-type: text/html; charset=utf8&apos;);
+  //$user_info = json_encode($_POST);
+  $user_name = json_encode($_POST[&quot;name&quot;]); 
+  $user_pwd =  json_encode($_POST[&quot;pwd&quot;]);
+  $db = new ConnectionMySQL(&quot;192.168.25.108&quot;,&quot;root&quot;,&quot;123456&quot;,&quot;test&quot;);
+  $sql = &quot;insert into user_info(user_name, user_pwd) values($user_name, $user_pwd)&quot;;
+  $result = $db-&gt;query($sql);
+  echo json_encode($result);
+?&gt;
+</code></pre><p>报错结果： object xmlHttprequest ,但是数据插入到数据库中了，相当纳闷。</p>
+<h4 id="爬出坑"><a href="#爬出坑" class="headerlink" title="爬出坑"></a>爬出坑</h4><pre><code>为了解决这个问题,我用了echo,var_dump函数进行输出测试，但都石沉大海。不甘心就此结局。
+</code></pre><p>搬来google浏览器自带调试工具，开始学习ajax调试。看到<a href="http://www.cnblogs.com/mybest/archive/2011/12/13/2285730.html" style="color:red;" target="_blank" rel="external">Jquery.Ajax之错误调试帮助信息</a>，开始了<br>疯狂的调试之旅。在js文件中设置断点还不够，对错误信息进行全面分析。<br><img src="/assets/images/JqueryAjax.png" alt="Jquery.Ajax请求"></p>
+<p>单步调试一番后，错误详情为parseerror.难道是返回数据类型不是json,看下图<br><img src="/assets/images/parseerror.png" alt="json数据错误"></p>
+<p>终于找到错误:<b> <color="red">Invalid Json</color="red"></b></p>
+<p>竟然还有我在数据库连接类中的注释信息？难道注释不起作用了？</p>
+<h4 id="脱离坑"><a href="#脱离坑" class="headerlink" title="脱离坑"></a>脱离坑</h4><pre><code>原来是在类文件中，前四行是作为html注释，引入到处理请求的文件中，由于该段内容在php标签内，所以注释格式应该是/* */,看到此番注释，php当然不识别。
+</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><pre><code>之所以遇到坑，就是还太嫩了。不过收获的是：更加会利用google浏览器调试一些信息。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/12/17/砸向自己的巨人坑/" data-id="cizzps5vb001foa5pzpva0kli" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/18/Sublime-JsFormat插件安装及使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Sublime JsFormat插件安装及使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/16/lnmp环境及navicat配置安装/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">lnmp环境及navicat配置安装</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

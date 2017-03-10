@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>贪心算法 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="贪心算法（自顶向下，局部最优）贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。
+贪心算法的基本思想找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贪心算法">
+<meta property="og:url" content="http://www.caijinlin.com/2015/03/07/algorithm-greedy/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="贪心算法（自顶向下，局部最优）贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。
+贪心算法的基本思想找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。">
+<meta property="og:image" content="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/backpack.png-scale600">
+<meta property="og:updated_time" content="2017-03-07T14:38:07.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="贪心算法">
+<meta name="twitter:description" content="贪心算法（自顶向下，局部最优）贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。
+贪心算法的基本思想找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。">
+<meta name="twitter:image" content="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/backpack.png-scale600">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-algorithm-greedy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/07/algorithm-greedy/" class="article-date">
+  <time datetime="2015-03-07T14:01:34.000Z" itemprop="datePublished">2015-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      贪心算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="贪心算法（自顶向下，局部最优）"><a href="#贪心算法（自顶向下，局部最优）" class="headerlink" title="贪心算法（自顶向下，局部最优）"></a>贪心算法（自顶向下，局部最优）</h3><p>贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。</p>
+<h4 id="贪心算法的基本思想"><a href="#贪心算法的基本思想" class="headerlink" title="贪心算法的基本思想"></a>贪心算法的基本思想</h4><p>找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。</p>
+<h4 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h4><pre><code>1.整体的最优解可以通过局部的最优解来求出；
+2.一个整体能够被分为多个局部，并且这些局部都能够求出最优解。
+</code></pre><p>使用贪心算法当中的两个典型问题是活动安排问题和背包问题。</p>
+<h4 id="贪心算法的基本步骤"><a href="#贪心算法的基本步骤" class="headerlink" title="贪心算法的基本步骤"></a>贪心算法的基本步骤</h4><pre><code>1、从问题的某个初始解出发。
+2、采用循环语句，当可以向求解目标前进一步时，就根据局部最优策略，得到一个部分解，缩小问题的范围或规模。
+3、将所有部分解综合起来，得到问题的最终解。
+</code></pre><h4 id="经典案例-活动安排问题-背包等"><a href="#经典案例-活动安排问题-背包等" class="headerlink" title="经典案例:活动安排问题,背包等"></a>经典案例:活动安排问题,背包等</h4><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/backpack.png-scale600" alt="背包问题"></p>
+<h4 id="案例分析-平衡负载"><a href="#案例分析-平衡负载" class="headerlink" title="案例分析:平衡负载"></a>案例分析:平衡负载</h4><p>2013年百度之星区域赛中的第一题”平衡负载”，主要就利用贪心进行分段，在我们理工的acm平台上有这道题，闲着也是闲着，贴出这道题自己的c++版本code。</p>
+<p>平衡负载</p>
+<p>Du熊正在负责一个大型的项目，目前有K台服务器，有N个任务需要用这K台服务器来完成，所以要把这些任务分成K个部分来完成，在同上台服务器上执行的任务必须是连续的任务，每个任务有各自需要的执行时间。<br>例如N=5,K=2，每个任务需要时间分别为5,3,1,4,7分钟，那么我们可以分成(5)(3 1 4 7)两部分，这样第一台服务器所花时间就是5分钟，而第二台机器需要花15分钟，当然，所有任务完成的时间是按最迟完成的那台服务器的时间，即这样划分的话完成所有任务所需要的时间就是15分钟。而另外一种划分方法是(5 3 1)(4 7)，这种划分方案完成所有任务的时间就是11分钟，也是最优的一种划分方案。<br>现在你的任务就是根据给定的N,K和每个任务要花费的时间，找出使完成所有任务时间最短的方案。</p>
+<p>输入：多组输入。</p>
+<p>第一行输入N和K（1&lt;=K&lt;=N&lt;=10000）。</p>
+<p>第二行输入N个不大于1000的正整数，表示各个任要花费的时间。N=K=0表示输入结束。</p>
+<p>输出：</p>
+<p>每行输出一个整数，对应对于每个数据（除了N=K=0不用输出）。</p>
+<p>样例输入：</p>
+<pre><code>5 1
+5 3 1 4 7
+5 2
+5 3 1 4 7
+5 3
+</code></pre><h4 id="算法实现code"><a href="#算法实现code" class="headerlink" title="算法实现code"></a>算法实现code</h4><pre><code>#include&lt;stdio.h&gt;
+#include&lt;iostream&gt;
+using namespace std;
+int a[10005];
+bool check(int a[], int k,int m, int n) //数组，分k段,用来分段的m值,数组个数（检测m值是否可以将数组分为k段）
+{
+    int i,sum=0,count=0;
+    for(i=0;i&lt;n;i++)
+    {
+        sum+=a[i];//前i项求和
+        if(sum&gt;m) //若超过m值，则前i-1项分为一段,重新寻求下一段，同时段数加1
+        {
+            sum=a[i];
+            count++;
+        }
+    }
+    count++;//加上最后一段
+    return count&lt;=k;
+}
+int main()
+{
+    int i=0,j=0,n,k,l,r,mid=0;
+    while(cin&gt;&gt;n&gt;&gt;k&amp;&amp;n!=0&amp;&amp;k!=0)
+    {
+       l=0;//最左边
+       r=0;//最右边
+       for(i=0;i&lt;n;i++)
+       {
+           cin&gt;&gt;a[i];
+           r+=a[i];
+       }
+       while(l&lt;r)
+       {
+           mid=(l+r)/2;
+           if(check(a,k,mid,n)) //m值分段数小于k，则要分段的m值应该减少，承受的项的个数更少，段数增加
+           {
+              r=mid;
+           }
+           else //m值分段数大于k，则要分段的m值应该增加，可承受更多项的和，段数减少
+           {
+              l=mid+1;
+           }
+       }
+       printf(&quot;%d\n&quot;,l);//输出时间
+    }
+    return 0;
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/03/07/algorithm-greedy/" data-id="cizzps5t2000aoa5pe2g2kpr1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/04/08/php-details/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          php细节整理
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/03/07/hexo-command/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">hexo常用命令</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 10px;">algorithm</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+          </li>
+        
+          <li>
+            <a href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
