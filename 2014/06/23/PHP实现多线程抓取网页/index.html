@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>PHP实现多线程抓取网页 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="PHP实现多线程抓取网页使用PHP的cURL库可以简单和有效地去抓网页。你只需要运行一个脚本，然后分析一下你所抓取的网页，然后就可以以程序的方式得到你想要的数据了。无论是你想从从一个链接上取部分数据，或是取一个XML文件并把其导入数据库，那怕就是简单的获取网页内容，cURL 是一个功能强大的PHP库。本文主要讲述如果使用这个PHP库抓取网页。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP实现多线程抓取网页">
+<meta property="og:url" content="http://www.caijinlin.com/2014/06/23/PHP实现多线程抓取网页/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="PHP实现多线程抓取网页使用PHP的cURL库可以简单和有效地去抓网页。你只需要运行一个脚本，然后分析一下你所抓取的网页，然后就可以以程序的方式得到你想要的数据了。无论是你想从从一个链接上取部分数据，或是取一个XML文件并把其导入数据库，那怕就是简单的获取网页内容，cURL 是一个功能强大的PHP库。本文主要讲述如果使用这个PHP库抓取网页。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/baidu.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/jekyllblog.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/wordpress.png">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP实现多线程抓取网页">
+<meta name="twitter:description" content="PHP实现多线程抓取网页使用PHP的cURL库可以简单和有效地去抓网页。你只需要运行一个脚本，然后分析一下你所抓取的网页，然后就可以以程序的方式得到你想要的数据了。无论是你想从从一个链接上取部分数据，或是取一个XML文件并把其导入数据库，那怕就是简单的获取网页内容，cURL 是一个功能强大的PHP库。本文主要讲述如果使用这个PHP库抓取网页。">
+<meta name="twitter:image" content="http://www.caijinlin.com/assets/images/baidu.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-PHP实现多线程抓取网页" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/23/PHP实现多线程抓取网页/" class="article-date">
+  <time datetime="2014-06-23T00:00:00.000Z" itemprop="datePublished">2014-06-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP实现多线程抓取网页
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="PHP实现多线程抓取网页"><a href="#PHP实现多线程抓取网页" class="headerlink" title="PHP实现多线程抓取网页"></a>PHP实现多线程抓取网页</h3><p>使用PHP的cURL库可以简单和有效地去抓网页。你只需要运行一个脚本，然后分析一下你所抓取的网页，然后就可以以程序的方式得到你想要的数据了。无论是你想从从一个链接上取部分数据，或是取一个XML文件并把其导入数据库，那怕就是简单的获取网页内容，cURL 是一个功能强大的PHP库。本文主要讲述如果使用这个PHP库抓取网页。</p>
+<a id="more"></a>            
+<h4 id="开启curl库"><a href="#开启curl库" class="headerlink" title="开启curl库"></a>开启curl库</h4><p>首先要确定我们的PHP是否开启了这个库，如果你是在Windows平台下，需要改一改你的php.ini文件的设置，找到php_curl.dll，取消前面的分号就行：</p>
+<pre><code>extension=php_curl.dll
+</code></pre><h5 id="利用curl抓取网页代码"><a href="#利用curl抓取网页代码" class="headerlink" title="利用curl抓取网页代码"></a>利用curl抓取网页代码</h5><pre><code>&lt;?php
+$urls = array(    
+    &apos;http://www.baidu.com/&apos;,
+    &apos;http://www.caijinlin.com/&apos;,
+    &apos;http://caijinlin.github.io&apos;
+);   
+$save_to=&apos;./res.txt&apos;;   // 把抓取的代码写入该文件       
+$st = fopen($save_to,&quot;a&quot;);      
+$mh = curl_multi_init(); //创建多个curl句柄
+foreach ($urls as $i =&gt; $url) 
+{   
+$conn[$i] = curl_init($url);   //创建一个curl句柄
+curl_setopt($conn[$i], CURLOPT_USERAGENT, &quot;Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0)&quot;);   
+curl_setopt($conn[$i], CURLOPT_HEADER ,0);  // 这里不要header，加块效率
+curl_setopt($conn[$i], CURLOPT_CONNECTTIMEOUT,60);   //设置超时时间
+curl_setopt($conn[$i],CURLOPT_RETURNTRANSFER,true);  // 设置不将爬取代码写到浏览器，而是转化为字符串  
+curl_multi_add_handle ($mh,$conn[$i]);   //向curl批处理会话中添加单独的curl句柄
+}   
+do 
+{   
+    curl_multi_exec($mh,$active);//循环执行   
+} while ($active);   
+foreach ($urls as $i =&gt; $url) 
+{   
+    $data = curl_multi_getcontent($conn[$i]); // 获得爬取的代码字符串   
+    fwrite($st,$data);  // 将字符串写入文件。当然，也可以不写入文件，比如存入数据库   
+} // 获得数据变量，并写入文件   
+foreach ($urls as $i =&gt; $url) 
+{   
+  curl_multi_remove_handle($mh,$conn[$i]); // 移除curl批处理句柄资源中的某个句柄资源  
+  curl_close($conn[$i]);   
+}    
+curl_multi_close($mh); //关闭多个cURL 多个句柄
+fclose($st);  //关闭文件
+?&gt;
+</code></pre><h4 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h4><p>抓取3个网页，通过curl可以达到多线程，进行同时抓取，而不必等到第一个网页抓取完毕，再抓取第二个。<br>res.txt文件中，存放了3个网页的代码，分别复制出来，存放在html文件中，就可以看到他们的效果如下。</p>
+<p>百度页面</p>
+<p><img src="/assets/images/baidu.png" alt="邻接表"></p>
+<p>我的基于jekyllbootstrap的博客</p>
+<p><img src="/assets/images/jekyllblog.png" alt="邻接表"></p>
+<p>我的wordpress博客</p>
+<p><img src="/assets/images/wordpress.png" alt="邻接表"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/06/23/PHP实现多线程抓取网页/" data-id="cj6u9wwr000032o5prvrzlpzd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/06/24/使用SVN部署网站到新浪SAE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          使用SVN部署网站到新浪SAE
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/06/23/php多线程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">php实现多线程抓取网页</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

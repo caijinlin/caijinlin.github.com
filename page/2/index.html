@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Caspar">
+<meta property="og:url" content="http://www.caijinlin.com/page/2/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Caspar">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-php-fpm-502" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/18/php-fpm-502/" class="article-date">
+  <time datetime="2015-11-18T00:00:00.000Z" itemprop="datePublished">2015-11-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/18/php-fpm-502/">php-fpm监听进程不存在</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>基于lnmp安装的php-fpm启动后，发现并没有看到9000进程，加了网站配置文件后，出现502错误。</p>
+<p>php-fpm可以正常启动，php-fpm默认在9000端口监听, 但是netstat并没有看到9000进程</p>
+<h4 id="启动查找进程"><a href="#启动查找进程" class="headerlink" title="启动查找进程"></a>启动查找进程</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/php-fpm start</div><div class="line">netstat -anp | grep <span class="number">9000</span></div></pre></td></tr></table></figure>
+<h4 id="查看php-fpm配置文件"><a href="#查看php-fpm配置文件" class="headerlink" title="查看php-fpm配置文件"></a>查看php-fpm配置文件</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">vim /usr/local/php/etc/php-fpm.conf</div><div class="line">[<span class="keyword">global</span>]</div><div class="line">pid = /usr/local/php/<span class="keyword">var</span>/run/php-fpm.pid</div><div class="line">error_log = /usr/local/php/<span class="keyword">var</span>/log/php-fpm.log</div><div class="line">log_level = notice</div><div class="line"></div><div class="line">[www]</div><div class="line">listen = /tmp/php-cgi.sock  <span class="comment">#监听，改成127.0.0.1:9000</span></div><div class="line">listen.backlog = <span class="number">-1</span></div><div class="line">listen.allowed_clients = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></div><div class="line">listen.owner = www</div><div class="line">listen.group = www</div><div class="line">listen.mode = <span class="number">0666</span></div><div class="line">user = www</div><div class="line">group = www</div><div class="line">pm = dynamic</div><div class="line">pm.max_children = <span class="number">10</span></div><div class="line">pm.start_servers = <span class="number">2</span></div><div class="line">pm.min_spare_servers = <span class="number">1</span></div><div class="line">pm.max_spare_servers = <span class="number">6</span></div><div class="line">request_terminate_timeout = <span class="number">100</span></div><div class="line">request_slowlog_timeout = <span class="number">0</span></div><div class="line">slowlog = <span class="keyword">var</span>/log/slow.log</div></pre></td></tr></table></figure>
+<h4 id="网站配置文件test-com-conf"><a href="#网站配置文件test-com-conf" class="headerlink" title="网站配置文件test.com.conf"></a>网站配置文件test.com.conf</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen <span class="number">80</span>;</div><div class="line">    server_name test.com;</div><div class="line">    index index.html index.shtml index.php;</div><div class="line">    root /home/wwwroot/<span class="keyword">default</span>/test;</div><div class="line">    <span class="keyword">include</span> /home/wwwroot/<span class="keyword">default</span>/test/nginx_rewrite.conf;</div><div class="line">    location ~ .*\.(php|php5)?$</div><div class="line">    &#123;</div><div class="line">        fastcgi_pass <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>; <span class="comment">#9000端口</span></div><div class="line">        fastcgi_index index.php;</div><div class="line">        <span class="keyword">include</span> fastcgi.conf;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|woff)$</div><div class="line">    &#123;</div><div class="line">        expires <span class="number">30</span>d;</div><div class="line">        access_log        off;</div><div class="line">        log_not_found     off;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(js|css)?$</div><div class="line">    &#123;</div><div class="line">        expires <span class="number">7</span>d;</div><div class="line">        access_log        off;</div><div class="line">        log_not_found     off;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(htaccess)?$</div><div class="line">    &#123;</div><div class="line">        deny all;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样"><a href="#对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样" class="headerlink" title="对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样"></a>对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">两者需要将监听形式改成一样，比如都是<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>或者/tmp/php-cgi.sock</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/11/18/php-fpm-502/" data-id="cj6u9wwsv001b2o5p12u7ugx1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-array-merge" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/17/php-array-merge/" class="article-date">
+  <time datetime="2015-11-17T00:00:00.000Z" itemprop="datePublished">2015-11-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/17/php-array-merge/">php数组合并隐患</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>基于php数组操作，最近遇到两个坑，记录在这里</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/11/17/php-array-merge/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/11/17/php-array-merge/" data-id="cj6u9wwsd00122o5pa1r8f5u1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-thinkphp-hollow" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/11/11/thinkphp-hollow/" class="article-date">
+  <time datetime="2015-11-11T00:00:00.000Z" itemprop="datePublished">2015-11-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/11/11/thinkphp-hollow/">thinkphp的一些坑</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="记录一下昨晚遇到的坑"><a href="#记录一下昨晚遇到的坑" class="headerlink" title="记录一下昨晚遇到的坑"></a>记录一下昨晚遇到的坑</h3><p>在页面中使用加密函数加密id时，发现解密的时候不正确，原以为是加密函数或者解密函数的问题，但以前用的时候都没有问题，突然出现这个问题应该不是加密函数或者解密函数的问题。</p>
+<h4 id="页面中是这样写的"><a href="#页面中是这样写的" class="headerlink" title="页面中是这样写的"></a>页面中是这样写的</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;a class="btn btn-default" href="__URL__/edit#!/&#123;:encrypt_id($_one.id)&#125;/step4" title="查看"&gt;</div><div class="line">    &lt;i class="gi gi-search"&gt;&lt;/i&gt;&amp;nbsp;预览</div><div class="line">&lt;/a&gt;</div></pre></td></tr></table></figure>
+<h4 id="数据排查"><a href="#数据排查" class="headerlink" title="数据排查"></a>数据排查</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$_one.id也能读出数据</div></pre></td></tr></table></figure>
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">页面中使用php时，函数中参数有 “.” 的话，thinkphp解析的时候加密错误，多么大的一个坑啊，改为$_one[<span class="string">'id'</span>]就好</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/11/11/thinkphp-hollow/" data-id="cj6u9wwt9001l2o5pe5do9pjv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-laravel-npm-gulp-composer-bower" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/25/laravel-npm-gulp-composer-bower/" class="article-date">
+  <time datetime="2015-10-25T00:00:00.000Z" itemprop="datePublished">2015-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/25/laravel-npm-gulp-composer-bower/">基于laravel构建npm,gulp,composer,bower</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。</p>
+<h4 id="node-npm安装"><a href="#node-npm安装" class="headerlink" title="node,npm安装"></a>node,npm安装</h4><p>brew是mac下不错的包管理工具</p>
+<pre><code>brew install node . 该命令执行后，自动装好node和npm
+</code></pre><p>下面的bower,gulp需要依赖node</p>
+<h4 id="gulp安装"><a href="#gulp安装" class="headerlink" title="gulp安装"></a>gulp安装</h4><pre><code>全局安装 npm isntall gulp -g
+cd 项目目录
+npm install --save-dev gulp
+package.json包含了我们所需要的npm包， 建立package.json
+npm install(生成文件在node_modules中)
+配置文件:gulpfile.js， 完成前端打包等工作
+</code></pre><h4 id="bower安装"><a href="#bower安装" class="headerlink" title="bower安装"></a>bower安装</h4><pre><code>全局安装 npm install bower -g
+cd 项目目录
+npm install --save-dev bower
+配置文件:bower.json包含了我们所需要的库文件, 建立bower.json
+bower install(生成文件在bower_components中)
+</code></pre><h4 id="composer安装"><a href="#composer安装" class="headerlink" title="composer安装"></a>composer安装</h4><pre><code>brew install composer
+配置文件:composer.json, 建立composer.json
+composer install(生成文件在vendor中)
+</code></pre><h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><p>所需要依赖的node包</p>
+<pre><code>{
+  &quot;repository&quot;: {},
+  &quot;devDependencies&quot;: {
+    &quot;del&quot;: &quot;^0.1.2&quot;,
+    &quot;gulp&quot;: &quot;^3.9.0&quot;,
+    &quot;gulp-autoprefixer&quot;: &quot;0.0.10&quot;,
+    &quot;gulp-concat&quot;: &quot;^2.3.4&quot;,
+    &quot;gulp-less&quot;: &quot;^3.0.3&quot;,
+    &quot;gulp-minify-css&quot;: &quot;^0.3.7&quot;,
+    &quot;gulp-rename&quot;: &quot;^1.2.2&quot;,
+    &quot;gulp-rev&quot;: &quot;^1.1.0&quot;,
+    &quot;gulp-uglify&quot;: &quot;^1.0.0&quot;,
+    &quot;laravel-elixir&quot;: &quot;*&quot;
+  }
+}
+</code></pre><h4 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h4><p>for example: 完成css,js压缩打包，加版本号等</p>
+<pre><code>var elixir = require(&apos;laravel-elixir&apos;);
+var gulp = require(&apos;gulp&apos;);
+var less = require(&apos;gulp-less&apos;);
+var autoprefixer = require(&apos;gulp-autoprefixer&apos;);
+var uglify = require(&apos;gulp-uglify&apos;);
+var concat = require(&apos;gulp-concat&apos;);
+var rev = require(&apos;gulp-rev&apos;);
+var del = require(&apos;del&apos;);
+var minifycss = require(&apos;gulp-minify-css&apos;);
+var rename = require(&apos;gulp-rename&apos;);
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Elixir provides a clean, fluent API for defining some basic Gulp tasks
+ | for your Laravel application. By default, we are compiling the Less
+ | file for our application, as well as publishing vendor resources.
+ |
+ */
+
+elixir(function(mix) {
+    mix.task([&apos;build&apos;, &apos;watch&apos;]);
+});
+
+
+// CSS task
+gulp.task(&apos;css&apos;, function() {
+
+    // Cleanup old assets
+    del([&apos;public/build/css/*.css&apos;], function (err) {});
+
+    // Convert scss first
+    gulp.src(&apos;resources/assets/less/*.less&apos;)
+        .pipe(less())
+        .pipe(autoprefixer(&apos;last 10 version&apos;))
+        .pipe(concat(&apos;app.css&apos;))
+        .pipe(minifycss())
+        .pipe(rename(function (path) {
+            path.basename += &quot;.min&quot;
+        }))
+        .pipe(rev())
+        .pipe(gulp.dest(&apos;public/build/css&apos;));
+});
+
+// JavaScript task
+gulp.task(&apos;js&apos;, function() {
+    // Cleanup old assets
+    del([&apos;public/build/js/*.js&apos;], function (err) {});
+
+    // Concat and uglify the JavaScript assets
+    // Afterwards add the MD5 hash to the filename
+    gulp.src(&apos;resources/assets/js/*.js&apos;)
+        .pipe(concat(&apos;app.js&apos;))
+        .pipe(uglify())
+        .pipe(rename(function (path) {
+            path.basename += &quot;.min&quot;
+        }))
+        .pipe(rev())
+        .pipe(gulp.dest(&apos;public/build/js&apos;));
+});
+
+//image task
+gulp.task(&apos;copy:image&apos;, function () {
+  gulp.src(&apos;resources/images/**/*&apos;)
+    .pipe(gulp.dest(&apos;public/build/images&apos;));
+});
+
+
+gulp.task(&apos;build&apos;, [&apos;css&apos;, &apos;js&apos;, &apos;copy:image&apos;]);
+
+gulp.task(&apos;watch&apos;, function(){
+    gulp.watch(&apos;resources/assets/css/**/*.css&apos;, [&apos;css&apos;]);
+    gulp.watch(&apos;resources/assets/js/**/*.js&apos;, [&apos;js&apos;]);
+});
+
+// The default task (called when you run `gulp` from cli)
+// gulp.task(&apos;default&apos;, [&apos;build&apos;, &apos;watch&apos;]);
+</code></pre><h4 id="bower-json"><a href="#bower-json" class="headerlink" title="bower.json"></a>bower.json</h4><p>for example: 安装项目所需要的组件</p>
+<pre><code>{
+  &quot;name&quot;: &quot;laravel&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;authors&quot;: [
+    &quot;caijinlin &lt;caijinlin2012@gmail.com&gt;&quot;
+  ],
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;ignore&quot;: [
+    &quot;**/.*&quot;,
+    &quot;node_modules&quot;,
+    &quot;bower_components&quot;,
+    &quot;test&quot;,
+    &quot;tests&quot;
+  ],
+  &quot;dependencies&quot;: {
+    &quot;bootstrap&quot;: &quot;3.1.1&quot;,
+    &quot;jquery&quot;: &quot;1.11.3&quot;,
+    &quot;remarkable-bootstrap-notify&quot;: &quot;3.1.3&quot;,
+    &quot;jquery_lazyload&quot;: &quot;~1.9.1&quot;
+  }
+}
+</code></pre><h4 id="composer-json"><a href="#composer-json" class="headerlink" title="composer.json"></a>composer.json</h4><p>for example: 依赖laravel框架</p>
+<pre><code>{
+    &quot;name&quot;: &quot;laravel/laravel&quot;,
+    &quot;description&quot;: &quot;The Laravel Framework.&quot;,
+    &quot;keywords&quot;: [&quot;framework&quot;, &quot;laravel&quot;],
+    &quot;license&quot;: &quot;MIT&quot;,
+    &quot;type&quot;: &quot;project&quot;,
+    &quot;require&quot;: {
+        &quot;laravel/framework&quot;: &quot;5.0.*&quot;
+    },
+    &quot;require-dev&quot;: {
+        &quot;phpunit/phpunit&quot;: &quot;~4.0&quot;,
+        &quot;phpspec/phpspec&quot;: &quot;~2.1&quot;,
+        &quot;barryvdh/laravel-debugbar&quot;: &quot;~2.0&quot;
+    },
+    &quot;autoload&quot;: {
+        &quot;classmap&quot;: [
+            &quot;database&quot;
+        ],
+        &quot;psr-4&quot;: {
+            &quot;App\\&quot;: &quot;app/&quot;
+        }
+    },
+    &quot;autoload-dev&quot;: {
+        &quot;classmap&quot;: [
+            &quot;tests/TestCase.php&quot;
+        ]
+    },
+    &quot;scripts&quot;: {
+        &quot;post-install-cmd&quot;: [
+            &quot;php artisan clear-compiled&quot;,
+            &quot;php artisan optimize&quot;
+        ],
+        &quot;post-update-cmd&quot;: [
+            &quot;php artisan clear-compiled&quot;,
+            &quot;php artisan optimize&quot;
+        ],
+        &quot;post-create-project-cmd&quot;: [
+            &quot;php -r \&quot;copy(&apos;.env.example&apos;, &apos;.env&apos;);\&quot;&quot;,
+            &quot;php artisan key:generate&quot;
+        ]
+    },
+    &quot;config&quot;: {
+        &quot;preferred-install&quot;: &quot;dist&quot;
+    }
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/10/25/laravel-npm-gulp-composer-bower/" data-id="cj6u9wwrr000f2o5pq8t36s3h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-redis-read-error-on-connection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/10/redis-read-error-on-connection/" class="article-date">
+  <time datetime="2015-10-10T00:00:00.000Z" itemprop="datePublished">2015-10-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/10/redis-read-error-on-connection/">redis read error on connection</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="简单缓存服务SCS"><a href="#简单缓存服务SCS" class="headerlink" title="简单缓存服务SCS"></a>简单缓存服务SCS</h3><p>高性能、高可用的分布式缓存服务，兼容Memcache/Redis协议。</p>
+<h4 id="使用SCS中的redis时-遇到”redis-read-error-on-connection”的错误，-经过一番搜索找到解决方法。"><a href="#使用SCS中的redis时-遇到”redis-read-error-on-connection”的错误，-经过一番搜索找到解决方法。" class="headerlink" title="使用SCS中的redis时, 遇到”redis read error on connection”的错误， 经过一番搜索找到解决方法。"></a>使用SCS中的redis时, 遇到”redis read error on connection”的错误， 经过一番搜索找到解决方法。</h4><p>登录百度云后台，需将访问改集群的服务器设置为白名单</p>
+<pre><code>简单缓存服务SCS =&gt; 集群名称 =&gt; 添加白名单 =》 选择服务器
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/10/10/redis-read-error-on-connection/" data-id="cj6u9wwsy001f2o5p5ih7ggmi" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mysql-sort" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/01/mysql-sort/" class="article-date">
+  <time datetime="2015-05-01T00:00:00.000Z" itemprop="datePublished">2015-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/01/mysql-sort/">mysql不稳定排序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="mysql不稳定排序问题"><a href="#mysql不稳定排序问题" class="headerlink" title="mysql不稳定排序问题"></a>mysql不稳定排序问题</h3><p>mysql根据某一个字段排序，如果数据库中这个字段可能存在相同数值，仅仅通过该字段排序是不稳定的，如果加上了limit，可能会造成有一些结果没有显示，有些重复，这时候加上再id排序，才能得到正确地排序结果。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/05/01/mysql-sort/" data-id="cj6u9wwsb000y2o5pkf7pkxmo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-person-share" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/26/person-share/" class="article-date">
+  <time datetime="2015-04-26T00:00:00.000Z" itemprop="datePublished">2015-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/26/person-share/">资源分享</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="搜索技巧和资源整合"><a href="#搜索技巧和资源整合" class="headerlink" title="搜索技巧和资源整合"></a>搜索技巧和资源整合</h3><pre><code>在这个信息爆炸的时代，我们如何用更短的时间获取到更有效的知识，我以前感到很苦恼。于是整理了一些关于知识整理和搜索技巧方面的东西(但是还是不够)。
+</code></pre><p>分享主题:搜索技巧和资源整合以及一些有用的工具及插件，网址.</p>
+<p>分享ppt地址:<a href="http://www.ipresst.com/play/5534b2e66309648f2a000af6" target="_blank" rel="external">http://www.ipresst.com/play/5534b2e66309648f2a000af6</a></p>
+<p>以后若有更多内容，或关于生活，或关于技术，我将毫不吝啬地分享，希望能够有所帮助。最近多在翻墙，英语式的阅读，可以理解为装逼式地学习，成长中，感悟中.</p>
+<p>reply:</p>
+<pre><code>from 个人邮件: 　caijinlin2012@gmail.com
+from 个人博客：　http://caijinlin.github.io
+from 个人微信公众订阅号: susetips
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/04/26/person-share/" data-id="cj6u9wwsh00152o5p4qd2bjo1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-like-query" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/20/php-like-query/" class="article-date">
+  <time datetime="2015-04-20T00:00:00.000Z" itemprop="datePublished">2015-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/20/php-like-query/">php like查询json字符串的某一个字段</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题"><a href="#查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题" class="headerlink" title="查询json字段需要过滤特殊字符, 数据量大了之后可能存在性能问题"></a>查询json字段需要过滤特殊字符, 数据量大了之后可能存在性能问题</h3><pre><code>比如donate_form_data存取 
+
+{
+    &quot;name&quot;:&quot;\u79d1\u5fe0&quot;,
+    &quot;new_item_6&quot;:&quot;\u7535\u5b50\u90ae\u7bb1&quot;,
+    &quot;title&quot;:&quot;这是一段描述&quot;,
+    &quot;mobile&quot;:&quot;&quot;,
+    &quot;gender&quot;:&quot;\u7537&quot;,
+    &quot;new_item_1&quot;:&quot;\u4e0d\u662f&quot;,
+    &quot;new_item_2&quot;:&quot;&quot;,
+    &quot;new_item_3&quot;:&quot;&quot;,
+    &quot;new_item_4&quot;:&quot;&quot;,
+    &quot;new_item_5&quot;:&quot;\u5426&quot;,
+    &quot;address_widget_province&quot;:&quot;&quot;,
+    &quot;address&quot;:&quot;&quot;,
+    &quot;browser_user_agent&quot;:&quot;Mozilla\/5.0 (Linux; U; Android 5.1.1; en-us; HUAWEI P7-L00 Build\/HuaweiP7-L00) AppleWebKit\/533.1 (KHTML, like Gecko)Version\/4.0 MQQBrowser\/5.4 TBS\/025440 Mobile Safari\/533.1 MicroMessenger\/6.2.5.50_rbb77fd6.621 NetType\/WIFI Language\/en&quot;,
+}
+
+需要查询donate_form_data 中的title
+ $sql = &quot;
+    SELECT 
+        sum(cd.donate_amount) donate_amount, count(cd.donate_amount) donate_count
+    FROM 
+        donates cd
+    WHERE 
+        and cd.donate_form_data like &apos;%s&apos;
+    &quot;;
+$query = &apos;这是一段&apos;;
+$title = str_replace(&apos;\\&apos;, &apos;_&apos;, json_encode($query));
+$donates[$item[&apos;id&apos;]] = M(&quot;&quot;)-&gt;query($sql, &apos;%&apos; . $title . &apos;%&apos;);
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/04/20/php-like-query/" data-id="cj6u9wwss00192o5phjviyv7q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-details" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/08/php-details/" class="article-date">
+  <time datetime="2015-04-08T00:00:00.000Z" itemprop="datePublished">2015-04-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/08/php-details/">php细节整理</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="php一些注意的点"><a href="#php一些注意的点" class="headerlink" title="php一些注意的点"></a>php一些注意的点</h3><p>最近在php开发时，发现业务多了，经常会遇见因为php细节注意不当而导致的bug，影响开发效率，记录在这里。</p>
+        
+          <p class="article-more-link">
+            <a href="/2015/04/08/php-details/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/04/08/php-details/" data-id="cj6u9wwsk00172o5p2o809g7z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-algorithm-greedy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/03/07/algorithm-greedy/" class="article-date">
+  <time datetime="2015-03-07T14:01:34.000Z" itemprop="datePublished">2015-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/07/algorithm-greedy/">贪心算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="贪心算法（自顶向下，局部最优）"><a href="#贪心算法（自顶向下，局部最优）" class="headerlink" title="贪心算法（自顶向下，局部最优）"></a>贪心算法（自顶向下，局部最优）</h3><p>贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。</p>
+<h4 id="贪心算法的基本思想"><a href="#贪心算法的基本思想" class="headerlink" title="贪心算法的基本思想"></a>贪心算法的基本思想</h4><p>找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。</p>
+<h4 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h4><pre><code>1.整体的最优解可以通过局部的最优解来求出；
+2.一个整体能够被分为多个局部，并且这些局部都能够求出最优解。
+</code></pre><p>使用贪心算法当中的两个典型问题是活动安排问题和背包问题。</p>
+<h4 id="贪心算法的基本步骤"><a href="#贪心算法的基本步骤" class="headerlink" title="贪心算法的基本步骤"></a>贪心算法的基本步骤</h4><pre><code>1、从问题的某个初始解出发。
+2、采用循环语句，当可以向求解目标前进一步时，就根据局部最优策略，得到一个部分解，缩小问题的范围或规模。
+3、将所有部分解综合起来，得到问题的最终解。
+</code></pre><h4 id="经典案例-活动安排问题-背包等"><a href="#经典案例-活动安排问题-背包等" class="headerlink" title="经典案例:活动安排问题,背包等"></a>经典案例:活动安排问题,背包等</h4><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/backpack.png-scale600" alt="背包问题"></p>
+<h4 id="案例分析-平衡负载"><a href="#案例分析-平衡负载" class="headerlink" title="案例分析:平衡负载"></a>案例分析:平衡负载</h4><p>2013年百度之星区域赛中的第一题”平衡负载”，主要就利用贪心进行分段，在我们理工的acm平台上有这道题，闲着也是闲着，贴出这道题自己的c++版本code。</p>
+<p>平衡负载</p>
+<p>Du熊正在负责一个大型的项目，目前有K台服务器，有N个任务需要用这K台服务器来完成，所以要把这些任务分成K个部分来完成，在同上台服务器上执行的任务必须是连续的任务，每个任务有各自需要的执行时间。<br>例如N=5,K=2，每个任务需要时间分别为5,3,1,4,7分钟，那么我们可以分成(5)(3 1 4 7)两部分，这样第一台服务器所花时间就是5分钟，而第二台机器需要花15分钟，当然，所有任务完成的时间是按最迟完成的那台服务器的时间，即这样划分的话完成所有任务所需要的时间就是15分钟。而另外一种划分方法是(5 3 1)(4 7)，这种划分方案完成所有任务的时间就是11分钟，也是最优的一种划分方案。<br>现在你的任务就是根据给定的N,K和每个任务要花费的时间，找出使完成所有任务时间最短的方案。</p>
+<p>输入：多组输入。</p>
+<p>第一行输入N和K（1&lt;=K&lt;=N&lt;=10000）。</p>
+<p>第二行输入N个不大于1000的正整数，表示各个任要花费的时间。N=K=0表示输入结束。</p>
+<p>输出：</p>
+<p>每行输出一个整数，对应对于每个数据（除了N=K=0不用输出）。</p>
+<p>样例输入：</p>
+<pre><code>5 1
+5 3 1 4 7
+5 2
+5 3 1 4 7
+5 3
+</code></pre><h4 id="算法实现code"><a href="#算法实现code" class="headerlink" title="算法实现code"></a>算法实现code</h4><pre><code>#include&lt;stdio.h&gt;
+#include&lt;iostream&gt;
+using namespace std;
+int a[10005];
+bool check(int a[], int k,int m, int n) //数组，分k段,用来分段的m值,数组个数（检测m值是否可以将数组分为k段）
+{
+    int i,sum=0,count=0;
+    for(i=0;i&lt;n;i++)
+    {
+        sum+=a[i];//前i项求和
+        if(sum&gt;m) //若超过m值，则前i-1项分为一段,重新寻求下一段，同时段数加1
+        {
+            sum=a[i];
+            count++;
+        }
+    }
+    count++;//加上最后一段
+    return count&lt;=k;
+}
+int main()
+{
+    int i=0,j=0,n,k,l,r,mid=0;
+    while(cin&gt;&gt;n&gt;&gt;k&amp;&amp;n!=0&amp;&amp;k!=0)
+    {
+       l=0;//最左边
+       r=0;//最右边
+       for(i=0;i&lt;n;i++)
+       {
+           cin&gt;&gt;a[i];
+           r+=a[i];
+       }
+       while(l&lt;r)
+       {
+           mid=(l+r)/2;
+           if(check(a,k,mid,n)) //m值分段数小于k，则要分段的m值应该减少，承受的项的个数更少，段数增加
+           {
+              r=mid;
+           }
+           else //m值分段数大于k，则要分段的m值应该增加，可承受更多项的和，段数减少
+           {
+              l=mid+1;
+           }
+       }
+       printf(&quot;%d\n&quot;,l);//输出时间
+    }
+    return 0;
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/03/07/algorithm-greedy/" data-id="cj6u9wwrd00092o5p8bwgmxzu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

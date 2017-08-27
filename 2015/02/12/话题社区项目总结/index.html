@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>话题社区项目总结 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="话题社区项目整体框架在凤凰网实习期间和主管等4人做了一个项目，在春节期间上线。我主要负责后端，今天总结一下，写一下项目的历程和架构，以及一些收获。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="话题社区项目总结">
+<meta property="og:url" content="http://www.caijinlin.com/2015/02/12/话题社区项目总结/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="话题社区项目整体框架在凤凰网实习期间和主管等4人做了一个项目，在春节期间上线。我主要负责后端，今天总结一下，写一下项目的历程和架构，以及一些收获。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/topicConfig.png">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="话题社区项目总结">
+<meta name="twitter:description" content="话题社区项目整体框架在凤凰网实习期间和主管等4人做了一个项目，在春节期间上线。我主要负责后端，今天总结一下，写一下项目的历程和架构，以及一些收获。">
+<meta name="twitter:image" content="http://www.caijinlin.com/assets/images/topicConfig.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-话题社区项目总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/02/12/话题社区项目总结/" class="article-date">
+  <time datetime="2015-02-12T00:00:00.000Z" itemprop="datePublished">2015-02-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      话题社区项目总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="话题社区项目整体框架"><a href="#话题社区项目整体框架" class="headerlink" title="话题社区项目整体框架"></a>话题社区项目整体框架</h3><p>在凤凰网实习期间和主管等4人做了一个项目，在春节期间上线。我主要负责后端，今天总结一下，写一下项目的历程和架构，以及一些收获。</p>
+<a id="more"></a>
+<h4 id="项目初期"><a href="#项目初期" class="headerlink" title="项目初期"></a>项目初期</h4><p>接到产品需求后，项目主管审视了一番，觉得可以做。就开始规划话题社区的开展工作了，当时项目开发时间预估为20天。产品成果是嵌入到ios和anriod凤凰新闻客户端的.</p>
+<h4 id="项目架构："><a href="#项目架构：" class="headerlink" title="项目架构："></a>项目架构：</h4><p><img src="/assets/images/topicConfig.png" alt="项目配置"></p>
+<p>因为话题社区挂在访问量每天都在百万级别的凤凰希望新闻客户端上，所以必须需要足够的后台支持才行。</p>
+<h4 id="项目准备："><a href="#项目准备：" class="headerlink" title="项目准备："></a>项目准备：</h4><p>为了做这个项目，我还专门学习了mongodb等相关知识。技术支持为php,javascript</p>
+<h4 id="部分业务逻辑-前端与客户端接口"><a href="#部分业务逻辑-前端与客户端接口" class="headerlink" title="部分业务逻辑(前端与客户端接口)"></a>部分业务逻辑(前端与客户端接口)</h4><ol>
+<li><p>在话题页面发表评论 </p>
+<p>（1）前端调用客户端接口，传入参数：<br>（2）用户发言、上传图片处理后将回调前端js方法，返回相关参数<br>（3）前端再将数据提交到后台</p>
+</li>
+</ol>
+<ol>
+<li><p>在评论详情页面发表二级评论 （不支持发图片）<br>2.1 回复评论</p>
+<p>（1）传给客户端的参数:<br>（2）用户发言后,客户端将回调前端js方法，返回以下参数：<br> (3） 前端将数据提交到后台</p>
+</li>
+</ol>
+<p>2.2 回复评论的评论</p>
+<p>   （1）传给客户端的参数:<br>   （2）用户发言后,客户端将回调前端js方法，返回以下参数：<br>   （3）前端将数据提交到后台</p>
+<h4 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h4><p> 在这个项目开发的过程中，除了自身做了一些后台开发，也参与了一些手机客户端的测试工作，接触到了一些以前没接触的东西。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/02/12/话题社区项目总结/" data-id="cj6u9wwua00252o5ph6iddfve" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/02/15/centos搭建reviewboard/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          centos搭建reviewboard
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/02/11/搭建git服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">搭建git服务器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

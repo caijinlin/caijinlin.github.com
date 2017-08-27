@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>基于laravel构建npm,gulp,composer,bower | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。 node,npm安装brew是mac下不错的包管理工具 brew install node . 该命令执行后，自动装好node和npm 下面的bower,gulp需要依赖node gulp安装全局安装 npm isntall gulp -g c">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于laravel构建npm,gulp,composer,bower">
+<meta property="og:url" content="http://www.caijinlin.com/2015/10/25/laravel-npm-gulp-composer-bower/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。 node,npm安装brew是mac下不错的包管理工具 brew install node . 该命令执行后，自动装好node和npm 下面的bower,gulp需要依赖node gulp安装全局安装 npm isntall gulp -g c">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于laravel构建npm,gulp,composer,bower">
+<meta name="twitter:description" content="最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。 node,npm安装brew是mac下不错的包管理工具 brew install node . 该命令执行后，自动装好node和npm 下面的bower,gulp需要依赖node gulp安装全局安装 npm isntall gulp -g c">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-laravel-npm-gulp-composer-bower" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/10/25/laravel-npm-gulp-composer-bower/" class="article-date">
+  <time datetime="2015-10-25T00:00:00.000Z" itemprop="datePublished">2015-10-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于laravel构建npm,gulp,composer,bower
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。</p>
+<h4 id="node-npm安装"><a href="#node-npm安装" class="headerlink" title="node,npm安装"></a>node,npm安装</h4><p>brew是mac下不错的包管理工具</p>
+<pre><code>brew install node . 该命令执行后，自动装好node和npm
+</code></pre><p>下面的bower,gulp需要依赖node</p>
+<h4 id="gulp安装"><a href="#gulp安装" class="headerlink" title="gulp安装"></a>gulp安装</h4><pre><code>全局安装 npm isntall gulp -g
+cd 项目目录
+npm install --save-dev gulp
+package.json包含了我们所需要的npm包， 建立package.json
+npm install(生成文件在node_modules中)
+配置文件:gulpfile.js， 完成前端打包等工作
+</code></pre><h4 id="bower安装"><a href="#bower安装" class="headerlink" title="bower安装"></a>bower安装</h4><pre><code>全局安装 npm install bower -g
+cd 项目目录
+npm install --save-dev bower
+配置文件:bower.json包含了我们所需要的库文件, 建立bower.json
+bower install(生成文件在bower_components中)
+</code></pre><h4 id="composer安装"><a href="#composer安装" class="headerlink" title="composer安装"></a>composer安装</h4><pre><code>brew install composer
+配置文件:composer.json, 建立composer.json
+composer install(生成文件在vendor中)
+</code></pre><h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><p>所需要依赖的node包</p>
+<pre><code>{
+  &quot;repository&quot;: {},
+  &quot;devDependencies&quot;: {
+    &quot;del&quot;: &quot;^0.1.2&quot;,
+    &quot;gulp&quot;: &quot;^3.9.0&quot;,
+    &quot;gulp-autoprefixer&quot;: &quot;0.0.10&quot;,
+    &quot;gulp-concat&quot;: &quot;^2.3.4&quot;,
+    &quot;gulp-less&quot;: &quot;^3.0.3&quot;,
+    &quot;gulp-minify-css&quot;: &quot;^0.3.7&quot;,
+    &quot;gulp-rename&quot;: &quot;^1.2.2&quot;,
+    &quot;gulp-rev&quot;: &quot;^1.1.0&quot;,
+    &quot;gulp-uglify&quot;: &quot;^1.0.0&quot;,
+    &quot;laravel-elixir&quot;: &quot;*&quot;
+  }
+}
+</code></pre><h4 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h4><p>for example: 完成css,js压缩打包，加版本号等</p>
+<pre><code>var elixir = require(&apos;laravel-elixir&apos;);
+var gulp = require(&apos;gulp&apos;);
+var less = require(&apos;gulp-less&apos;);
+var autoprefixer = require(&apos;gulp-autoprefixer&apos;);
+var uglify = require(&apos;gulp-uglify&apos;);
+var concat = require(&apos;gulp-concat&apos;);
+var rev = require(&apos;gulp-rev&apos;);
+var del = require(&apos;del&apos;);
+var minifycss = require(&apos;gulp-minify-css&apos;);
+var rename = require(&apos;gulp-rename&apos;);
+
+
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Elixir provides a clean, fluent API for defining some basic Gulp tasks
+ | for your Laravel application. By default, we are compiling the Less
+ | file for our application, as well as publishing vendor resources.
+ |
+ */
+
+elixir(function(mix) {
+    mix.task([&apos;build&apos;, &apos;watch&apos;]);
+});
+
+
+// CSS task
+gulp.task(&apos;css&apos;, function() {
+
+    // Cleanup old assets
+    del([&apos;public/build/css/*.css&apos;], function (err) {});
+
+    // Convert scss first
+    gulp.src(&apos;resources/assets/less/*.less&apos;)
+        .pipe(less())
+        .pipe(autoprefixer(&apos;last 10 version&apos;))
+        .pipe(concat(&apos;app.css&apos;))
+        .pipe(minifycss())
+        .pipe(rename(function (path) {
+            path.basename += &quot;.min&quot;
+        }))
+        .pipe(rev())
+        .pipe(gulp.dest(&apos;public/build/css&apos;));
+});
+
+// JavaScript task
+gulp.task(&apos;js&apos;, function() {
+    // Cleanup old assets
+    del([&apos;public/build/js/*.js&apos;], function (err) {});
+
+    // Concat and uglify the JavaScript assets
+    // Afterwards add the MD5 hash to the filename
+    gulp.src(&apos;resources/assets/js/*.js&apos;)
+        .pipe(concat(&apos;app.js&apos;))
+        .pipe(uglify())
+        .pipe(rename(function (path) {
+            path.basename += &quot;.min&quot;
+        }))
+        .pipe(rev())
+        .pipe(gulp.dest(&apos;public/build/js&apos;));
+});
+
+//image task
+gulp.task(&apos;copy:image&apos;, function () {
+  gulp.src(&apos;resources/images/**/*&apos;)
+    .pipe(gulp.dest(&apos;public/build/images&apos;));
+});
+
+
+gulp.task(&apos;build&apos;, [&apos;css&apos;, &apos;js&apos;, &apos;copy:image&apos;]);
+
+gulp.task(&apos;watch&apos;, function(){
+    gulp.watch(&apos;resources/assets/css/**/*.css&apos;, [&apos;css&apos;]);
+    gulp.watch(&apos;resources/assets/js/**/*.js&apos;, [&apos;js&apos;]);
+});
+
+// The default task (called when you run `gulp` from cli)
+// gulp.task(&apos;default&apos;, [&apos;build&apos;, &apos;watch&apos;]);
+</code></pre><h4 id="bower-json"><a href="#bower-json" class="headerlink" title="bower.json"></a>bower.json</h4><p>for example: 安装项目所需要的组件</p>
+<pre><code>{
+  &quot;name&quot;: &quot;laravel&quot;,
+  &quot;version&quot;: &quot;1.0.0&quot;,
+  &quot;authors&quot;: [
+    &quot;caijinlin &lt;caijinlin2012@gmail.com&gt;&quot;
+  ],
+  &quot;license&quot;: &quot;MIT&quot;,
+  &quot;ignore&quot;: [
+    &quot;**/.*&quot;,
+    &quot;node_modules&quot;,
+    &quot;bower_components&quot;,
+    &quot;test&quot;,
+    &quot;tests&quot;
+  ],
+  &quot;dependencies&quot;: {
+    &quot;bootstrap&quot;: &quot;3.1.1&quot;,
+    &quot;jquery&quot;: &quot;1.11.3&quot;,
+    &quot;remarkable-bootstrap-notify&quot;: &quot;3.1.3&quot;,
+    &quot;jquery_lazyload&quot;: &quot;~1.9.1&quot;
+  }
+}
+</code></pre><h4 id="composer-json"><a href="#composer-json" class="headerlink" title="composer.json"></a>composer.json</h4><p>for example: 依赖laravel框架</p>
+<pre><code>{
+    &quot;name&quot;: &quot;laravel/laravel&quot;,
+    &quot;description&quot;: &quot;The Laravel Framework.&quot;,
+    &quot;keywords&quot;: [&quot;framework&quot;, &quot;laravel&quot;],
+    &quot;license&quot;: &quot;MIT&quot;,
+    &quot;type&quot;: &quot;project&quot;,
+    &quot;require&quot;: {
+        &quot;laravel/framework&quot;: &quot;5.0.*&quot;
+    },
+    &quot;require-dev&quot;: {
+        &quot;phpunit/phpunit&quot;: &quot;~4.0&quot;,
+        &quot;phpspec/phpspec&quot;: &quot;~2.1&quot;,
+        &quot;barryvdh/laravel-debugbar&quot;: &quot;~2.0&quot;
+    },
+    &quot;autoload&quot;: {
+        &quot;classmap&quot;: [
+            &quot;database&quot;
+        ],
+        &quot;psr-4&quot;: {
+            &quot;App\\&quot;: &quot;app/&quot;
+        }
+    },
+    &quot;autoload-dev&quot;: {
+        &quot;classmap&quot;: [
+            &quot;tests/TestCase.php&quot;
+        ]
+    },
+    &quot;scripts&quot;: {
+        &quot;post-install-cmd&quot;: [
+            &quot;php artisan clear-compiled&quot;,
+            &quot;php artisan optimize&quot;
+        ],
+        &quot;post-update-cmd&quot;: [
+            &quot;php artisan clear-compiled&quot;,
+            &quot;php artisan optimize&quot;
+        ],
+        &quot;post-create-project-cmd&quot;: [
+            &quot;php -r \&quot;copy(&apos;.env.example&apos;, &apos;.env&apos;);\&quot;&quot;,
+            &quot;php artisan key:generate&quot;
+        ]
+    },
+    &quot;config&quot;: {
+        &quot;preferred-install&quot;: &quot;dist&quot;
+    }
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/10/25/laravel-npm-gulp-composer-bower/" data-id="cj6u9wwrr000f2o5pq8t36s3h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/11/11/thinkphp-hollow/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          thinkphp的一些坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/10/redis-read-error-on-connection/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">redis read error on connection</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

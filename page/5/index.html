@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Caspar">
+<meta property="og:url" content="http://www.caijinlin.com/page/5/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Caspar">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-快速找到段错误的core方法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/15/快速找到段错误的core方法/" class="article-date">
+  <time datetime="2014-08-15T00:00:00.000Z" itemprop="datePublished">2014-08-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/15/快速找到段错误的core方法/">快速找到段错误的core方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="内存分配"><a href="#内存分配" class="headerlink" title="内存分配"></a>内存分配</h3><h4 id="计算机内存可以从静态存储区，常量存储区，堆，栈分配，分别存储对应的变量"><a href="#计算机内存可以从静态存储区，常量存储区，堆，栈分配，分别存储对应的变量" class="headerlink" title="计算机内存可以从静态存储区，常量存储区，堆，栈分配，分别存储对应的变量"></a>计算机内存可以从静态存储区，常量存储区，堆，栈分配，分别存储对应的变量</h4>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/15/快速找到段错误的core方法/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/08/15/快速找到段错误的core方法/" data-id="cj6u9wwts001w2o5ppjt0yggu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-计算机内存分配方式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/14/计算机内存分配方式/" class="article-date">
+  <time datetime="2014-08-14T00:00:00.000Z" itemprop="datePublished">2014-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/14/计算机内存分配方式/">计算机内存分配方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="计算机内存可以从静态存储区，常量存储区，堆，栈分配，分别存储对应的变量"><a href="#计算机内存可以从静态存储区，常量存储区，堆，栈分配，分别存储对应的变量" class="headerlink" title="计算机内存可以从静态存储区，常量存储区，堆，栈分配，分别存储对应的变量"></a>计算机内存可以从静态存储区，常量存储区，堆，栈分配，分别存储对应的变量</h4><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/neicun.png" alt="蔡金林的博客"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/08/14/计算机内存分配方式/" data-id="cj6u9wwu800242o5pbqf08j36" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2048游戏c语言算法实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/13/2048游戏c语言算法实现/" class="article-date">
+  <time datetime="2014-08-13T00:00:00.000Z" itemprop="datePublished">2014-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/13/2048游戏c语言算法实现/">2048游戏c语言算法实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="2048游戏"><a href="#2048游戏" class="headerlink" title="2048游戏"></a>2048游戏</h3><p>玩儿过这款游戏后，小编才知道什么叫“根本停不下来”。在4X4的棋盘上，每次会增加一个数字，你可以选择四个方向，然后数字会按方向移动，遇到相同的数字就会合并，游戏的目的就是合并出2048这个数字，最终看你获得了多少总分。2048也就是2的11次方，即合并11次。原本1024就已经不容易了，升级到2048，一旦停下来就还真的不好完成了！像小编这种数学是体育老师教的，看着这款好玩到爆的游戏只能一声长叹，两行清泪划过脸颊。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/13/2048游戏c语言算法实现/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/08/13/2048游戏c语言算法实现/" data-id="cj6u9wwqp00002o5pu9d86rk1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-五子棋c语言算法实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/12/五子棋c语言算法实现/" class="article-date">
+  <time datetime="2014-08-12T00:00:00.000Z" itemprop="datePublished">2014-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/12/五子棋c语言算法实现/">五子棋c语言算法实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="五子棋"><a href="#五子棋" class="headerlink" title="五子棋"></a>五子棋</h4><p>五子棋是一种两人对弈的纯策略型汉族棋类益智游戏，棋具与围棋通用，由中国古代汉族人发明，起源于中国上古时代的传统黑白棋种之一。主要流行于华人和汉字文化圈的国家以及欧美一些地区。容易上手，老少皆宜，而且趣味横生，引人入胜</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/08/12/五子棋c语言算法实现/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/08/12/五子棋c语言算法实现/" data-id="cj6u9wwtf001o2o5pmrlygi2s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-我的数模之路" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/11/我的数模之路/" class="article-date">
+  <time datetime="2014-08-11T00:00:00.000Z" itemprop="datePublished">2014-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/08/11/我的数模之路/">我的数模之路</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="两年数模暑期培训过程"><a href="#两年数模暑期培训过程" class="headerlink" title="﻿两年数模暑期培训过程"></a>﻿两年数模暑期培训过程</h3><p>我参加过两年的数学建模暑期器培训，虽然也取得过一些还不错的奖，但还不至于能够有资格评论数学建模暑期培训过程。<br>写这篇文章的目的是希望把自己在数学建模的经历写出来，后来的学弟学妹看到后能够有所收获。</p>
+<h4 id="第一次暑期培训前"><a href="#第一次暑期培训前" class="headerlink" title="第一次暑期培训前"></a>第一次暑期培训前</h4><p>大一的暑假，七月底我就来到学校了，和所有准备参加数模暑期培训的同学一样，迎接一个月艰苦的培训过程。来的那天，<br>协会就召开了数模暑期集结会议，来的人差不多90个了。开完会后所有没有组队的同学都留下来了，这里面就有我，<br>那时候我还只是很普通的一名会员，也不认识多少人。但我庆幸的是，没组队的人里面有一个我老乡的朋友<br>桃子，之前就见过几面，桃子也没组队，于是我们一拍即合，决定组成一队，共战数模，此时我们队就我和他，还却一个<br>人，我们又不认识别人，协会干部说后面会给我们再安排一个人。那天晚上，我们一起去汇北吃了晚饭，聊了一会儿，就<br>散去。</p>
+<h4 id="第一次暑期培训中"><a href="#第一次暑期培训中" class="headerlink" title="第一次暑期培训中"></a>第一次暑期培训中</h4><p>一个月的数学建模暑期培训就开始了，第一天一来到机房，找到位置，发现我们被安排在最后一排，同样在最后<br>一排还有当时的会长组。每一天都是上午老师讲课，下午上机，晚上还是上机。那时的我们根本不敢偷玩，因为感觉那时<br>后面有眼睛看着我们。第一周，我们两个人一起吃饭，一起学习，虽然我们都是搞编程的，没有搞建模的，也没有搞论文<br>的，但那时我们互相安慰自己，我们两个人既可以搞编程又可以搞建模，后面只要再来一个搞论文的就行。所以于是乎，<br>我们都分担了更多的责任，那时我和桃子也不喜欢说话，给人的感觉还是比较安静，也很普通。印象深刻的是，我和桃子<br>在协会的第一次自我介绍，因为ppt做得不错，可能一些人已经记住了普通的我们，但会经常把我们两个人的名字记反。<br>那一周以来，别人中午休息的时候，我们不休息，听会儿歌，看会儿好声音,继续学习。我和他很多地方相似，<br>总会有相见一顾的感觉，有时都会忍不住对笑。培训过了一周了，可我们组还是我和桃子两个人，所以我和他两个人完成了<br>第一次模拟赛,熬了两个通宵，都编程，都写论文，都建模，这样的组合可能是比较少见的。第一次模拟赛结束后，我们拿了个第一名，<br>当时真的很兴奋。当时我们还被安排讲解我们的论文，此时，我们进入了大众的视线，协会为我们安排的队友也来了。是一<br>个妹子，毫无疑问，她主要负责写论文。我和桃子都是属于比较不太会说话，也不太爱说话，所以很少与她沟通，但我们<br>吃饭还是在一起，有时也会觉得有些尴尬。但后来慢慢都习惯了，就这样我们三个人一起组合，度过了第二次模拟赛，第<br>三次模拟赛，每次模拟赛，我和桃子都熬了差不多两个通宵。我们在建模的时候，会把自己的思路和方法写下来，整理后<br>再传给她。三次模拟赛我们都取得了不错的成绩，这个暑期培训过得很充实，没有很多杂质，确实学到了一些东西。<br>到了国赛的时候，最艰难的时刻到了，第二天女队友就生病了，要打针。所以就只剩下我和桃子并肩作战了，三天<br>我们几乎没有合眼过，因为时间真的很有限，我们要承担所有的任务。虽然女队友打完针后，会过来一下，但我和桃子都知道，<br>我们并不能指望她能够做些什么，我们只能安慰她病早点好。就这样，我们还是很艰难地完成第一次国赛。</p>
+<h4 id="第一次答辩"><a href="#第一次答辩" class="headerlink" title="第一次答辩"></a>第一次答辩</h4><p>国赛过去了几天，有一天晚上睡得特别晚，大概是凌晨3点多，刚睡下，就接到老大的电话，告诉我们组后天要去成都答辩，当时那个兴奋啊，简直睡不着睡觉，由于太晚，我决定第二天再告诉队友这个好消息。第二天要答辩的队伍被叫到机房作准备，相当于答辩前的预热，当时要<br>每个队要选一个主辩手，我想要么就是我要么就是桃子，我觉得自己不会表达，就建议桃子去当主辩。就这样愉快地决定了，这一天<br>我们熟悉了我们的论文，并打印了一些要点。第三天就去成都答辩了，早上在校门口集合的时候，桃子说他嗓子有点不舒服，我说没影响<br>只要说出来就好了。去答辩的队伍中，只有我们这个队伍是大一的，还有些骄傲。去答辩的那天，我们起得特别早，中午就到成都了。<br>在成都吃了一顿丰盛的午餐，吃完饭后歇了会儿，就去答辩。我们队是我们学校第一支答辩的队伍，当时很紧张，但还是硬着头皮上了。<br>我们进去答辩了，下面的老师问了很多问题，有两个问题没有表达好，觉得不太好。出来后，才知道我们已进去差不多30分钟，所有人都很诧异，一般进去答辩的队伍时间都会低于15分钟，我们心里仿佛已经知道了什么，所有队伍答辩完后，合影后，回学校。当时已经是下午5点了。回来的时候车子在眉山停了，我们又在那吃了一顿大餐。吃完后，继续奔向回学校的路上，后面气氛似乎不太对，好像成绩已经出来了，但始终没有公布。我和桃子都仿佛意识到了什么，到学校的时候已经是晚上10点多了。回到寝室后，接到了桃子的电话，他告诉我我们组的国奖资格被取消了，原因是被怀疑是抄袭。</p>
+<p><img src="/assets/images/shumo.png" alt="蔡金林的博客之数模之路"></p>
+<p>我们当时就很无语，我们也想过找老师，但是根本就没有用。在接下来的一周多，我们都很不爽，郁闷沮丧，有些自暴自弃了，协会的干部也找了我们，作我们的心理工作。随着时间慢慢推移，我们只能无奈地接受这个结果。第一次暑期培训就这样结束了。</p>
+<h4 id="第二次暑期培训前"><a href="#第二次暑期培训前" class="headerlink" title="第二次暑期培训前"></a>第二次暑期培训前</h4><p>那个暑假我没有回家，7月份在学校练车，8月份就参加了第二次暑期培训。8月初，我和桃子再聚首，那个女队友没参加了，我们依然面临<br>分组问题，当时也是在召开暑期培训集结大会的时候，有一个干部也没有组队，他就是后来的小三（男）。小三想和我们组队，我和桃子就答应了，就这样我，桃子，小三征战第二次暑期培训了。</p>
+<h4 id="第二次暑期培训中"><a href="#第二次暑期培训中" class="headerlink" title="第二次暑期培训中"></a>第二次暑期培训中</h4><p>第二次与第一次暑期培训最大的不同在于，我们三个都是干部，成为了协会当时的骨干。当然心态也变得不一样了，上午面对老师上课，我们基本都会坐在最后面，我们没有听老师讲课，但我们会带本书，学习新的算法。下午我们会给他们布置一些作业，晚上给他们批改作业，任务量变大了，但却能收获到不少东西。自从和小三组队后，我和桃子性情大变，一切都变得非常有趣。我们的那个机房，有一组学长很不矜持，堪比逗比，没错，那就是我们三人。但说实话，我们学习的时候还是很认真，我觉得心态很重要，我是个自我调节能力相当强的人，秉承着开心就好的理念，奋战第二次数模。或许由于我这个特点，我成为了小大了，桃子成为了小二了，桃园三结义似乎在数模上演了。周围的人似乎有被我们感染到，我们为何总是那么开心，看上去是那么傻逼。三次模拟赛，我们却三夺第一，这不能不说是奇迹。这个暑期培训感觉过得特别快，也是我大学生涯中最开心的时候。从来没有那么开心，我和桃子原来不太爱开玩笑，自从遇到了三，性情大变，喜欢互相调侃，称对方为傻逼。又到了国赛，我和桃子知道那对我们意味着什么，心里都高兴不起来了，神经一刻都不敢放松。三天三夜，我们又熬过来了，几乎没有睡几个小时。</p>
+<h4 id="第二次答辩"><a href="#第二次答辩" class="headerlink" title="第二次答辩"></a>第二次答辩</h4><p>过了几天，情况还算乐观，我们又可以去成都答辩了。这次我成为主辩手，去之前理了个发，当时还调侃说，上次没理发，这次理个发再去。很幸运的是，这次通过答辩，我们也拿到了全国一等奖，那一刻，我和桃子相互拥抱，我们一起风风雨雨走过了两年，患难与共。我们终于没有遗憾了。第二次暑期培训圆满结束。</p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h4><p>我不知道看到这篇文章的学弟学妹，会作何感想，我希望你们能够好好珍惜暑期培训的时光，真的很宝贵，该学习的时候加倍学习，该放松的时候好好放松。“海鸥不再眷念大海，可以飞更远”是我现在比较喜欢的一句话，我把它送给你们，希望你们能够在数模有所收获，取得佳绩。当然大学不仅仅有数学建模，其它方面也要有所突破。</p>
+<pre><code>数学建模小大  2014-08-11
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/08/11/我的数模之路/" data-id="cj6u9wwtz001z2o5p22fxwsj6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-内部排序算法分析" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/02/内部排序算法分析/" class="article-date">
+  <time datetime="2014-07-02T00:00:00.000Z" itemprop="datePublished">2014-07-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/02/内部排序算法分析/">内部排序算法分析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="内部排序算法（插入排序-归并排序-选择排序-冒泡排序-快速排序）"><a href="#内部排序算法（插入排序-归并排序-选择排序-冒泡排序-快速排序）" class="headerlink" title="内部排序算法（插入排序,归并排序,选择排序,冒泡排序,快速排序）"></a>内部排序算法（插入排序,归并排序,选择排序,冒泡排序,快速排序）</h3><h4 id="排序简介"><a href="#排序简介" class="headerlink" title="排序简介"></a>排序简介</h4><p>排序是数据处理中经常使用的一种重要运算,在计算机及其应用系统中,花费在排序上的时间在系统运行时间中占有很大比重;并且排序本身对推动算法分析的发展也起很大作用。目前已有上百种排序方法，但尚未有一个最理想的尽如人意的方法，本章介绍常用的如下排序方法，并对它们进行分析和比较。</p>
+<h4 id="排序分类"><a href="#排序分类" class="headerlink" title="排序分类"></a>排序分类</h4><pre><code>1、插入排序（直接插入排序、折半插入排序、希尔排序）；
+2、交换排序（起泡排序、快速排序）；
+3、选择排序（直接选择排序、堆排序）；
+4、归并排序；
+5、基数排序；
+</code></pre><h4 id="排序时间复杂度"><a href="#排序时间复杂度" class="headerlink" title="排序时间复杂度"></a>排序时间复杂度</h4><p>1.插入类排序</p>
+<p>将无序子序列中的一个或几个记录“插入”到有序序列中，从而增加记录的有序子序列的长度</p>
+<p>2.交换类排序</p>
+<p>通过“交换”无序序列中的记录从而得到其中关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度。</p>
+<p>3.选择类排序</p>
+<p>从记录的无序子序列中“选择”关键字最小或最大的记录，并将它加入到有序子序列中，以此方法增加记录的有序子序列的长度。</p>
+<p>4.归并排序</p>
+<p>通过“归并”两个或两个以上的记录有序子序列，逐步增加记录有序序列的长度。</p>
+<p>5.基数排序</p>
+<p>一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。由于整数也可以表达字符串和特定格式的浮点数，所以基数排序也不只是使用于整数。</p>
+<p><img src="/assets/images/timecomplexity.png" alt="蔡金林的博客之时间复杂度"></p>
+<p>####一、插入排序</p>
+<p> 直接插入排序（Insertion Sort）的算法描述是一种简单直观的排序算法。它的工作原理是通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。插入排序在实现上，通常采用in-place排序（即只需用到O(1)的额外空间的排序），因而在从后向前扫描过程中，需要反复把已排序元素逐步向后挪位，为最新元素提供插入空间。</p>
+<pre><code>void InsertSort(int L[],int length)  
+{  
+    int i,j;//分别为有序区和无序区指针  
+    for(i=1;i&lt;length;i++)//逐步扩大有序区  
+    {  
+        j=i+1;  
+        if(L[j]&lt;L[i])  
+        {  
+         L[0]=L[j];//存储待排序元素  
+         While(L[0]&lt;L[i])//查找在有序区中的插入位置，同时移动元素  
+         {  
+        L[i+1]=L[i];//移动  
+        i--;//查找  
+         }  
+        L[i+1]=L[0];//将元素插入  
+    }  
+   i=j-1;//还原有序区指针  
+}  
+</code></pre><p><img src="/assets/images/InsertSort.png" alt="插入排序"></p>
+<p>####二、交换排序</p>
+<p> 冒泡排序（Bubble Sort）是一种简单的排序算法。它重复地走访过要排序的数列，一次比较两个元素，如果他们的顺序错误就把他们交换过来。走访数列的工作是重复地进行直到没有再需要交换，也就是说该数列已经排序完成。这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。</p>
+<pre><code>void BubbleSort(int a[], int n)
+{
+    int i,j;
+    for(j=0;j&lt;=n-1;j++)  
+    {  
+      for(i=0;i&lt;=n-1-j;i++)  
+      {  
+        if(a[i]&gt;a[i+1])//数组元素大小按升序排列  
+        {  
+           temp=a[i];  
+           a[i]=a[i+1];  
+           a[i+1]=temp;  
+        }  
+      }
+    }
+}  
+</code></pre><p> 快速排序（Quicksort）是对冒泡排序的一种改进。它的基本思想是：运用分治法,通过一趟排序将要排序的数据分割成独立的两部分，其中一部分的所有数据都比另一部分小。分别对两部分排序，然后递归进行。</p>
+<pre><code>int Partition(int a[], int low, int high)
+{
+    int temp = a[row];
+    while(low&lt;high)
+    {
+      while(low&lt;high &amp;&amp; a[high] &gt;= temp) high--;
+      a[low] = a[high];
+      while(low&lt;high &amp;&amp; a[low] &lt;= temp) low++;
+      a[high] = a[low];
+    }
+    a[low] = temp;
+}
+void Quick_sort(int a[],int low ,int high)
+{
+    if(low &lt; high)
+    {
+      i=Partition(a,low,high);
+      Quick_sort(a,low,i-1);
+      Quick_sort(a,i+1,high);
+    }
+}
+</code></pre><p><img src="/assets/images/QuickSort.png" alt="快速排序"></p>
+<p>####三、选择排序</p>
+<p> 直接选择排序(Selection sort)是一种简单直观的排序算法。原理是将序列划分为无序和有序区，寻找无序区中的最小值和无序区的首元素交换，有序区扩大一个，循环最终完成全部排序。</p>
+<pre><code>void SelectSort(int a[], int n)
+{
+  for(i=0;i&lt;n-1;i++)  
+  {  
+    k = i;  
+    for(j=i+1;j&lt;n;j++)  
+    {  
+        if(a[k] &gt; a[j])  
+        k = j;  
+    }  
+    if(k != i)  
+    {  
+        temp = a[i];  
+        a[i] = a[k];  
+        a[k] = temp;  
+    }  
+  }  
+}
+</code></pre><h4 id="四、归并排序"><a href="#四、归并排序" class="headerlink" title="四、归并排序"></a>四、归并排序</h4><p> 归并排序（Merge sort，台湾译作：合并排序）是建立在归并操作上的一种有效的排序算法。该算法是采用递归和分治法（Divide and Conquer）的一个非常典型的应用。</p>
+<pre><code>void merge(int *a,int start,int mid,int end)  
+{  
+    if(start&gt;mid || mid &gt;end ) return;  
+    int i=start,j=mid+1,k=0;  
+    int *L=(int *)malloc((end-start+1)*sizeof(int));  
+    while(i&lt;=mid &amp;&amp; j&lt;=end)  
+    {  
+      if(a[i]&lt;a[j])  
+        {  
+            L[k++]=a[i++];  
+        }  
+        else  
+        {  
+            L[k++]=a[j++];  
+        }  
+    }    
+    while(i&lt;=mid)  
+          L[k++]=a[i++];  
+      while(j&lt;=end)  
+          L[k++]=a[j++];  
+    for(i=start,j=0;i&lt;=end;i++,j++)  
+    {  
+          a[i]=L[j];  
+    }  
+    free(L);  
+}  
+void mergeSort(int *a, int start,int end)  
+{  
+  if(start&lt;end)  
+  {  
+      int mid=(start+end)/2;  
+      mergeSort(a,start,mid);  
+      mergeSort(a,mid+1,end);  
+      merge(a,start,mid,end);  
+  }  
+}  
+</code></pre><p><img src="/assets/images/MergeSort.png" alt="归并排序"></p>
+<h4 id="五、基数排序"><a href="#五、基数排序" class="headerlink" title="五、基数排序"></a>五、基数排序</h4><p>基数排序(Radix sort)是一种非比较型整数排序算法，其原理是将整数按位数切割成不同的数字，然后按每个位数分别比较。由于整数也可以表达字符串（比如名字或日期）和特定格式的浮点数，所以基数排序也不是只能使用于整数。</p>
+<h4 id="快速排序与归并排序，冒泡排序与选择排序关系"><a href="#快速排序与归并排序，冒泡排序与选择排序关系" class="headerlink" title="快速排序与归并排序，冒泡排序与选择排序关系"></a>快速排序与归并排序，冒泡排序与选择排序关系</h4><p><img src="/assets/images/relation.png" alt="排序之间关系"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/07/02/内部排序算法分析/" data-id="cj6u9wwth001p2o5pt6b75om4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-linux下使用g-编译，gdb调试c-程序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/01/linux下使用g-编译，gdb调试c-程序/" class="article-date">
+  <time datetime="2014-07-01T00:00:00.000Z" itemprop="datePublished">2014-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/01/linux下使用g-编译，gdb调试c-程序/">linux下使用g++编译，gdb调试c++程序</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="linux下编译调试c-程序"><a href="#linux下编译调试c-程序" class="headerlink" title="linux下编译调试c++程序"></a>linux下编译调试c++程序</h3><p>都说不会调试的程序员不是好程序员，今天终于通过看相关博客，进社区，动手实践三大步骤，把linux下编译和调试c++程序过了一遍。<br>本文主要写linux下使用Vim编辑器写c++程序，然后通过g++编译器对程序进行编译，最后用gdb调试工具进行调速，命令行式的调试，有助于学习并熟知linux环境下c++/c编程操作。</p>
+<p>一般来说，GCC主要帮忙你完成一下四方面的功能：</p>
+<pre><code>1.预处理
+2.编译
+3.汇编
+4.连接
+</code></pre><p>特点：支持多语言，多系统</p>
+<p>一般来说，GDB主要帮忙你完成下面四个方面的功能：</p>
+<pre><code>1、启动你的程序，可以按照你的自定义的要求随心所欲的运行程序。
+2、可让被调试的程序在你所指定的调置的断点处停住。（断点可以是条件表达式）
+3、当程序被停住时，可以检查此时你的程序中所发生的事。
+4、动态的改变你程序的执行环境。
+</code></pre><p>特点:命令行式的调试工具，非图形化操作</p>
+<p>编译c/c++程序命令:</p>
+<pre><code>gcc -o demo demo.c
+g++ -g -o demo demo.cpp
+</code></pre><p>gdb基本命令列表：</p>
+<p><img src="/assets/images/gdb.png" alt="蔡金林的博客之GDB命令"></p>
+<p>以我在leetcode(<a href="https://oj.leetcode.com/)上面AC的一道题目&quot;Reverse" target="_blank" rel="external">https://oj.leetcode.com/)上面AC的一道题目&quot;Reverse</a> Words in a String”来分析：</p>
+<p>1.使用vim编辑器编写c++程序</p>
+<p><img src="/assets/images/Reverseclass.png" alt="蔡金林的博客之反转字符串并去掉多余空格类"></p>
+<p>主函数main:</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;string&gt;
+int main()
+{
+     string inputstr;
+     getline(cin,inputstr);
+     Solution *s =  new Solution();
+     s-&gt;reverseWords(inputstr);
+     delete s;
+     cout&lt;&lt;inputstr&lt;&lt;endl;
+}
+</code></pre><p>2.gcc编译,生成可执行文件,注意必须使用-g参数，编译会加入调试信息否则无法执行文件</p>
+<pre><code>g++ -g -o demo demo.cpp
+</code></pre><p>3.gdb调试</p>
+<p><img src="/assets/images/gdbstart.png" alt="蔡金林的博客"></p>
+<p>3.1查看源文件 list 1,回车，直到显示完整程序</p>
+<p><img src="/assets/images/gdblist.png" alt="蔡金林的博客"></p>
+<p>3.2设置断点 break 8,在第8行设置断点，info break查看断点信息</p>
+<p><img src="/assets/images/gdbbreak.png" alt="蔡金林的博客"></p>
+<p>3.3调试运行 输入run 或者r </p>
+<p>进行程序的输入</p>
+<pre><code>the sky is   blue 
+</code></pre><p><img src="/assets/images/gdbrun.png" alt="蔡金林的博客"></p>
+<p>3.4单步调试，输入step 或者 s进入函数内部</p>
+<p><img src="/assets/images/gdbstep.png" alt="蔡金林的博客"></p>
+<p>3.5查看变量 输入print 变量 或者 p 变量</p>
+<p><img src="/assets/images/gdbprint.png" alt="蔡金林的博客"></p>
+<p>3.6继续运行直到下一个断点或主函数结束 输入continue或者 c</p>
+<p>程序结果</p>
+<pre><code>blue is sky the
+</code></pre><p><img src="/assets/images/gdbcontinue.png" alt="蔡金林的博客"></p>
+<p>3.7 退出调试 输入q</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/07/01/linux下使用g-编译，gdb调试c-程序/" data-id="cj6u9wwrv000l2o5pdn8laewp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-使用SVN部署网站到新浪SAE" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/24/使用SVN部署网站到新浪SAE/" class="article-date">
+  <time datetime="2014-06-24T00:00:00.000Z" itemprop="datePublished">2014-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/24/使用SVN部署网站到新浪SAE/">使用SVN部署网站到新浪SAE</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="使用SVN部署代码到SAE平台"><a href="#使用SVN部署代码到SAE平台" class="headerlink" title="使用SVN部署代码到SAE平台"></a>使用SVN部署代码到SAE平台</h3><p>最近3天在新浪SAE平台上部署了一个网站应用<a href="http://susecst.sinaapp.com/" target="_blank" rel="external">http://susecst.sinaapp.com/</a> ，本文主要写上传到SAE上面所遇到的问题。本地调试好代码后，通过svn上传<a href="http://sae.sina.com.cn/doc/tutorial/code-deploy.html#svn" target="_blank" rel="external">http://sae.sina.com.cn/doc/tutorial/code-deploy.html#svn</a> </p>
+<h4 id="数据库连接语句配置"><a href="#数据库连接语句配置" class="headerlink" title="数据库连接语句配置"></a>数据库连接语句配置</h4><pre><code>数据库服务器:w.rdc.sae.sina.com.cn:3307(在phpyadmin管理界面可见)
+数据库用户:应用首页的Access Key（点击显示可见）
+数据库密码:应用首页的Secret Key(点击显示可见)
+数据库名字:一般为app_应用名(数据库.sql文件需导入phpmyadmin)
+</code></pre><h4 id="上传至新浪SAE后，发现文件乱码"><a href="#上传至新浪SAE后，发现文件乱码" class="headerlink" title="上传至新浪SAE后，发现文件乱码"></a>上传至新浪SAE后，发现文件乱码</h4><p>避免文件乱码，首先要确定以下四种编码一致,假设为utf8</p>
+<pre><code>数据库中表的结构编码utf8_general_ci
+文件编码&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+数据库执行语句编码 mysql_query(“set names utf8”);
+</code></pre><p>有的时候得确认下文件编码:通过编辑器控制文件的标题编码，或者将文件另存为你需要的文件编码utf8。</p>
+<h4 id="测试功能时，发现登录界面提交后显示"><a href="#测试功能时，发现登录界面提交后显示" class="headerlink" title="测试功能时，发现登录界面提交后显示"></a>测试功能时，发现登录界面提交后显示</h4><pre><code>Cannot send session cache limiter-headers aleady sent
+</code></pre><p><img src="/assets/images/session.png" alt="跳转错误"></p>
+<p>搜索一番，发现基本是使用header跳转之前，不能出现任何echo语句，但是本地打开发现没有任何错误。最后在sae的代码管理器打开，发现了该文件前面有个小红点，删掉就行了，然后本地update，保持同服务器端版本一致</p>
+<p><img src="/assets/images/sae.png" alt="文件前面小红点"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/06/24/使用SVN部署网站到新浪SAE/" data-id="cj6u9wwte001n2o5pd4ht3q1q" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-PHP实现多线程抓取网页" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/23/PHP实现多线程抓取网页/" class="article-date">
+  <time datetime="2014-06-23T00:00:00.000Z" itemprop="datePublished">2014-06-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/23/PHP实现多线程抓取网页/">PHP实现多线程抓取网页</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="PHP实现多线程抓取网页"><a href="#PHP实现多线程抓取网页" class="headerlink" title="PHP实现多线程抓取网页"></a>PHP实现多线程抓取网页</h3><p>使用PHP的cURL库可以简单和有效地去抓网页。你只需要运行一个脚本，然后分析一下你所抓取的网页，然后就可以以程序的方式得到你想要的数据了。无论是你想从从一个链接上取部分数据，或是取一个XML文件并把其导入数据库，那怕就是简单的获取网页内容，cURL 是一个功能强大的PHP库。本文主要讲述如果使用这个PHP库抓取网页。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/06/23/PHP实现多线程抓取网页/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/06/23/PHP实现多线程抓取网页/" data-id="cj6u9wwr000032o5prvrzlpzd" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php多线程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/23/php多线程/" class="article-date">
+  <time datetime="2014-06-23T00:00:00.000Z" itemprop="datePublished">2014-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/23/php多线程/">php实现多线程抓取网页</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><p>实现多线程抓取网页</p>
+<p>使用PHP的cURL库可以简单和有效地去抓网页。你只需要运行一个脚本，然后分析一下你所抓取的网页，然后就可以以程序的方式得到你想要的数据了。无论是你想从从一个链接上取部分数据，或是取一个XML文件并把其导入数据库，那怕就是简单的获取网页内容，cURL 是一个功能强大的PHP库。本文主要讲述如果使用这个PHP库抓取网页。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/06/23/php多线程/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/06/23/php多线程/" data-id="cj6u9wwsu001a2o5pw3ydfq4z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

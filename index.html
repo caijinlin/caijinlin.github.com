@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Caspar">
+<meta property="og:url" content="http://www.caijinlin.com/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:locale" content="zh-CN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Caspar">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-mysql-optimization" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/06/05/mysql-optimization/" class="article-date">
+  <time datetime="2017-06-05T13:26:44.000Z" itemprop="datePublished">2017-06-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="mysql优化实战攻略"><a href="#mysql优化实战攻略" class="headerlink" title="mysql优化实战攻略"></a>mysql优化实战攻略</h3><p>最近对数据库查询进行了一些优化策略，总结如下：</p>
+<h3 id="加索引"><a href="#加索引" class="headerlink" title="加索引"></a>加索引</h3><p><code>最简单的方法就是加索引，合适且必要才加，而不是乱加，数据量达到几十万以上效果明显。</code></p>
+<h3 id="使用强制索引"><a href="#使用强制索引" class="headerlink" title="使用强制索引"></a>使用强制索引</h3><p><code>程序中使用强制索引，解决数据库没有按照我们想要的索引进行查询，百万级数据，效果显著。</code></p>
+<h3 id="使用小表作为主表"><a href="#使用小表作为主表" class="headerlink" title="使用小表作为主表"></a>使用小表作为主表</h3><p><code>join查询的时候，数据量小的表作为主表，数据量大的表作为join的对象，也是一种不错的方法，减少全表扫描行数。</code></p>
+<h3 id="数据冗余"><a href="#数据冗余" class="headerlink" title="数据冗余"></a>数据冗余</h3><p><code>针对复杂的sql，需要join其它表且需要排序的情况下，可以挖掘统计数据，冗余表或者冗余字段。</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2017/06/05/mysql-optimization/" data-id="cj6u9wws7000t2o5pa27m2hvt" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-laravel-eloquent-query-use-index" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/05/31/laravel-eloquent-query-use-index/" class="article-date">
+  <time datetime="2017-05-31T13:12:38.000Z" itemprop="datePublished">2017-05-31</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="为什么需要强制索引？"><a href="#为什么需要强制索引？" class="headerlink" title="为什么需要强制索引？"></a>为什么需要强制索引？</h4><p><code>数据库没有使用我们设想的索引进行sql查询，导致查询特别慢。</code></p>
+<h4 id="mysql强制索引查询语句"><a href="#mysql强制索引查询语句" class="headerlink" title="mysql强制索引查询语句"></a>mysql强制索引查询语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> tt = <span class="number">1</span> <span class="keyword">force</span> <span class="keyword">index</span>(idx_tt); // 强制索引</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> tt = <span class="number">1</span> <span class="keyword">use</span> <span class="keyword">index</span>(idx_tt); // 优先按照这种索引查找</div></pre></td></tr></table></figure>
+<h4 id="laravel中实现强制索引查询"><a href="#laravel中实现强制索引查询" class="headerlink" title="laravel中实现强制索引查询"></a>laravel中实现强制索引查询</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">$this</span>-&gt;model</div><div class="line">-&gt;setTable(DB::connection(<span class="string">'test_db'</span>)-&gt;raw(<span class="string">'test'</span> . <span class="string">' FORCE INDEX(tt)'</span>))</div><div class="line">-&gt;where(<span class="string">'tt'</span>, <span class="number">1</span>)</div><div class="line">-&gt;get();</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2017/05/31/laravel-eloquent-query-use-index/" data-id="cj6u9wwro000d2o5p5bxlxmhs" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/laravel/">laravel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-migrate-jekyll-to-hexo" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/07/migrate-jekyll-to-hexo/" class="article-date">
+  <time datetime="2017-03-07T00:02:28.000Z" itemprop="datePublished">2017-03-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="一个美好的开始"><a href="#一个美好的开始" class="headerlink" title="一个美好的开始"></a>一个美好的开始</h3><p>原先的博客是通过jekyll生成的，现迁移到到hexo，通过原博客的xss文件完成文章的迁移</p>
+<h3 id="从xss迁移文章"><a href="#从xss迁移文章" class="headerlink" title="从xss迁移文章"></a>从xss迁移文章</h3><p>获取原博客的文章rss，放在博客根目录下，通过hexo-migrator-rss导入进来，十分高效，时间自动转化了。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-migrator-rss --save</div><div class="line">hexo migrate rss old.xml</div></pre></td></tr></table></figure>
+<h3 id="迁移过程"><a href="#迁移过程" class="headerlink" title="迁移过程"></a>迁移过程</h3><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/hexo-migrate-xml.jpg" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2017/03/07/migrate-jekyll-to-hexo/" data-id="cj6u9wws1000o2o5p3dwulal6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jekyll/">jekyll</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-parse-soap-xml-response" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/01/php-parse-soap-xml-response/" class="article-date">
+  <time datetime="2017-03-01T00:00:00.000Z" itemprop="datePublished">2017-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="最近公司的一个需求，和外部对接需要用到xml。"><a href="#最近公司的一个需求，和外部对接需要用到xml。" class="headerlink" title="最近公司的一个需求，和外部对接需要用到xml。"></a>最近公司的一个需求，和外部对接需要用到xml。</h4><p>说明：XML本身不算复杂，但是，加上DTD、XSD、XPath、XSLT等一大堆复杂的规范以后，任何正常的软件开发人员碰到XML都会感觉头大了，最后大家发现，即使你努力钻研几个月，也未必搞得清楚XML的规范。&gt; 使用场景：请求外部webservie，对方以xml的形式的返回，我们需要拿到数据，看起来很简单，但不懂xml与xsd就有点麻烦了。</p>
+<h4 id="遇到问题-gt-发现问题"><a href="#遇到问题-gt-发现问题" class="headerlink" title="遇到问题 =&gt; 发现问题"></a>遇到问题 =&gt; 发现问题</h4><p>通过传统解析xmlToJson, xmlToArray，怎么样也获取不到数据分析返回的xml，发现是xsd，并且含有命名空间The problem here is that your attribute has a namespace, so you need to register the ns with SimpleXML XPath and use it in your XPath query.</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p><a href="http://stackoverflow.com/questions/26511858/parsing-soap-xml-response-with-php/26512336#26512336" target="_blank" rel="external">http://stackoverflow.com/questions/26511858/parsing-soap-xml-response-with-php/26512336#26512336</a><div class="language-xml highlighter-rouge"></div></p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;DATARESULT xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://tempuri.org/&quot;&gt;
+  &lt;TABLE&gt;
+    &lt;diffgr:diffgram xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot; xmlns:diffgr=&quot;urn:schemas-microsoft-com:xml-diffgram-v1&quot;&gt;
+      &lt;DocumentElement xmlns=&quot;&quot;&gt;
+        &lt;DATA diffgr:id=&quot;TABLE1&quot; msdata:rowOrder=&quot;0&quot; diffgr:hasChanges=&quot;inserted&quot;&gt;
+          &lt;FIED1&gt;1221&lt;/FIED1&gt;
+          &lt;FIED2&gt;2332&lt;/FIED1&gt;
+        &lt;/DATA&gt;     
+        &lt;DATA diffgr:id=&quot;TABLE2&quot; msdata:rowOrder=&quot;0&quot; diffgr:hasChanges=&quot;inserted&quot;&gt;
+          &lt;FIED1&gt;1221&lt;/FIED1&gt;
+          &lt;FIED2&gt;2332&lt;/FIED1&gt;
+        &lt;/DATA&gt;    
+      &lt;/DocumentElement&gt;
+    &lt;/diffgr:diffgram&gt;
+  &lt;/TABLE&gt;
+  &lt;ResultMsg /&gt;
+&lt;/DATARESULT&gt;
+</code></pre><p>注册命名空间，匹配相应节点，取出数据</p>
+<pre><code>// request webservice for get data
+$client = new SoapClient($url, $params);
+$result = $client-&gt;getData();
+
+// parse data
+$xml = simplexml_load_string($result-&gt;responseXml);
+$xml-&gt;registerXPathNamespace(&apos;d&apos;, &apos;urn:schemas-microsoft-com:xml-diffgram-v1&apos;);
+$results = $xml-&gt;xpath(&apos;//Table&apos;);
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2017/03/01/php-parse-soap-xml-response/" data-id="cj6u9wwsx001d2o5pvn922cwa" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-vim快捷键" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/12/vim快捷键/" class="article-date">
+  <time datetime="2016-12-12T00:00:00.000Z" itemprop="datePublished">2016-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/12/vim快捷键/">vim快捷键</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><pre><code>h,j,k,l: 左下上右边
+ctrl+b/f：向上下翻页
+b/w: 上/下一个词
+$/0: 行首/尾
+(/): 上/下一个句子
+{/}: 段首/段尾
+gg/G: 文档开始/结束
+ngg: n行
+H/M/L: 屏幕顶端/中间/底部
+nj/k: 关标向上/下移动n行
+</code></pre><h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><pre><code>v/V: 字符/行选中
+</code></pre><h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><pre><code>i/a: 光标前/后插入
+I/A: 行首/尾插入
+o/O: 后/前插一行
+esc + o：另起一行编辑
+f/Fa: 光标移动到左/右边的第一个字符a上；
+dnb/w:  正/反向删除n个单词
+cnb/w:  正/反向删除n个单词
+cc: 修改光标所在行
+D: 删除到行尾
+rg: 替换光标下的字符为g
+x: 删除当前字母
+ddp: 调换当前行和下一行
+dd: 删除当前行，存入寄存器
+p: 粘贴
+yyp:复制当前行并粘贴
+u/ctrl+r: 撤销/重做
+&gt;&gt;/&lt;&lt;: 缩进/反缩进
+</code></pre><h3 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h3><pre><code>s/s1/s2: 将下一个s1替换为s2
+%s/s1/s2:全部替换
+s/s1/s2/g: 只替换当前行
+/string: 搜索下一处为n，搜索上一处为N
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2016/12/12/vim快捷键/" data-id="cj6u9wwtb001m2o5p73dpxeju" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-sublime-hotkeys" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/12/sublime-hotkeys/" class="article-date">
+  <time datetime="2016-08-12T00:00:00.000Z" itemprop="datePublished">2016-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/12/sublime-hotkeys/">Sublime常用快捷键</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>mac下开启vim模式<br>sublime =&gt; preferences =&gt; settings-user</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"ignored_packages"</span>：[],</div></pre></td></tr></table></figure>
+</li>
+<li><p>mac下使用shell以sublime方式打开文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln -s <span class="string">"/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"</span> /usr/<span class="built_in">local</span>/bin/subl</div><div class="line">subl filename</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">h,j,k,l： 左，下，上，右。</div><div class="line">w：下一个词的词首。</div><div class="line">W：下一个单词(不含标点)。</div><div class="line">e：下一个词的词尾。</div><div class="line">E：不含标点。</div><div class="line">b：上一个词的词首。</div><div class="line">B：不含标点。</div><div class="line">gg：首。</div><div class="line">G： 尾。</div></pre></td></tr></table></figure>
+<h4 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ctrl+d：选中下一个相同的</div><div class="line">ctrl+command+G：选中所有相同的</div><div class="line">ctrl+l：选中整行，继续操作则继续选择下一行，效果和 shift+↓ 效果一样。</div><div class="line">ctrl+shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</div><div class="line">shift+↑：向上选中多行。</div><div class="line">shift+↓：向下选中多行。</div><div class="line">shift+←：向左选中文本。</div><div class="line">shift+→：向右选中文本。</div></pre></td></tr></table></figure>
+<h4 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">ctrl+delete： 删除</div><div class="line">ctrl+shif+D：复制当前行</div><div class="line">ctrl+/：注释d当前行，或取消注释</div><div class="line">ctrl+J： 向上折行</div><div class="line">ctrl+K+U：转换大写</div><div class="line">ctrl+K+L： 转换小写</div><div class="line">ctrl+K+K：从光标处开始删除代码至行尾。</div><div class="line">ctrl+Z： 撤销</div><div class="line">ctrl+Y： 恢复撤销</div><div class="line">ctrl+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</div><div class="line">ctrl+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</div><div class="line">ctrl+command+up： 向上移动当前行</div><div class="line">ctrl+command+down： 向下移动当前行</div><div class="line">shift+home： 选择到页首行头</div><div class="line">shift+end： 选择到页尾行</div><div class="line">Tab：向右缩进</div><div class="line">shfit+tab： 反缩进</div></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2016/08/12/sublime-hotkeys/" data-id="cj6u9wwt6001k2o5pw9mzytgv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-solve-node-sass-install-failed" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/12/solve-node-sass-install-failed/" class="article-date">
+  <time datetime="2016-05-12T00:00:00.000Z" itemprop="datePublished">2016-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/12/solve-node-sass-install-failed/">node-sass 安装失败解决方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>####使用cnpm</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm</div></pre></td></tr></table></figure>
+<p>####使用淘宝镜像</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2016/05/12/solve-node-sass-install-failed/" data-id="cj6u9wwsz001g2o5p25jsdl5u" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mac-tool" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/04/12/mac-tool/" class="article-date">
+  <time datetime="2016-04-12T00:00:00.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/12/mac-tool/">mac高效工具配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="vim语法高亮"><a href="#vim语法高亮" class="headerlink" title="vim语法高亮"></a>vim语法高亮</h3><p>在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中添加一行syntax on即可。</p>
+<h3 id="iterm2-zsh"><a href="#iterm2-zsh" class="headerlink" title="iterm2 + zsh"></a>iterm2 + zsh</h3><p>step1.安装iterm2</p>
+<p><a href="https://www.iterm2.com/" target="_blank" rel="external">https://www.iterm2.com/</a></p>
+<p>step2.安装zsh, oh-my-zsh</p>
+<p><a href="http://macshuo.com/?p=676" target="_blank" rel="external">http://macshuo.com/?p=676</a></p>
+<p>step3.设置默认shell为zsh</p>
+<pre><code>chsh -s /bin/zsh
+</code></pre><h3 id="chrome-lastpass插件"><a href="#chrome-lastpass插件" class="headerlink" title="chrome lastpass插件"></a>chrome lastpass插件</h3><pre><code>记住网站密码，不用重复输入密码
+</code></pre><h3 id="ssh免密码登录-参考"><a href="#ssh免密码登录-参考" class="headerlink" title="ssh免密码登录 参考"></a>ssh免密码登录 <a href="http://dhq.me/use-ssh-config-manage-ssh-session" target="_blank" rel="external">参考</a></h3><p>step1.生成密钥 </p>
+<pre><code>ssh-keygen -t rsa -C &quot;caijinlin2012@gmail.com&quot;
+这里使用 rsa 的加密方式（另外一种加密方式是 dsa），中间会询问密钥生成的位置，这里只输入 cjb，在当前位置生成名为 cjb 的密钥，接着会询问是否要设置一个密码(passphrase)，这里留空，直接按回车就行（本来就不想登陆输入密码了...），最后，会在当前目录路径下生成一个名为 cjb 的私钥，一个名为cjb.pub 的公钥。
+</code></pre><p>step2.上传公钥到服务器 (如果方法一不行采用第二种)</p>
+<pre><code>方法1.使用ssh-copy-id 
+    安装ssh-copy-id: curl -L https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh 
+    ssh-copy-id i ~/.ssh/cjl.pub root@182.92.5.70
+
+方法2.
+    把公钥 cjb.pub 上传到远程 cjb 服务器的 ~/.ssh/ 目录下：
+    scp cjl.pub root@182.92.5.70:~/.ssh/
+    上传完后，登录到服务器，把公钥 cjb.pub 的内容复制到 authorized_keys 文件里（不存在则新创建一个）：
+    cat cjb.pub &gt;&gt; authorized_keys
+</code></pre><p>step3. 加入配置文件</p>
+<pre><code>~/.ssh下新建配置文件config
+    Host        cjb
+        HostName        216.194.70.6
+        Port            22
+        User            user
+        IdentityFile    ~/.ssh/cjb  
+    Host        cjh
+        HostName    182.92.5.70
+        Port        22
+        User        user
+</code></pre><p>step4. ssh cjh </p>
+<pre><code>登录成功说明免密码登录成功了
+</code></pre><h3 id="sublime过滤文件夹搜索"><a href="#sublime过滤文件夹搜索" class="headerlink" title="sublime过滤文件夹搜索"></a>sublime过滤文件夹搜索</h3><pre><code>sublime text =&gt; Preferences =&gt; Setting - User 加入配置，过滤文件夹和文件类型
+
+&quot;folder_exclude_patterns&quot;: [&quot;Runtime&quot;, &quot;._d&quot;, &quot;.metadata&quot;, &quot;.settings&quot;],
+&quot;file_exclude_patterns&quot;: [&quot;*.pyc&quot;, &quot;*.pyo&quot;, &quot;.project&quot;]
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2016/04/12/mac-tool/" data-id="cj6u9wwry000n2o5pv479rcfj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php-emoji" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/01/php-emoji/" class="article-date">
+  <time datetime="2016-03-01T00:00:00.000Z" itemprop="datePublished">2016-03-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/01/php-emoji/">php处理emoji表情</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>手机端网页输入表情时，显示的时候会乱码。而且android和iphone两种机型对emoji表情的解码不一样，导致一些不兼容问题。需要一种方案处理emoji表情，自己在做的时候，总结下三种方案。</p>
+<h4 id="三种方案"><a href="#三种方案" class="headerlink" title="三种方案"></a>三种方案</h4><pre><code>1.使用utf8mb4存储（但不完美）
+2.使用现有的php-emoji库
+3.composer require mojione/emojione
+</code></pre><h4 id="方案一-utf8mb4"><a href="#方案一-utf8mb4" class="headerlink" title="方案一(utf8mb4)"></a>方案一(utf8mb4)</h4><pre><code>修改编码, utf8mb4兼容utf8，且比utf8能表示更多的字符。可以存储emoji表情字符
+
+修改如下：
+
+1.设置表编码和相应字段编码为utf8mb4
+2.设置连接数据库编码为utf8mb4
+
+ALTER TABLE `users` CHARACTER  SET utf8mb4 COLLATE utf8mb4_general_ci;
+ALTER TABLE `users` CHANGE `comment` `comment` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
+
+DB_CHARSET =&gt; &apos;utf8mb4&apos;; //如果thinkphp，配置文件中修改连接数据库编码
+
+缺点: iphone手机上不能显示android手机发的表情
+优点:  简单，不用修改代码
+</code></pre><h4 id="方案二-https-github-com-iamcal-php-emoji"><a href="#方案二-https-github-com-iamcal-php-emoji" class="headerlink" title="方案二 (https://github.com/iamcal/php-emoji)"></a>方案二 <a href="https://github.com/iamcal/php-emoji" target="_blank" rel="external">(https://github.com/iamcal/php-emoji)</a></h4><pre><code>使用php-emoji库处理，原理是: 手机发的表情字符存入到数据库中是一段html, 显示的时候通过引用emoji库的css， 显示表情。
+
+修改如下:
+
+1.引入emoji.css, 并确保emoji.png引入到css中指定的位置
+
+2.引入emoji.php, post过来的内容作如下处理：
+
+$content = emoji_docomo_to_unified($content);
+$html = emoji_unified_to_html($content);
+
+//将$html存入数据库，$html类似&lt;span class=&quot;emoji emoji1f609&quot;&gt;&lt;/span&gt;
+
+缺点: 通过css实现，需要加载emoji.css和emoji.png和emoji.php, 依赖外部
+优点: 兼容性好，web, android, iphone都可查看表情
+</code></pre><h4 id="方案三-https-packagist-org-packages-emojione-emojione"><a href="#方案三-https-packagist-org-packages-emojione-emojione" class="headerlink" title="方案三 (https://packagist.org/packages/emojione/emojione)"></a>方案三 <a href="https://packagist.org/packages/emojione/emojione" target="_blank" rel="external">(https://packagist.org/packages/emojione/emojione)</a></h4><pre><code>通过composer引入: `composer require mojione/emojione`
+
+保存时: Emojione::toShort($comment));
+
+显示时: Emojione::shortnameToUnicode($comment);
+
+缺点：第三方输入法（比如百度输入法）的表情不是完全支持
+优点：目前为止兼容性最好的
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2016/03/01/php-emoji/" data-id="cj6u9wwsm00182o5pslp449q8" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mysql开启慢查询日志" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/01/mysql开启慢查询日志/" class="article-date">
+  <time datetime="2015-12-01T00:00:00.000Z" itemprop="datePublished">2015-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/01/mysql开启慢查询日志/">mysql开启慢查询日志</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="登陆mysql客户端"><a href="#登陆mysql客户端" class="headerlink" title="登陆mysql客户端"></a>登陆mysql客户端</h4><pre><code>mysql -uroot -p123456
+</code></pre><h4 id="开启检查"><a href="#开启检查" class="headerlink" title="开启检查"></a>开启检查</h4><pre><code>show variables like &apos;slow_query_log&apos;;
+</code></pre><h4 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h4><pre><code>show variables like &apos;%log%&apos;;
+</code></pre><h4 id="开启"><a href="#开启" class="headerlink" title="开启"></a>开启</h4><pre><code>set global log_queries_not_using_indexes = on;
+</code></pre><h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><pre><code>show variables like &apos;long_query_time&apos;;
+</code></pre><h4 id="开启慢查询日志"><a href="#开启慢查询日志" class="headerlink" title="开启慢查询日志"></a>开启慢查询日志</h4><pre><code>set global slow_query_log = on;
+</code></pre><h4 id="查找慢查询日志记录位置"><a href="#查找慢查询日志记录位置" class="headerlink" title="查找慢查询日志记录位置"></a>查找慢查询日志记录位置</h4><pre><code>show variables like &apos;slow%&apos;;
+</code></pre><p>#mysqldumpslow -t 3 /usr/local/var/mysql/caijinlindeMBP-slow.log</p>
+<pre><code>log-slow-queries=&quot;/usr/local/val/log/mysql-slow.log&quot;
+long_query_time = 4
+log-queries-not-using-indexes
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/12/01/mysql开启慢查询日志/" data-id="cj6u9wwsc00112o5p4olcz4li" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+  </nav>
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>轻松实现多台服务器数据库备份 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="linux下两台服务器数据库导入导出两台服务器环境均为lnmp(linux+nginx+mysql+php),今天一直想实现服务器A备份数据库test，并导入到服务器B中，传统的方法是通过linux共享实现的，具体可以参考linux服务器共享 我的解决办法充分利用lnmp环境，可以通过ip直接访问的特点，使用mysqldump备份A服务器数据库到网站根目录下，然后在服务器B中通过wget命令进行下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="轻松实现多台服务器数据库备份">
+<meta property="og:url" content="http://www.caijinlin.com/2014/12/18/轻松实现多台服务器数据库备份/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="linux下两台服务器数据库导入导出两台服务器环境均为lnmp(linux+nginx+mysql+php),今天一直想实现服务器A备份数据库test，并导入到服务器B中，传统的方法是通过linux共享实现的，具体可以参考linux服务器共享 我的解决办法充分利用lnmp环境，可以通过ip直接访问的特点，使用mysqldump备份A服务器数据库到网站根目录下，然后在服务器B中通过wget命令进行下">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/firewallPort.png">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="轻松实现多台服务器数据库备份">
+<meta name="twitter:description" content="linux下两台服务器数据库导入导出两台服务器环境均为lnmp(linux+nginx+mysql+php),今天一直想实现服务器A备份数据库test，并导入到服务器B中，传统的方法是通过linux共享实现的，具体可以参考linux服务器共享 我的解决办法充分利用lnmp环境，可以通过ip直接访问的特点，使用mysqldump备份A服务器数据库到网站根目录下，然后在服务器B中通过wget命令进行下">
+<meta name="twitter:image" content="http://www.caijinlin.com/assets/images/firewallPort.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-轻松实现多台服务器数据库备份" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/轻松实现多台服务器数据库备份/" class="article-date">
+  <time datetime="2014-12-18T00:00:00.000Z" itemprop="datePublished">2014-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      轻松实现多台服务器数据库备份
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="linux下两台服务器数据库导入导出"><a href="#linux下两台服务器数据库导入导出" class="headerlink" title="linux下两台服务器数据库导入导出"></a>linux下两台服务器数据库导入导出</h4><p>两台服务器环境均为lnmp(linux+nginx+mysql+php),今天一直想实现服务器A备份数据库test，并导入到服务器B中，传统的方法是通过linux共享实现的，具体可以参考<a href="http://www.2cto.com/os/201108/102000.html" target="_blank">linux服务器共享</a></p>
+<h4 id="我的解决办法"><a href="#我的解决办法" class="headerlink" title="我的解决办法"></a>我的解决办法</h4><p>充分利用lnmp环境，可以通过ip直接访问的特点，使用mysqldump备份A服务器数据库到网站根目录下，然后在服务器B中通过wget命令进行下载，最后使用mysql自带命令source导入B机数据库，其本质就是实现数据库同步。具体实现及常见问题解决办法如下：</p>
+<p>假设A机ip为192.168.12.1 ,B机为192.168.12.2,，假设数据库用户和密码均为root将A机数据库test导入到B机数据库test，使用<a href="http://pan.baidu.com/s/1eQ3qPf8" target="_blank">xshell软件</a>通过ssh协议连接两台linux服务器，方便操作.</p>
+<h4 id="备份A机数据库test"><a href="#备份A机数据库test" class="headerlink" title="备份A机数据库test"></a>备份A机数据库test</h4><pre><code>cd www  /*切换到网站根目录*/
+mysqldump -uroot -proot test &gt; test.sql
+</code></pre><h4 id="下载A机数据库test到B机"><a href="#下载A机数据库test到B机" class="headerlink" title="下载A机数据库test到B机"></a>下载A机数据库test到B机</h4><pre><code>wget -c http://192.168.12.1/test.sql
+</code></pre><p>注：如果192.168.12.1的80端口没有打开，可能会出现一下错误：</p>
+<pre><code>正在连接 192.168.12.1:80... 失败：没有到主机的路由
+</code></pre><p>排查错误：</p>
+<p>定位A机，查看防火墙80端口是否对外开放</p>
+<pre><code>/etc/init.d/iptables status  或者 service  iptables status;
+</code></pre><p>以下情形没有打开80端口，3306和22端口是开放的</p>
+<p><img src="/assets/images/firewallPort.png" alt="防火墙设置"></p>
+<p>这时需要自行进行防火墙设置，可以开启80端口</p>
+<pre><code>/sbin/iptables -I INPUT -p tcp --dport 80 -j ACCEPT 
+#/sbin/iptables -I INPUT -p tcp --dport 22 -j ACCEPT
+/etc/init.d/iptables save
+</code></pre><p>为了安全起见，我没有开启80端口，而是先关闭防火墙，让B机执行wget命令后，再开启防火墙</p>
+<pre><code>/etc/init.d/iptables stop   (A机操作)
+</code></pre><p>此时，在B机执行命令，就没有问题了，下载的文件在当前目录</p>
+<pre><code>wget -c http://192.168.12.1/test.sql
+</code></pre><p>再回到A机，重新开启防火墙</p>
+<pre><code>/etc/init.d/iptables restart 
+</code></pre><h4 id="导入数据库到B机"><a href="#导入数据库到B机" class="headerlink" title="导入数据库到B机"></a>导入数据库到B机</h4><p>在当前目录，登录到mysql后，使用source命令进行导入</p>
+<pre><code>mysql -uroot -proot;
+use test;
+source test.sql;
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/12/18/轻松实现多台服务器数据库备份/" data-id="cj6u9wwud00262o5p3r5k3qhj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/18/mysql主从复制配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          mysql主从复制配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/17/砸向自己的巨人坑/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">砸向自己的巨人坑</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

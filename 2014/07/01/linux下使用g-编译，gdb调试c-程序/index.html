@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>linux下使用g++编译，gdb调试c++程序 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="linux下编译调试c++程序都说不会调试的程序员不是好程序员，今天终于通过看相关博客，进社区，动手实践三大步骤，把linux下编译和调试c++程序过了一遍。本文主要写linux下使用Vim编辑器写c++程序，然后通过g++编译器对程序进行编译，最后用gdb调试工具进行调速，命令行式的调试，有助于学习并熟知linux环境下c++/c编程操作。 一般来说，GCC主要帮忙你完成一下四方面的功能： 1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux下使用g++编译，gdb调试c++程序">
+<meta property="og:url" content="http://www.caijinlin.com/2014/07/01/linux下使用g-编译，gdb调试c-程序/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="linux下编译调试c++程序都说不会调试的程序员不是好程序员，今天终于通过看相关博客，进社区，动手实践三大步骤，把linux下编译和调试c++程序过了一遍。本文主要写linux下使用Vim编辑器写c++程序，然后通过g++编译器对程序进行编译，最后用gdb调试工具进行调速，命令行式的调试，有助于学习并熟知linux环境下c++/c编程操作。 一般来说，GCC主要帮忙你完成一下四方面的功能： 1.">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/gdb.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/Reverseclass.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/gdbstart.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/gdblist.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/gdbbreak.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/gdbrun.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/gdbstep.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/gdbprint.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/gdbcontinue.png">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux下使用g++编译，gdb调试c++程序">
+<meta name="twitter:description" content="linux下编译调试c++程序都说不会调试的程序员不是好程序员，今天终于通过看相关博客，进社区，动手实践三大步骤，把linux下编译和调试c++程序过了一遍。本文主要写linux下使用Vim编辑器写c++程序，然后通过g++编译器对程序进行编译，最后用gdb调试工具进行调速，命令行式的调试，有助于学习并熟知linux环境下c++/c编程操作。 一般来说，GCC主要帮忙你完成一下四方面的功能： 1.">
+<meta name="twitter:image" content="http://www.caijinlin.com/assets/images/gdb.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-linux下使用g-编译，gdb调试c-程序" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/01/linux下使用g-编译，gdb调试c-程序/" class="article-date">
+  <time datetime="2014-07-01T00:00:00.000Z" itemprop="datePublished">2014-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      linux下使用g++编译，gdb调试c++程序
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="linux下编译调试c-程序"><a href="#linux下编译调试c-程序" class="headerlink" title="linux下编译调试c++程序"></a>linux下编译调试c++程序</h3><p>都说不会调试的程序员不是好程序员，今天终于通过看相关博客，进社区，动手实践三大步骤，把linux下编译和调试c++程序过了一遍。<br>本文主要写linux下使用Vim编辑器写c++程序，然后通过g++编译器对程序进行编译，最后用gdb调试工具进行调速，命令行式的调试，有助于学习并熟知linux环境下c++/c编程操作。</p>
+<p>一般来说，GCC主要帮忙你完成一下四方面的功能：</p>
+<pre><code>1.预处理
+2.编译
+3.汇编
+4.连接
+</code></pre><p>特点：支持多语言，多系统</p>
+<p>一般来说，GDB主要帮忙你完成下面四个方面的功能：</p>
+<pre><code>1、启动你的程序，可以按照你的自定义的要求随心所欲的运行程序。
+2、可让被调试的程序在你所指定的调置的断点处停住。（断点可以是条件表达式）
+3、当程序被停住时，可以检查此时你的程序中所发生的事。
+4、动态的改变你程序的执行环境。
+</code></pre><p>特点:命令行式的调试工具，非图形化操作</p>
+<p>编译c/c++程序命令:</p>
+<pre><code>gcc -o demo demo.c
+g++ -g -o demo demo.cpp
+</code></pre><p>gdb基本命令列表：</p>
+<p><img src="/assets/images/gdb.png" alt="蔡金林的博客之GDB命令"></p>
+<p>以我在leetcode(<a href="https://oj.leetcode.com/)上面AC的一道题目&quot;Reverse" target="_blank" rel="external">https://oj.leetcode.com/)上面AC的一道题目&quot;Reverse</a> Words in a String”来分析：</p>
+<p>1.使用vim编辑器编写c++程序</p>
+<p><img src="/assets/images/Reverseclass.png" alt="蔡金林的博客之反转字符串并去掉多余空格类"></p>
+<p>主函数main:</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;algorithm&gt;
+#include&lt;string&gt;
+int main()
+{
+     string inputstr;
+     getline(cin,inputstr);
+     Solution *s =  new Solution();
+     s-&gt;reverseWords(inputstr);
+     delete s;
+     cout&lt;&lt;inputstr&lt;&lt;endl;
+}
+</code></pre><p>2.gcc编译,生成可执行文件,注意必须使用-g参数，编译会加入调试信息否则无法执行文件</p>
+<pre><code>g++ -g -o demo demo.cpp
+</code></pre><p>3.gdb调试</p>
+<p><img src="/assets/images/gdbstart.png" alt="蔡金林的博客"></p>
+<p>3.1查看源文件 list 1,回车，直到显示完整程序</p>
+<p><img src="/assets/images/gdblist.png" alt="蔡金林的博客"></p>
+<p>3.2设置断点 break 8,在第8行设置断点，info break查看断点信息</p>
+<p><img src="/assets/images/gdbbreak.png" alt="蔡金林的博客"></p>
+<p>3.3调试运行 输入run 或者r </p>
+<p>进行程序的输入</p>
+<pre><code>the sky is   blue 
+</code></pre><p><img src="/assets/images/gdbrun.png" alt="蔡金林的博客"></p>
+<p>3.4单步调试，输入step 或者 s进入函数内部</p>
+<p><img src="/assets/images/gdbstep.png" alt="蔡金林的博客"></p>
+<p>3.5查看变量 输入print 变量 或者 p 变量</p>
+<p><img src="/assets/images/gdbprint.png" alt="蔡金林的博客"></p>
+<p>3.6继续运行直到下一个断点或主函数结束 输入continue或者 c</p>
+<p>程序结果</p>
+<pre><code>blue is sky the
+</code></pre><p><img src="/assets/images/gdbcontinue.png" alt="蔡金林的博客"></p>
+<p>3.7 退出调试 输入q</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/07/01/linux下使用g-编译，gdb调试c-程序/" data-id="cj6u9wwrv000l2o5pdn8laewp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/07/02/内部排序算法分析/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          内部排序算法分析
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/06/24/使用SVN部署网站到新浪SAE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">使用SVN部署网站到新浪SAE</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql主从复制配置 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="mysql主从配置步骤两台服务器的mysql版本一般规定为一致，这样可以避免一些乱七八糟的错误。建立基本的复制可以总结为一下三个简单步骤:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql主从复制配置">
+<meta property="og:url" content="http://www.caijinlin.com/2014/12/18/mysql主从复制配置/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="mysql主从配置步骤两台服务器的mysql版本一般规定为一致，这样可以避免一些乱七八糟的错误。建立基本的复制可以总结为一下三个简单步骤:">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql主从复制配置">
+<meta name="twitter:description" content="mysql主从配置步骤两台服务器的mysql版本一般规定为一致，这样可以避免一些乱七八糟的错误。建立基本的复制可以总结为一下三个简单步骤:">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mysql主从复制配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/mysql主从复制配置/" class="article-date">
+  <time datetime="2014-12-18T00:00:00.000Z" itemprop="datePublished">2014-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mysql主从复制配置
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="mysql主从配置步骤"><a href="#mysql主从配置步骤" class="headerlink" title="mysql主从配置步骤"></a>mysql主从配置步骤</h3><p>两台服务器的mysql版本一般规定为一致，这样可以避免一些乱七八糟的错误。<br>建立基本的复制可以总结为一下三个简单步骤:</p>
+<a id="more"></a>
+<pre><code>step1.配置一个服务器为Master;
+step2.配置一个服务器作为Slave;
+step3.将slave连接到Master;
+</code></pre><p>为更好阐述，假设Master服务器为192.168.12.1,Slave服务器为192.168.12.2</p>
+<h4 id="配置Master-在192-168-12-1机器上操作"><a href="#配置Master-在192-168-12-1机器上操作" class="headerlink" title="配置Master(在192.168.12.1机器上操作)"></a>配置Master(在192.168.12.1机器上操作)</h4><p>step1.添加配置选项(log-bi,log-bin-index,server-id)到mysql配置文件中 </p>
+<p>vi /etc/my.cnf</p>
+<pre><code>[mysqld]
+port            = 3306
+socket          = /tmp/mysql.sock
+datadir = /usr/local/mysql/var
+skip-external-locking
+key_buffer_size = 16M
+max_allowed_packet = 1M
+table_open_cache = 64
+sort_buffer_size = 512K
+net_buffer_length = 8K
+read_buffer_size = 256K
+read_rnd_buffer_size = 512K
+myisam_sort_buffer_size = 8M
+log-bin = master-bin
+log-bin-index = master-bin.index
+server-id = 1
+</code></pre><p>登陆到mysql后,命令show variables like ‘server%’可以看到服务器id是不是刚才写在配置文件的</p>
+<p>step2.在Master创建一个复制用户</p>
+<p>登陆到mysql后，执行以下命令(可自行设置新建用户名和密码)</p>
+<pre><code>GREATE USER repl_user;
+GRANT REPLICATION SLAVE ON *.* TO repl_user@&apos;192.168.12.2&apos; IDENTIFED BY &apos;123456&apos;;
+</code></pre><h4 id="配置Slave-在192-168-12-2机器上操作"><a href="#配置Slave-在192-168-12-2机器上操作" class="headerlink" title="配置Slave(在192.168.12.2机器上操作)"></a>配置Slave(在192.168.12.2机器上操作)</h4><p>step1.添加配置选项(relay-log-index,relay-log,server-id)到mysql配置文件中 ,server_id与Master不同</p>
+<p>vi /etc/my.cnf</p>
+<pre><code>[mysqld]
+port            = 3306
+socket          = /tmp/mysql.sock
+datadir = /usr/local/mysql/var
+skip-external-locking
+key_buffer_size = 16M
+max_allowed_packet = 1M
+table_open_cache = 64
+sort_buffer_size = 512K
+net_buffer_length = 8K
+read_buffer_size = 256K
+read_rnd_buffer_size = 512K
+myisam_sort_buffer_size = 8M
+server-id = 2
+relay-log-index = slave-relay-bin.index
+relay-log = slave-relay-bin
+</code></pre><h4 id="将slave连接到Master-在slave服务器192-168-12-2上操作"><a href="#将slave连接到Master-在slave服务器192-168-12-2上操作" class="headerlink" title="将slave连接到Master(在slave服务器192.168.12.2上操作)"></a>将slave连接到Master(在slave服务器192.168.12.2上操作)</h4><p>登陆到mysql后执行：(MASTER_USER和MASTER_PASSWORD为之前在MASTER上面创建的用户和密码)</p>
+<pre><code>CHANGE MASTER TO MASTER_HOST = &apos;192.168.12.1&apos;, MASTER_PORT = 3306, MASTER_USER = &apos;repl_user&apos;, MASTER_PASSWORD = &apos;123456&apos;；
+</code></pre><p>然后启动slave,检测是否配置成功</p>
+<pre><code>START SLAVE;
+SHOW SLAVE STAUS\G;
+</code></pre><p>如果显示结果中，其中两项为yes,则配置成功    </p>
+<pre><code>Slave_IO_Running: Yes
+Slave_SQL_Running: Yes
+</code></pre><h4 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h4><p>我在配置的时候，并没有一次性成功。当我启动slave后，发现</p>
+<pre><code>Slave_IO_Running: No
+Slave_SQL_Running: Yes
+</code></pre><p>即从服务器IO线程没有启动，报错：</p>
+<pre><code>Fatal error: The slave I/O thread stops because master and slave have equal MySQL server ids
+</code></pre><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>这应该是比较常见的错误了，我slave上，登陆到mysql,执行show variables like ‘server%’命令<br>发现从服务器的server_id 还是1，为什么没有改过来呢？</p>
+<pre><code>mysql&gt; show variables like &apos;server%&apos;;
+mysql&gt; find / -name &quot;my.cnf&quot;;
+</code></pre><p>发现当前目录下my.cnf有多处，可能是上一次安装残留文件</p>
+<p>针对此种情形,进行全局设置,并停止slave后，再启动</p>
+<pre><code>mysql&gt; set global server_id = 2;
+mysql&gt; stop slave;
+mysql&gt; start slave;
+mysql&gt; show slave status\G;
+</code></pre><p>此时问题解决，slave服务器Io和Sql线程均顺利启动</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><pre><code>此时在主服务器运行 netstat -antlp | grep 3306, 发现本机和从服务器192.168.12.2都在监听192.168.12.1，主从复制配置顺利完成。
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/12/18/mysql主从复制配置/" data-id="cj6u9wwse00132o5p8om7yuht" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/18/Sublime-JsFormat插件安装及使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Sublime JsFormat插件安装及使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/18/轻松实现多台服务器数据库备份/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">轻松实现多台服务器数据库备份</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>图论之最短路算法 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Dijkstra算法Dijkstra算法解决了有向加权图的最短路径问题，该算法的条件是该图所有边的权值非负，对于每条边(u,v) E，w(u,v)&amp;gt;=0。Dijkstra算法中设置了一结点集合S，从源结点s到集合S中结点的最终最短路径的权均已确定，即对所有结点v S，有d[v]= (s,v)。算法反复挑选出其最短路径估计为最小的结点u V-S，把u插入集合S中，并对离开u的所有边进行松弛。在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图论之最短路算法">
+<meta property="og:url" content="http://www.caijinlin.com/2014/06/21/图论之最短路算法/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="Dijkstra算法Dijkstra算法解决了有向加权图的最短路径问题，该算法的条件是该图所有边的权值非负，对于每条边(u,v) E，w(u,v)&amp;gt;=0。Dijkstra算法中设置了一结点集合S，从源结点s到集合S中结点的最终最短路径的权均已确定，即对所有结点v S，有d[v]= (s,v)。算法反复挑选出其最短路径估计为最小的结点u V-S，把u插入集合S中，并对离开u的所有边进行松弛。在">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/Djs.png">
+<meta property="og:image" content="http://www.caijinlin.com/assets/images/Ford.png">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="图论之最短路算法">
+<meta name="twitter:description" content="Dijkstra算法Dijkstra算法解决了有向加权图的最短路径问题，该算法的条件是该图所有边的权值非负，对于每条边(u,v) E，w(u,v)&amp;gt;=0。Dijkstra算法中设置了一结点集合S，从源结点s到集合S中结点的最终最短路径的权均已确定，即对所有结点v S，有d[v]= (s,v)。算法反复挑选出其最短路径估计为最小的结点u V-S，把u插入集合S中，并对离开u的所有边进行松弛。在">
+<meta name="twitter:image" content="http://www.caijinlin.com/assets/images/Djs.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-图论之最短路算法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/21/图论之最短路算法/" class="article-date">
+  <time datetime="2014-06-21T00:00:00.000Z" itemprop="datePublished">2014-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      图论之最短路算法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h3><p>Dijkstra算法解决了有向加权图的最短路径问题，该算法的条件是该图所有边的权值非负，对于每条边(u,v) E，w(u,v)&gt;=0。<br>Dijkstra算法中设置了一结点集合S，从源结点s到集合S中结点的最终最短路径的权均已确定，即对所有结点v S，有d[v]= (s,v)。<br>算法反复挑选出其最短路径估计为最小的结点u V-S，把u插入集合S中，并对离开u的所有边进行松弛。<br>在下列算法实现中设置了优先队列Q，该队列包含所有属于V-S的结点，且队列中各结点都有相应的d值。<br>Dijkstra算法如图所示对边进行松弛操作，最左结点为源结点，每个结点内为其最短路径估计。</p>
+<p><img src="/assets/images/Djs.png" alt="邻接表"></p>
+<p>因为Dijkstra算法总是在集合V-S中选择“最轻”或“最近”的结点插入集合S中，因此我们说它使用了贪心策略。需要指出的是，贪心策略并非总能获得全局意义上的最理想结果。但Dijkstra算法确实计算出了最短路径。</p>
+<h3 id="Bellman—Ford算法"><a href="#Bellman—Ford算法" class="headerlink" title="Bellman—Ford算法"></a>Bellman—Ford算法</h3><p>Bellman-Ford算法能在更一般的情况下解决单源点最短路径问题，在该算法下边的权可以为负。正如Dijkstra算法一样，Bellman-Ford算法运用了松弛技术，对每一结点vV，逐步减小从源s到v的最短路径的估计值d[v]直至其达到实际最短路径的权(s,v)，如果图中存在负权回路，算法将会报告最短路不存在。</p>
+<p>源结点为z。每个结点内为该结点的d值，阴影覆盖的边说明了值。在该实例中，Bellman-Ford算法返回TRUE。在进行了通常的初始化后，算法对图的边执行|V|-1次操作。每次均为第2-4行For循环的一次迭代，在迭代过程中对图的每条边松弛一次，图(b)-(c)说明了全部四次操作的每一次后算法的状态,在进行完|V|-1次操作后,算法5-8行检查是否存在负权的回路并返回正确的布尔值。</p>
+<p>Bellman-Ford算法的运行时间为O(VE)。因为第1行的初始化占用时间为O(V)，第2-4行对边进行的|V|-1次操作的每一次运行时间为O(E)，第5-7行的For循环的运行时间为O(E)。</p>
+<p><img src="/assets/images/Ford.png" alt="邻接表"></p>
+<p>Bellman-Ford算法的思想基于以下事实：“两点间如果有最短路，那么每个结点最多经过一次。也就是说，这条路不超过n-1条边。”（如果一个结点经过了两次，那么我们走了一个圈。如果这个圈的权为正，显然不划算；如果是负圈，那么最短路不存在；如果是零圈，去掉不影响最优值）</p>
+<h3 id="SPFA算法"><a href="#SPFA算法" class="headerlink" title="SPFA算法"></a>SPFA算法</h3><p>求单源最短路的SPFA算法的全称是：Shortest Path Faster Algorithm。<br>从名字我们就可以看出，这种算法在效率上一定有过人之处。</p>
+<p>很多时候，给定的图存在负权边，这时类似Dijkstra等算法便没有了用武之地，而Bellman-Ford算法的复杂度又过高，SPFA算法便派上用场了。</p>
+<p>简洁起见，我们约定有向加权图G不存在负权回路，即最短路径一定存在。当然，我们可以在执行该算法前做一次拓扑排序，以判断是否存在负权回路。</p>
+<p>和上文一样，我们用数组d记录每个结点的最短路径估计值，而且用邻接表来存储图G。我们采取的方法是动态逼近法：设立一个先进先出的队列用来保存待优化的结点，优化时每次取出队首结点u，并且用u点当前的最短路径估计值对离开u点所指向的结点v进行松弛操作，如果v点的最短路径估计值有所调整，且v点不在当前的队列中，就将v点放入队尾。这样不断从队<br>列为空。</p>
+<h3 id="案例分析"><a href="#案例分析" class="headerlink" title="案例分析"></a>案例分析</h3><p>畅通工程续 SPFA||dijkstra||floyd</p>
+<p>题目链接：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=1874" target="_blank" rel="external">http://acm.hdu.edu.cn/showproblem.php?pid=1874</a></p>
+<p>Dijkstra算法实现c++代码</p>
+<pre><code>#include &lt;iostream&gt;
+#include&lt;memory.h&gt;
+using namespace std;
+#define MAX 200
+#define INF 1000000
+int map[MAX][MAX];
+int dist[MAX];
+int visit[MAX];
+int n,m;
+void dfs(int s)
+{
+   int vexnum=s;
+    int i,j;
+    memset(visit,0,sizeof(visit));
+    dist[vexnum]=0;
+    visit[vexnum]=1;
+    for(i=0;i&lt;n;i++)
+    {
+       for(j=0;j&lt;n;j++)
+       {
+          if(!visit[j]&amp;&amp;dist[j]&gt;(dist[vexnum]+map[vexnum][j]))
+          {
+             dist[j]=dist[vexnum]+map[vexnum][j];
+          }
+     }
+     int min=INF;
+     for(j=0;j&lt;n;j++)
+     {
+         if(!visit[j]&amp;&amp;dist[j]&lt;min)
+         {
+             min=dist[vexnum=j];
+         }
+     }
+     visit[vexnum]=1;
+   }
+}
+int main()
+{
+  int i,j;
+  int a,b,x;
+  int s,t;
+  while(cin&gt;&gt;n&gt;&gt;m)
+  {
+    for(i=0;i&lt;n;i++)
+    {
+        dist[i]=INF;
+        for(int j=0;j&lt;n;j++)
+            map[i][j]=INF;
+    }
+    for(i=0;i&lt;m;i++)
+    {
+        cin&gt;&gt;a&gt;&gt;b&gt;&gt;x;
+        if(map[a][b]&gt;x)
+        {
+            map[a][b]=map[b][a]=x;
+        }
+    }
+    cin&gt;&gt;s&gt;&gt;t;
+    dfs(s);
+    if(dist[t]!=INF)
+    {
+        cout&lt;&lt;dist[t]&lt;&lt;endl;
+    }
+    else
+    {
+        cout&lt;&lt;&quot;-1&quot;&lt;&lt;endl;
+    }
+ }
+return 0;
+}
+</code></pre><h3 id="案例分析：Wormholes"><a href="#案例分析：Wormholes" class="headerlink" title="案例分析：Wormholes"></a>案例分析：Wormholes</h3><p>题目链接<a href="http://poj.org/problem?id=3259" target="_blank" rel="external">http://poj.org/problem?id=3259</a></p>
+<p>SPFA算法+邻接表实现版本：</p>
+<pre><code>#include&lt;iostream&gt;
+#include&lt;stdio.h&gt;
+using namespace std;
+struct node
+{
+  int u,v,w;
+}edge[6000];
+int dis[505];
+int n,m,w,index;
+const int inf=0x7ffffff;
+void add(int u,int v,int c)
+{
+    index++;
+    edge[index].u=u;
+    edge[index].v=v;
+    edge[index].w=c;
+}
+bool bellman()
+{
+  int u,v,w,i,j,flag;
+  for(i=1;i&lt;=n;i++)
+  {
+      dis[i]=inf;
+  }
+  dis[1]=0;flag=0;
+  for(i=1;i&lt;=n;i++)
+  {
+    for(j=1;j&lt;=index;j++)
+    {
+        if(dis[edge[j].v]&gt;dis[edge[j].u]+edge[j].w)
+        {
+          dis[edge[j].v]=dis[edge[j].u]+edge[j].w;
+        }
+   }
+  }
+  for(i=1;i&lt;=index;i++)
+      if(dis[edge[i].v]&gt;dis[edge[i].u]+edge[i].w) return true;
+  return false;
+  }
+int main()
+{
+    int i,j,t,u,v,c;
+    scanf(&quot;%d&quot;,&amp;t);
+    while(t--)
+    {
+       scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;w);
+      index=0;
+      for(i=0;i&lt;m;i++)
+      {
+        scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;c);
+        add(u,v,c);
+        add(v,u,c);
+      }
+      for(i=0;i&lt;w;i++)
+      {
+        scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;c);
+        add(u,v,-1*c);
+      }
+      if(bellman()) printf(&quot;YES\n&quot;);
+          else printf(&quot;NO\n&quot;);
+      }
+      return 0;
+}
+</code></pre><h3 id="SPFA算法-队列实现版本："><a href="#SPFA算法-队列实现版本：" class="headerlink" title="SPFA算法+队列实现版本："></a>SPFA算法+队列实现版本：</h3><pre><code>#include&lt;cstdio&gt;
+#include&lt;string&gt;
+#include&lt;queue&gt;
+using namespace std;
+const int INF=9999999;
+const int MAXN=520;
+const int MAXM=5200;
+struct edge
+{
+  int to;
+  int val;
+  int next;
+}e[MAXM];
+int len,head[MAXN];
+int dis[MAXN];
+int n,m,w;
+bool SPFA()
+{
+    for(int i=1;i&lt;=n;i++)
+    dis[i]=INF;
+    bool vis[MAXN]={0};
+    int cnt[MAXN]={0};
+    int cur=1;
+    queue&lt;int&gt; q;
+    q.push(cur);
+    vis[cur]=true;
+    cnt[cur]=1;
+    dis[cur]=0;
+    while(!q.empty())  
+    {
+       cur=q.front();
+        q.pop();
+        vis[cur]=false;
+        for(int i=head[cur]  ;i!=-1; i=e[i].next)
+        {
+            int id=e[i].to;
+            if( dis[cur] + e[i].val &lt; dis[ id ] )
+            {
+              dis[ id ] = dis[cur] + e[ i ].val;
+              if(!vis[id])
+              {
+                cnt[id]++;
+                vis[id]=true;
+                q.push(id);
+                if(cnt[cur]&gt;n)
+                return true;
+              }
+            }
+        }
+    }
+    return false;
+}
+void add(int from,int to,int val)
+{
+  e[len].to=to;
+  e[len].val=val;
+  e[len].next= head[from];
+  head[from]=len++;
+}
+int main()
+{
+  int T;
+  scanf(&quot;%d&quot;,&amp;T);
+  while(T--)
+  {
+    memset(head,-1,sizeof(head));
+    len=0;
+    scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;w);
+    for(int i=0;i&lt;m;i++)
+    {
+      int from,to,val;
+      scanf(&quot;%d%d%d&quot;,&amp;from,&amp;to,&amp;val);
+      add(from,to,val);
+      add(to,from,val); //双向的
+    }
+    for(int i=0;i&lt;w;i++)
+    {
+      int from,to,val;
+      scanf(&quot;%d%d%d&quot;,&amp;from,&amp;to,&amp;val);
+      add(from,to,-val);
+    }
+    if( SPFA())
+      puts(&quot;YES&quot;);
+    else
+      puts(&quot;NO&quot;);
+  }
+  return 0;
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/06/21/图论之最短路算法/" data-id="cj6u9wwtn001t2o5p8n33aro7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/06/22/php-shell实现多线程demo/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          php+shell实现多线程demo
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/06/20/图的遍历算法———BFS和DFS算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">图的遍历算法———BFS和DFS算法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

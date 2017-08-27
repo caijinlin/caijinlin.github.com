@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>五子棋c语言算法实现 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="五子棋五子棋是一种两人对弈的纯策略型汉族棋类益智游戏，棋具与围棋通用，由中国古代汉族人发明，起源于中国上古时代的传统黑白棋种之一。主要流行于华人和汉字文化圈的国家以及欧美一些地区。容易上手，老少皆宜，而且趣味横生，引人入胜">
+<meta property="og:type" content="article">
+<meta property="og:title" content="五子棋c语言算法实现">
+<meta property="og:url" content="http://www.caijinlin.com/2014/08/12/五子棋c语言算法实现/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="五子棋五子棋是一种两人对弈的纯策略型汉族棋类益智游戏，棋具与围棋通用，由中国古代汉族人发明，起源于中国上古时代的传统黑白棋种之一。主要流行于华人和汉字文化圈的国家以及欧美一些地区。容易上手，老少皆宜，而且趣味横生，引人入胜">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="五子棋c语言算法实现">
+<meta name="twitter:description" content="五子棋五子棋是一种两人对弈的纯策略型汉族棋类益智游戏，棋具与围棋通用，由中国古代汉族人发明，起源于中国上古时代的传统黑白棋种之一。主要流行于华人和汉字文化圈的国家以及欧美一些地区。容易上手，老少皆宜，而且趣味横生，引人入胜">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-五子棋c语言算法实现" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/08/12/五子棋c语言算法实现/" class="article-date">
+  <time datetime="2014-08-12T00:00:00.000Z" itemprop="datePublished">2014-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      五子棋c语言算法实现
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="五子棋"><a href="#五子棋" class="headerlink" title="五子棋"></a>五子棋</h4><p>五子棋是一种两人对弈的纯策略型汉族棋类益智游戏，棋具与围棋通用，由中国古代汉族人发明，起源于中国上古时代的传统黑白棋种之一。主要流行于华人和汉字文化圈的国家以及欧美一些地区。容易上手，老少皆宜，而且趣味横生，引人入胜</p>
+<a id="more"></a>
+<p>判断输赢：以某一点为中心向四周4个方向判断，连续数达到5个即取胜</p>
+<p>源代码实现c算法版：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;memory.h&gt;
+#define size 10 //棋盘大小
+char map[size][size]= {};
+int row = 0,col = 0;
+/*初始化棋盘数组*/
+void init()
+{
+    memset(map,&apos; &apos;,sizeof(map));
+}
+/*显示棋盘*/
+void showmap()
+{
+    int loop=0,row=0,col=0;
+    for(loop=0;loop&lt;size;loop++)
+    {
+        printf(&quot;%4d&quot;,loop+1);
+    }
+    printf(&quot;\n&quot;);
+    for(row=0;row&lt;size;row++)
+    {
+        printf(&quot;  &quot;);
+        for(loop=0;loop&lt;size;loop++)
+        {
+            printf(&quot;---+&quot;);
+        }
+        printf(&quot;\n&quot;);
+        printf(&quot;%2d|&quot;,row+1);
+        for(col=0;col&lt;size;col++)
+        {
+            printf(&quot;%c | &quot;,map[row][col]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    printf(&quot;  &quot;);
+    for(loop=0;loop&lt;size;loop++)
+    {
+        printf(&quot;---+&quot;);
+    }
+    printf(&quot;\n&quot;);
+}
+/*判断输赢,胜利则返回玩胜利玩家*/
+char judge(int x, int y, char player)
+{
+int count=0;//记录是否组成五子棋
+
+/*东北和西南方向判断开始*/
+/*向右上45度(东北方向)判断*/
+row = x-1;
+col = y+1;
+while((row&gt;=0)&amp;&amp;(col&lt;=size-1))
+{
+    if(map[row][col]==player)
+    {
+        count++;
+    }
+    else
+    {
+        break;
+    }
+    row--;
+    col++;
+}
+/*向左下45度(西南方向)判断*/
+row = x+1;
+col = y-1;
+while((row&lt;=size-1)&amp;&amp;(col&gt;=0))
+{
+    if(map[row][col]==player)
+    {
+        count++;
+    }
+    else
+    {
+        break;
+    }
+    row++;
+    col--;
+}
+if(count+1==5)
+{
+    return player;
+}
+/*东北和西南方向判断结束*/
+
+/*西北和东南方向方向判断开始*/
+/*向左上45度(西北方向)判断*/
+count = 0;
+row = x-1;
+col = y-1;
+while((row&gt;=0)&amp;&amp;(col&gt;=0))
+{
+    if(map[row][col]==player)
+    {
+        count++;
+    }
+    else
+    {
+        break;
+    }
+    row--;
+    col--;
+}
+/*向右下45度(东南方向)判断*/
+row = x+1;
+col = y+1;
+while((row&lt;=size-1)&amp;&amp;(col&lt;=size-1))
+{
+    if(map[row][col]==player)
+    {
+        count++;
+    }
+    else
+    {
+        break;
+    }
+    row++;
+    col++;
+}
+if(count+1==5)
+{
+    return player;
+}
+/*西北和东南方向判断结束*/
+
+/*竖直方向方向判断开始*/
+/*竖直向上判断*/
+count = 0;
+row = x-1;
+col = y;
+while((row&gt;=0))
+{
+    if(map[row][col]==player)
+    {
+        count++;
+    }
+    else
+    {
+        break;
+    }
+    row--;
+}
+/*竖直向下判断*/
+row = x+1;
+col = y;
+while((row&lt;=size-1))
+{
+    if(map[row][col]==player)
+    {
+        count++;
+    }
+    else
+    {
+        break;
+    }
+    row++;
+}
+if(count+1==5)
+{
+    return player;
+}
+/*竖直方向判断结束*/
+
+/*水平方向判断*/
+/*水平向左判读*/
+count = 0;
+row = x;
+col = y-1;
+while(col&gt;=0)
+{
+    if(map[row][col]==player)
+    {
+        count++;
+    }
+    else
+    {
+        break;
+    }
+    col--;
+}
+/*水平向右判断*/
+row = x;
+col = y+1;
+while((col&lt;=size-1))
+{
+    if(map[row][col]==player)
+    {
+        count++;
+    }
+    else
+    {
+        break;
+    }
+    col++;
+}
+if(count+1==5)
+{
+    return player;
+}
+/*水平方向判断结束*/
+return &apos;0&apos;;//没有形成五子棋时
+}
+/*下棋*/
+void chess()
+{
+char player = &apos;A&apos;;//玩家
+char winner = &apos;0&apos;;//赢家
+while(winner==&apos;0&apos;)
+{
+do
+{
+     printf(&quot;玩家%c要下棋的位置坐标:&quot;,player);
+     scanf(&quot;%d,%d&quot;,&amp;row,&amp;col);
+     printf(&quot;坐标为:%d,%d\n&quot;,row,col);
+     printf(&quot;%s&quot;,(map[row-1][col-1]!=&apos; &apos;)?&quot;输入无效,请重新输入\n&quot;:&quot;输入正确\n&quot;);
+}while(map[row-1][col-1]!=&apos; &apos;);
+map[row-1][col-1]=player;
+showmap();
+winner = judge(row-1,col-1,player);//玩家下棋后，马上进行判断输赢
+player = (player==&apos;A&apos;)?&apos;B&apos;:&apos;A&apos;;//切换玩家
+}
+printf(&quot;游戏结束，玩家%c赢\n&quot;,winner);
+}
+int main()
+{
+init();     /*初始化棋盘位置元素值*/
+showmap(); /*第一次显示棋盘*/
+chess();  /*开始下棋*/
+
+}
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/08/12/五子棋c语言算法实现/" data-id="cj6u9wwtf001o2o5pmrlygi2s" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/08/13/2048游戏c语言算法实现/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          2048游戏c语言算法实现
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/08/11/我的数模之路/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">我的数模之路</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

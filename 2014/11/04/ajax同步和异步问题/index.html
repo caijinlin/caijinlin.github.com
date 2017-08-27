@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ajax同步和异步问题 | Caspar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ajax同步和异步问题 今天在写写js代码的时候遇到AJAX加载数据都需要考虑代码运行顺序问题。最近的项目用了到AJAX同步。这个同步的意思是当JS代码加载到当前AJAX的时候会把页面里所有的代码停止加载，当这个AJAX执行完毕后才会继续运行ajax后面的其他代码（相当于单线程，代码顺序执行），页面假死状态解除。  而异步则这个AJAX代码运行中的时候，ajax后面其他代码一样可以同时运行，相当于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax同步和异步问题">
+<meta property="og:url" content="http://www.caijinlin.com/2014/11/04/ajax同步和异步问题/index.html">
+<meta property="og:site_name" content="Caspar">
+<meta property="og:description" content="ajax同步和异步问题 今天在写写js代码的时候遇到AJAX加载数据都需要考虑代码运行顺序问题。最近的项目用了到AJAX同步。这个同步的意思是当JS代码加载到当前AJAX的时候会把页面里所有的代码停止加载，当这个AJAX执行完毕后才会继续运行ajax后面的其他代码（相当于单线程，代码顺序执行），页面假死状态解除。  而异步则这个AJAX代码运行中的时候，ajax后面其他代码一样可以同时运行，相当于">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-08-26T15:38:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax同步和异步问题">
+<meta name="twitter:description" content="ajax同步和异步问题 今天在写写js代码的时候遇到AJAX加载数据都需要考虑代码运行顺序问题。最近的项目用了到AJAX同步。这个同步的意思是当JS代码加载到当前AJAX的时候会把页面里所有的代码停止加载，当这个AJAX执行完毕后才会继续运行ajax后面的其他代码（相当于单线程，代码顺序执行），页面假死状态解除。  而异步则这个AJAX代码运行中的时候，ajax后面其他代码一样可以同时运行，相当于">
+  
+    <link rel="alternate" href="/atom.xml" title="Caspar" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  
+<!--     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css" -->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Caspar</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Walk step by step</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/about">About</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.caijinlin.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ajax同步和异步问题" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/11/04/ajax同步和异步问题/" class="article-date">
+  <time datetime="2014-11-04T00:00:00.000Z" itemprop="datePublished">2014-11-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ajax同步和异步问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>ajax同步和异步问题</p>
+<p>今天在写写js代码的时候遇到AJAX加载数据都需要考虑代码运行顺序问题。最近的项目用了到AJAX同步。这个同步的意思是当JS代码加载到当前AJAX的时候会把页面里所有的代码停止加载，当这个AJAX执行完毕后才会继续运行ajax后面的其他代码（相当于单线程，代码顺序执行），页面假死状态解除。 </p>
+<p>而异步则这个AJAX代码运行中的时候，ajax后面其他代码一样可以同时运行，相当于多线程（线程之间同步执行，线程内部顺序执行）。 </p>
+<p>jquery的async:false,这个属性 默认是true：异步，false：同步。</p>
+<pre><code>$.ajax({ 
+      type: &quot;post&quot;, 
+      url: &quot;path&quot;, 
+      cache:false, 
+      async:false, 
+      dataType: &quot;json&quot;, 
+      success: function(data){ } 
+});
+</code></pre><p>在这里，async默认的设置值为true，这种情况为异步方式，就是说当ajax发送请求后，在等待server端返回的这个过程中，前台会继续 执行ajax块后面的脚本，直到server端返回正确的结果才会去执行success，也就是说这时候执行的是两个线程，ajax块发出请求后一个线程 和ajax块后面的脚本（另一个线程）例：</p>
+<pre><code>$.ajax({  
+  type:&quot;POST&quot;, 
+  url:&quot;del.aspx&quot;, 
+  dataType:&quot;html&quot;, 
+  success:function(result){   //function1()
+  f1(); 
+  f2(); 
+  }
+  failure:function (result) { 
+    alert(&apos;Failed&apos;);  
+  },
+} 
+function2(); 
+</code></pre><p>在上例中，当ajax块发出请求后，他将停留function1()等待server端的返回，但同时（在这个等待过程中），前台会去执行function2(),也就是说，在这个时候出现两个线程，我们这里暂且说为function1() 和function2()。</p>
+<p>当把asyn设为false时，这时ajax的请求时同步的，也就是说，这个时候ajax块发出请求后，他会等待在function1（）这个地方，不会去执行function2()，知道function1()部分执行完毕        </p>
+<h4 id="总结-如果ajax块请求对后面代码无影响时，可用异步；如果ajax块请求对后面代码有影响，或者存在数据交换，可用同步"><a href="#总结-如果ajax块请求对后面代码无影响时，可用异步；如果ajax块请求对后面代码有影响，或者存在数据交换，可用同步" class="headerlink" title="总结:如果ajax块请求对后面代码无影响时，可用异步；如果ajax块请求对后面代码有影响，或者存在数据交换，可用同步"></a>总结:如果ajax块请求对后面代码无影响时，可用异步；如果ajax块请求对后面代码有影响，或者存在数据交换，可用同步</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/11/04/ajax同步和异步问题/" data-id="cj6u9wwrc00082o5pvolvflzj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/11/Sublime函数跳转插件Ctags安装及使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Sublime函数跳转插件Ctags安装及使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/10/31/TargetInvocationException异常/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">TargetInvocationException异常</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/algorithm/">algorithm</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jekyll/">jekyll</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/algorithm/" style="font-size: 20px;">algorithm</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/jekyll/" style="font-size: 10px;">jekyll</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/php/" style="font-size: 10px;">php</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
+          </li>
+        
+          <li>
+            <a href="/2017/05/31/laravel-eloquent-query-use-index/">laravel-eloquent-query-use-index</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/07/migrate-jekyll-to-hexo/">迁移jekyll到hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Caspar<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
