@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.caijinlin.com/"/>
-  <updated>2017-08-27T05:15:05.000Z</updated>
+  <updated>2017-06-05T13:40:17.000Z</updated>
   <id>http://www.caijinlin.com/</id>
   
   <author>
@@ -15,20 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Mac-hotkey</title>
-    <link href="http://www.caijinlin.com/2017/08/27/Mac-hotkey/"/>
-    <id>http://www.caijinlin.com/2017/08/27/Mac-hotkey/</id>
-    <published>2017-08-27T05:15:05.000Z</published>
-    <updated>2017-08-27T05:15:05.000Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-  </entry>
   
   <entry>
     <title>mysql-optimization</title>
@@ -450,6 +436,31 @@ $/
     
     </summary>
     
+    
+  </entry>
+  
+  <entry>
+    <title>贪心算法</title>
+    <link href="http://www.caijinlin.com/2015/03/07/algorithm-greedy/"/>
+    <id>http://www.caijinlin.com/2015/03/07/algorithm-greedy/</id>
+    <published>2015-03-07T14:01:34.000Z</published>
+    <updated>2017-08-26T15:38:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="贪心算法（自顶向下，局部最优）"><a href="#贪心算法（自顶向下，局部最优）" class="headerlink" title="贪心算法（自顶向下，局部最优）"></a>贪心算法（自顶向下，局部最优）</h3><p>贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。</p><h4 id="贪心算法的基本思想"><a href="#贪心算法的基本思想" class="headerlink" title="贪心算法的基本思想"></a>贪心算法的基本思想</h4><p>找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。</p><h4 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h4><pre><code>1.整体的最优解可以通过局部的最优解来求出；2.一个整体能够被分为多个局部，并且这些局部都能够求出最优解。</code></pre><p>使用贪心算法当中的两个典型问题是活动安排问题和背包问题。</p><h4 id="贪心算法的基本步骤"><a href="#贪心算法的基本步骤" class="headerlink" title="贪心算法的基本步骤"></a>贪心算法的基本步骤</h4><pre><code>1、从问题的某个初始解出发。2、采用循环语句，当可以向求解目标前进一步时，就根据局部最优策略，得到一个部分解，缩小问题的范围或规模。3、将所有部分解综合起来，得到问题的最终解。</code></pre><h4 id="经典案例-活动安排问题-背包等"><a href="#经典案例-活动安排问题-背包等" class="headerlink" title="经典案例:活动安排问题,背包等"></a>经典案例:活动安排问题,背包等</h4><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/backpack.png-scale600" alt="背包问题"></p><h4 id="案例分析-平衡负载"><a href="#案例分析-平衡负载" class="headerlink" title="案例分析:平衡负载"></a>案例分析:平衡负载</h4><p>2013年百度之星区域赛中的第一题”平衡负载”，主要就利用贪心进行分段，在我们理工的acm平台上有这道题，闲着也是闲着，贴出这道题自己的c++版本code。</p><p>平衡负载</p><p>Du熊正在负责一个大型的项目，目前有K台服务器，有N个任务需要用这K台服务器来完成，所以要把这些任务分成K个部分来完成，在同上台服务器上执行的任务必须是连续的任务，每个任务有各自需要的执行时间。<br>例如N=5,K=2，每个任务需要时间分别为5,3,1,4,7分钟，那么我们可以分成(5)(3 1 4 7)两部分，这样第一台服务器所花时间就是5分钟，而第二台机器需要花15分钟，当然，所有任务完成的时间是按最迟完成的那台服务器的时间，即这样划分的话完成所有任务所需要的时间就是15分钟。而另外一种划分方法是(5 3 1)(4 7)，这种划分方案完成所有任务的时间就是11分钟，也是最优的一种划分方案。<br>现在你的任务就是根据给定的N,K和每个任务要花费的时间，找出使完成所有任务时间最短的方案。</p><p>输入：多组输入。</p><p>第一行输入N和K（1&lt;=K&lt;=N&lt;=10000）。</p><p>第二行输入N个不大于1000的正整数，表示各个任要花费的时间。N=K=0表示输入结束。</p><p>输出：</p><p>每行输出一个整数，对应对于每个数据（除了N=K=0不用输出）。</p><p>样例输入：</p><pre><code>5 15 3 1 4 75 25 3 1 4 75 3</code></pre><h4 id="算法实现code"><a href="#算法实现code" class="headerlink" title="算法实现code"></a>算法实现code</h4><pre><code>#include&lt;stdio.h&gt;#include&lt;iostream&gt;using namespace std;int a[10005];bool check(int a[], int k,int m, int n) //数组，分k段,用来分段的m值,数组个数（检测m值是否可以将数组分为k段）{    int i,sum=0,count=0;    for(i=0;i&lt;n;i++)    {        sum+=a[i];//前i项求和        if(sum&gt;m) //若超过m值，则前i-1项分为一段,重新寻求下一段，同时段数加1        {            sum=a[i];            count++;        }    }    count++;//加上最后一段    return count&lt;=k;}int main(){    int i=0,j=0,n,k,l,r,mid=0;    while(cin&gt;&gt;n&gt;&gt;k&amp;&amp;n!=0&amp;&amp;k!=0)    {       l=0;//最左边       r=0;//最右边       for(i=0;i&lt;n;i++)       {           cin&gt;&gt;a[i];           r+=a[i];       }       while(l&lt;r)       {           mid=(l+r)/2;           if(check(a,k,mid,n)) //m值分段数小于k，则要分段的m值应该减少，承受的项的个数更少，段数增加           {              r=mid;           }           else //m值分段数大于k，则要分段的m值应该增加，可承受更多项的和，段数减少           {              l=mid+1;           }       }       printf(&quot;%d\n&quot;,l);//输出时间    }    return 0;}</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;贪心算法（自顶向下，局部最优）&quot;&gt;&lt;a href=&quot;#贪心算法（自顶向下，局部最优）&quot; class=&quot;headerlink&quot; title=&quot;贪心算法（自顶向下，局部最优）&quot;&gt;&lt;/a&gt;贪心算法（自顶向下，局部最优）&lt;/h3&gt;&lt;p&gt;贪心算法（又称贪婪算法）：在对问题求
+      
+    
+    </summary>
+    
+      <category term="algorithm" scheme="http://www.caijinlin.com/categories/algorithm/"/>
+    
+    
+      <category term="algorithm" scheme="http://www.caijinlin.com/tags/algorithm/"/>
     
   </entry>
   

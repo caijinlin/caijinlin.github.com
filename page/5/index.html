@@ -68,68 +68,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-快速排序代码总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/08/17/快速排序代码总结/" class="article-date">
-  <time datetime="2014-08-17T00:00:00.000Z" itemprop="datePublished">2014-08-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/08/17/快速排序代码总结/">快速排序代码总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="段错误"><a href="#段错误" class="headerlink" title="段错误"></a>段错误</h3><h4 id="段错误一般表现为段吐核，随着程序的运行，如果边界考虑不全，非法引用了无效成员等，会导致此种情况"><a href="#段错误一般表现为段吐核，随着程序的运行，如果边界考虑不全，非法引用了无效成员等，会导致此种情况" class="headerlink" title="段错误一般表现为段吐核，随着程序的运行，如果边界考虑不全，非法引用了无效成员等，会导致此种情况"></a>段错误一般表现为段吐核，随着程序的运行，如果边界考虑不全，非法引用了无效成员等，会导致此种情况</h4><pre><code>/*段吐核问题解决演示*/
-#include &lt;stdio.h&gt;
-
-typedef struct stu
-{
-    int age;
-    char sex;
-}STU;
-
-int main()
-{
-    STU *stu1=NULL;
-    printf(&quot;%d\n&quot;,stu1-&gt;age);
-    return 0;
-}
-</code></pre><p><img src="/assets/images/error.png" alt="蔡金林的博客"></p>
-<p>####解决方法</p>
-<pre><code>1.ulimit -c unlimited  (解除生成核心转储信息文件的大小限制)
-
-2.gcc test.c -g (加入-g选项生成调试信息)
-
-3. ./a.out(有段错误，就会出现core文件)
-
-4.gdb ./a.out -c core (gdb调试)
-
-5.在gdb调试命令行下输入bt(back trace),它会显示出现错误的地方
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/08/17/快速排序代码总结/" data-id="cje9bl4my001zxq5prrc6ej1y" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-快速找到段错误的core方法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/08/15/快速找到段错误的core方法/" class="article-date">
@@ -161,7 +99,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/08/15/快速找到段错误的core方法/" data-id="cje9bl4mx001yxq5pzuh4tncg" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/08/15/快速找到段错误的core方法/" data-id="cje9bovkq001x5y5p7swqhw3f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -198,7 +136,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/08/14/计算机内存分配方式/" data-id="cje9bl4n90026xq5p49ex7a6z" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/08/14/计算机内存分配方式/" data-id="cje9bovl100255y5pw5x3s46p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -239,7 +177,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/08/13/2048游戏c语言算法实现/" data-id="cje9bl4jw0007xq5p123goqso" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/08/13/2048游戏c语言算法实现/" data-id="cje9bovi6000a5y5pkw16hfxo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -280,7 +218,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/08/12/五子棋c语言算法实现/" data-id="cje9bl4ml001pxq5pwo4ww705" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/08/12/五子棋c语言算法实现/" data-id="cje9bovkf001o5y5pqag7ffrd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -327,7 +265,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/08/11/我的数模之路/" data-id="cje9bl4n00021xq5pbo2a8mjy" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/08/11/我的数模之路/" data-id="cje9bovku00205y5pyias33mg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -502,7 +440,7 @@ void mergeSort(int *a, int start,int end)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/07/02/内部排序算法分析/" data-id="cje9bl4mo001rxq5p38z63xeq" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/07/02/内部排序算法分析/" data-id="cje9bovki001r5y5p1zrq0vue" class="article-share-link">Share</a>
       
       
     </footer>
@@ -593,7 +531,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/07/01/linux下使用g-编译，gdb调试c-程序/" data-id="cje9bl4le000nxq5ppirj20ql" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/07/01/linux下使用g-编译，gdb调试c-程序/" data-id="cje9bovj1000d5y5pvzhlz18g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -643,7 +581,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/06/24/使用SVN部署网站到新浪SAE/" data-id="cje9bl4mn001qxq5p7nmzrx1x" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/06/24/使用SVN部署网站到新浪SAE/" data-id="cje9bovkg001p5y5p4ls3tat7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -684,9 +622,57 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/06/23/PHP实现多线程抓取网页/" data-id="cje9bl4ji0003xq5pucf9mrpg" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/06/23/PHP实现多线程抓取网页/" data-id="cje9bovh900015y5p88gkmyad" class="article-share-link">Share</a>
       
       
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-php多线程" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/06/23/php多线程/" class="article-date">
+  <time datetime="2014-06-23T00:00:00.000Z" itemprop="datePublished">2014-06-23</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/技术/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/06/23/php多线程/">php实现多线程抓取网页</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="php"><a href="#php" class="headerlink" title="php"></a>php</h3><p>实现多线程抓取网页</p>
+<p>使用PHP的cURL库可以简单和有效地去抓网页。你只需要运行一个脚本，然后分析一下你所抓取的网页，然后就可以以程序的方式得到你想要的数据了。无论是你想从从一个链接上取部分数据，或是取一个XML文件并把其导入数据库，那怕就是简单的获取网页内容，cURL 是一个功能强大的PHP库。本文主要讲述如果使用这个PHP库抓取网页。</p>
+        
+          <p class="article-more-link">
+            <a href="/2014/06/23/php多线程/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/06/23/php多线程/" data-id="cje9bovk5001e5y5p86thztii" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
     </footer>
   </div>
   
@@ -736,7 +722,7 @@ int main()
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
     </div>
   </div>
 
@@ -747,10 +733,6 @@ int main()
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2017/08/27/Mac-hotkey/">Mac-hotkey</a>
-          </li>
         
           <li>
             <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
@@ -766,6 +748,10 @@ int main()
         
           <li>
             <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
           </li>
         
       </ul>

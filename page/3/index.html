@@ -68,118 +68,6 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-algorithm-greedy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/07/algorithm-greedy/" class="article-date">
-  <time datetime="2015-03-07T14:01:34.000Z" itemprop="datePublished">2015-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/07/algorithm-greedy/">贪心算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="贪心算法（自顶向下，局部最优）"><a href="#贪心算法（自顶向下，局部最优）" class="headerlink" title="贪心算法（自顶向下，局部最优）"></a>贪心算法（自顶向下，局部最优）</h3><p>贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。</p>
-<h4 id="贪心算法的基本思想"><a href="#贪心算法的基本思想" class="headerlink" title="贪心算法的基本思想"></a>贪心算法的基本思想</h4><p>找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。</p>
-<h4 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h4><pre><code>1.整体的最优解可以通过局部的最优解来求出；
-2.一个整体能够被分为多个局部，并且这些局部都能够求出最优解。
-</code></pre><p>使用贪心算法当中的两个典型问题是活动安排问题和背包问题。</p>
-<h4 id="贪心算法的基本步骤"><a href="#贪心算法的基本步骤" class="headerlink" title="贪心算法的基本步骤"></a>贪心算法的基本步骤</h4><pre><code>1、从问题的某个初始解出发。
-2、采用循环语句，当可以向求解目标前进一步时，就根据局部最优策略，得到一个部分解，缩小问题的范围或规模。
-3、将所有部分解综合起来，得到问题的最终解。
-</code></pre><h4 id="经典案例-活动安排问题-背包等"><a href="#经典案例-活动安排问题-背包等" class="headerlink" title="经典案例:活动安排问题,背包等"></a>经典案例:活动安排问题,背包等</h4><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/backpack.png-scale600" alt="背包问题"></p>
-<h4 id="案例分析-平衡负载"><a href="#案例分析-平衡负载" class="headerlink" title="案例分析:平衡负载"></a>案例分析:平衡负载</h4><p>2013年百度之星区域赛中的第一题”平衡负载”，主要就利用贪心进行分段，在我们理工的acm平台上有这道题，闲着也是闲着，贴出这道题自己的c++版本code。</p>
-<p>平衡负载</p>
-<p>Du熊正在负责一个大型的项目，目前有K台服务器，有N个任务需要用这K台服务器来完成，所以要把这些任务分成K个部分来完成，在同上台服务器上执行的任务必须是连续的任务，每个任务有各自需要的执行时间。<br>例如N=5,K=2，每个任务需要时间分别为5,3,1,4,7分钟，那么我们可以分成(5)(3 1 4 7)两部分，这样第一台服务器所花时间就是5分钟，而第二台机器需要花15分钟，当然，所有任务完成的时间是按最迟完成的那台服务器的时间，即这样划分的话完成所有任务所需要的时间就是15分钟。而另外一种划分方法是(5 3 1)(4 7)，这种划分方案完成所有任务的时间就是11分钟，也是最优的一种划分方案。<br>现在你的任务就是根据给定的N,K和每个任务要花费的时间，找出使完成所有任务时间最短的方案。</p>
-<p>输入：多组输入。</p>
-<p>第一行输入N和K（1&lt;=K&lt;=N&lt;=10000）。</p>
-<p>第二行输入N个不大于1000的正整数，表示各个任要花费的时间。N=K=0表示输入结束。</p>
-<p>输出：</p>
-<p>每行输出一个整数，对应对于每个数据（除了N=K=0不用输出）。</p>
-<p>样例输入：</p>
-<pre><code>5 1
-5 3 1 4 7
-5 2
-5 3 1 4 7
-5 3
-</code></pre><h4 id="算法实现code"><a href="#算法实现code" class="headerlink" title="算法实现code"></a>算法实现code</h4><pre><code>#include&lt;stdio.h&gt;
-#include&lt;iostream&gt;
-using namespace std;
-int a[10005];
-bool check(int a[], int k,int m, int n) //数组，分k段,用来分段的m值,数组个数（检测m值是否可以将数组分为k段）
-{
-    int i,sum=0,count=0;
-    for(i=0;i&lt;n;i++)
-    {
-        sum+=a[i];//前i项求和
-        if(sum&gt;m) //若超过m值，则前i-1项分为一段,重新寻求下一段，同时段数加1
-        {
-            sum=a[i];
-            count++;
-        }
-    }
-    count++;//加上最后一段
-    return count&lt;=k;
-}
-int main()
-{
-    int i=0,j=0,n,k,l,r,mid=0;
-    while(cin&gt;&gt;n&gt;&gt;k&amp;&amp;n!=0&amp;&amp;k!=0)
-    {
-       l=0;//最左边
-       r=0;//最右边
-       for(i=0;i&lt;n;i++)
-       {
-           cin&gt;&gt;a[i];
-           r+=a[i];
-       }
-       while(l&lt;r)
-       {
-           mid=(l+r)/2;
-           if(check(a,k,mid,n)) //m值分段数小于k，则要分段的m值应该减少，承受的项的个数更少，段数增加
-           {
-              r=mid;
-           }
-           else //m值分段数大于k，则要分段的m值应该增加，可承受更多项的和，段数减少
-           {
-              l=mid+1;
-           }
-       }
-       printf(&quot;%d\n&quot;,l);//输出时间
-    }
-    return 0;
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/03/07/algorithm-greedy/" data-id="cje9bl4jz0008xq5pqyjo7791" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-hexo-command" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/03/07/hexo-command/" class="article-date">
@@ -215,7 +103,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/03/07/hexo-command/" data-id="cje9bl4ko000dxq5p8a7hslhv" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/03/07/hexo-command/" data-id="cje9bovjd000p5y5p0zb5210a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -260,7 +148,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/03/01/start-hexo/" data-id="cje9bl4mf001kxq5pq15b6z2x" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/03/01/start-hexo/" data-id="cje9bovk9001i5y5po8zogl40" class="article-share-link">Share</a>
       
       
     </footer>
@@ -301,7 +189,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/02/15/centos搭建reviewboard/" data-id="cje9bl4kj000cxq5p11lgpuh7" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/02/15/centos搭建reviewboard/" data-id="cje9bovi100085y5pc0792hd8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +230,7 @@ int main()
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/02/12/话题社区项目总结/" data-id="cje9bl4nb0027xq5p10wdia69" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/02/12/话题社区项目总结/" data-id="cje9bovl200265y5p7mmnc9cj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -407,7 +295,7 @@ git push origin master
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/02/11/搭建git服务器/" data-id="cje9bl4n20022xq5pjhajxfva" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/02/11/搭建git服务器/" data-id="cje9bovku00215y5pjnpv56ij" class="article-share-link">Share</a>
       
       
     </footer>
@@ -473,7 +361,7 @@ var_dump($password);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/02/06/砸向自己的巨人坑（二）/" data-id="cje9bl4n80025xq5p17w45d1l" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/02/06/砸向自己的巨人坑（二）/" data-id="cje9bovky00235y5pohoru07h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -542,7 +430,7 @@ Password:当连本机时，可以不填；远程就填刚才在Mongo中创建的
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/01/12/mongodb安装及使用-二/" data-id="cje9bl4ln000uxq5p6ypewrgm" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/01/12/mongodb安装及使用-二/" data-id="cje9bovj9000k5y5pbmqabixi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -600,7 +488,7 @@ yum install libstdc++-4.4.7-3.el6.i686(对应上一步出现的包名)
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/01/03/mongodb安装及使用/" data-id="cje9bl4ll000rxq5pbbkgpcg7" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/01/03/mongodb安装及使用/" data-id="cje9bovjh000t5y5pym7r0ngf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -683,7 +571,47 @@ Ctrl+Shift+F10: 关闭调试
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/01/03/Sublime下XDebug安装及使用/" data-id="cje9bl4jk0004xq5p953meg6m" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/01/03/Sublime下XDebug安装及使用/" data-id="cje9bovhw00065y5pqlfw74xx" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Sublime-JsFormat插件安装及使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/12/18/Sublime-JsFormat插件安装及使用/" class="article-date">
+  <time datetime="2014-12-18T00:00:00.000Z" itemprop="datePublished">2014-12-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/12/18/Sublime-JsFormat插件安装及使用/">Sublime JsFormat插件安装及使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="安装及使用Sublime插件JsFormat"><a href="#安装及使用Sublime插件JsFormat" class="headerlink" title="安装及使用Sublime插件JsFormat"></a>安装及使用Sublime插件JsFormat</h3><p>涉及到JSON格式数据的开发过程中，常常会为一长串未格式化的JSON数据而看的眼花，如下图所示，脑袋是不是大了Sublime JSON格式化。因此寻找一款格式化工具就来的非常必要。</p>
+<h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><p>菜单栏Peferences -&gt; Package Control -&gt; install  -&gt; jsFormat，回车安装</p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><p>打开需要格式化的js文件，快捷键CTRL + ALT + f， 即可格式化。</p>
+<p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/JsFormat.png" alt="jsFormat插件格式化js代码"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2014/12/18/Sublime-JsFormat插件安装及使用/" data-id="cje9bovho00035y5p394b4igq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -735,7 +663,7 @@ Ctrl+Shift+F10: 关闭调试
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
     </div>
   </div>
 
@@ -746,10 +674,6 @@ Ctrl+Shift+F10: 关闭调试
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
-        
-          <li>
-            <a href="/2017/08/27/Mac-hotkey/">Mac-hotkey</a>
-          </li>
         
           <li>
             <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
@@ -765,6 +689,10 @@ Ctrl+Shift+F10: 关闭调试
         
           <li>
             <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
           </li>
         
       </ul>
