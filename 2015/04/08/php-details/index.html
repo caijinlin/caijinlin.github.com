@@ -95,17 +95,17 @@
         <h3 id="php一些注意的点"><a href="#php一些注意的点" class="headerlink" title="php一些注意的点"></a>php一些注意的点</h3><p>最近在php开发时，发现业务多了，经常会遇见因为php细节注意不当而导致的bug，影响开发效率，记录在这里。</p>
 <a id="more"></a>
 <p>php作为一种弱类型语言，所以强制类型转化有时就变得特别重要</p>
-<h4 id="判断某个变量是否存在建议用isset-即使-a等于0也不会有问题"><a href="#判断某个变量是否存在建议用isset-即使-a等于0也不会有问题" class="headerlink" title="判断某个变量是否存在建议用isset,即使$a等于0也不会有问题"></a>判断某个变量是否存在建议用isset,即使$a等于0也不会有问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($a)) &#123;            <span class="keyword">if</span> ($a) &#123;</div><div class="line">                    not=》</div><div class="line">&#125;                           &#125;</div></pre></td></tr></table></figure>
-<h4 id="define常量时，判断一下"><a href="#define常量时，判断一下" class="headerlink" title="define常量时，判断一下"></a>define常量时，判断一下</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">!defined(<span class="string">'PROJECT_ID'</span>) &amp;&amp; defined(<span class="string">'PROJECT_ID'</span>, <span class="number">2</span>);</div><div class="line">如果PROJECT_ID没有定义时，输出PROJECT_ID ,则会打印出<span class="string">"PROJECT_ID"</span>字符串，</div><div class="line">所以使用的时候需要(int) PROJECT_ID判断下，是否存在。</div></pre></td></tr></table></figure>
-<h4 id="不需要使用的变量，尽量unset，节约内存"><a href="#不需要使用的变量，尽量unset，节约内存" class="headerlink" title="不需要使用的变量，尽量unset，节约内存"></a>不需要使用的变量，尽量unset，节约内存</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">unset</span>($a);</div></pre></td></tr></table></figure>
-<h4 id="在某些情况下，你可以使用isset-技巧加速执行你的代码。"><a href="#在某些情况下，你可以使用isset-技巧加速执行你的代码。" class="headerlink" title="在某些情况下，你可以使用isset() 技巧加速执行你的代码。"></a>在某些情况下，你可以使用isset() 技巧加速执行你的代码。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">（举例如下） if (strlen($foo) &lt; 5) &#123; echo &apos;Foo is too short&apos;; &#125; </div><div class="line">（与下面的技巧做比较） if (!isset($foo[5])) &#123; echo &apos;Foo is too short&apos;; &#125;</div></pre></td></tr></table></figure>
+<h4 id="判断某个变量是否存在建议用isset-即使-a等于0也不会有问题"><a href="#判断某个变量是否存在建议用isset-即使-a等于0也不会有问题" class="headerlink" title="判断某个变量是否存在建议用isset,即使$a等于0也不会有问题"></a>判断某个变量是否存在建议用isset,即使$a等于0也不会有问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($a)) &#123;            <span class="keyword">if</span> ($a) &#123;</span><br><span class="line">                    not=》</span><br><span class="line">&#125;                           &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="define常量时，判断一下"><a href="#define常量时，判断一下" class="headerlink" title="define常量时，判断一下"></a>define常量时，判断一下</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!defined(<span class="string">'PROJECT_ID'</span>) &amp;&amp; defined(<span class="string">'PROJECT_ID'</span>, <span class="number">2</span>);</span><br><span class="line">如果PROJECT_ID没有定义时，输出PROJECT_ID ,则会打印出<span class="string">"PROJECT_ID"</span>字符串，</span><br><span class="line">所以使用的时候需要(int) PROJECT_ID判断下，是否存在。</span><br></pre></td></tr></table></figure>
+<h4 id="不需要使用的变量，尽量unset，节约内存"><a href="#不需要使用的变量，尽量unset，节约内存" class="headerlink" title="不需要使用的变量，尽量unset，节约内存"></a>不需要使用的变量，尽量unset，节约内存</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unset</span>($a);</span><br></pre></td></tr></table></figure>
+<h4 id="在某些情况下，你可以使用isset-技巧加速执行你的代码。"><a href="#在某些情况下，你可以使用isset-技巧加速执行你的代码。" class="headerlink" title="在某些情况下，你可以使用isset() 技巧加速执行你的代码。"></a>在某些情况下，你可以使用isset() 技巧加速执行你的代码。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（举例如下） if (strlen($foo) &lt; 5) &#123; echo &apos;Foo is too short&apos;; &#125; </span><br><span class="line">（与下面的技巧做比较） if (!isset($foo[5])) &#123; echo &apos;Foo is too short&apos;; &#125;</span><br></pre></td></tr></table></figure>
 <p>调用isset()恰巧比strlen()快，因为与后者不同的是，isset()作为一种语言结构，意味着它的执行不需要函数查找和字母小写化。</p>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>很多php细节需要注意，一直在路上！</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/04/08/php-details/" data-id="cj6u9wwsk00172o5p2o809g7z" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/04/08/php-details/" data-id="cje9bl4lx0019xq5p5ortm5zr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +171,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
     </div>
   </div>
 
@@ -182,6 +182,10 @@
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/27/Mac-hotkey/">Mac-hotkey</a>
+          </li>
         
           <li>
             <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
@@ -199,10 +203,6 @@
             <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
           </li>
         
-          <li>
-            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -215,7 +215,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Caspar<br>
+      &copy; 2018 Caspar<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

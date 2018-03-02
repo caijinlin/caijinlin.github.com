@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Caspar</title>
+  <icon>https://www.gravatar.com/avatar/e47b8336d5393754f0de11e4f51d0b91</icon>
   <subtitle>Walk step by step</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.caijinlin.com/"/>
-  <updated>2017-06-05T13:40:17.000Z</updated>
+  <updated>2017-08-27T05:15:05.000Z</updated>
   <id>http://www.caijinlin.com/</id>
   
   <author>
@@ -16,23 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Mac-hotkey</title>
+    <link href="http://www.caijinlin.com/2017/08/27/Mac-hotkey/"/>
+    <id>http://www.caijinlin.com/2017/08/27/Mac-hotkey/</id>
+    <published>2017-08-27T05:15:05.000Z</published>
+    <updated>2017-08-27T05:15:05.000Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>mysql-optimization</title>
     <link href="http://www.caijinlin.com/2017/06/05/mysql-optimization/"/>
     <id>http://www.caijinlin.com/2017/06/05/mysql-optimization/</id>
     <published>2017-06-05T13:26:44.000Z</published>
     <updated>2017-06-05T13:40:17.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="mysql优化实战攻略"><a href="#mysql优化实战攻略" class="headerlink" title="mysql优化实战攻略"></a>mysql优化实战攻略</h3><p>最近对数据库查询进行了一些优化策略，总结如下：</p>
-<h3 id="加索引"><a href="#加索引" class="headerlink" title="加索引"></a>加索引</h3><p><code>最简单的方法就是加索引，合适且必要才加，而不是乱加，数据量达到几十万以上效果明显。</code></p>
-<h3 id="使用强制索引"><a href="#使用强制索引" class="headerlink" title="使用强制索引"></a>使用强制索引</h3><p><code>程序中使用强制索引，解决数据库没有按照我们想要的索引进行查询，百万级数据，效果显著。</code></p>
-<h3 id="使用小表作为主表"><a href="#使用小表作为主表" class="headerlink" title="使用小表作为主表"></a>使用小表作为主表</h3><p><code>join查询的时候，数据量小的表作为主表，数据量大的表作为join的对象，也是一种不错的方法，减少全表扫描行数。</code></p>
-<h3 id="数据冗余"><a href="#数据冗余" class="headerlink" title="数据冗余"></a>数据冗余</h3><p><code>针对复杂的sql，需要join其它表且需要排序的情况下，可以挖掘统计数据，冗余表或者冗余字段。</code></p>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="mysql优化实战攻略"><a href="#mysql优化实战攻略" class="headerlink" title="mysql优化实战攻略"></a>mysql优化实战攻略</h3><p>最近对数据库查询进行了一些优化策略，总结如下：</p><h3 id="加索引"><a href="#加索引" class="headerlink" title="加索引"></a>加索引</h3><p><code>最简单的方法就是加索引，合适且必要才加，而不是乱加，数据量达到几十万以上效果明显。</code></p><h3 id="使用强制索引"><a href="#使用强制索引" class="headerlink" title="使用强制索引"></a>使用强制索引</h3><p><code>程序中使用强制索引，解决数据库没有按照我们想要的索引进行查询，百万级数据，效果显著。</code></p><h3 id="使用小表作为主表"><a href="#使用小表作为主表" class="headerlink" title="使用小表作为主表"></a>使用小表作为主表</h3><p><code>join查询的时候，数据量小的表作为主表，数据量大的表作为join的对象，也是一种不错的方法，减少全表扫描行数。</code></p><h3 id="数据冗余"><a href="#数据冗余" class="headerlink" title="数据冗余"></a>数据冗余</h3><p><code>针对复杂的sql，需要join其它表且需要排序的情况下，可以挖掘统计数据，冗余表或者冗余字段。</code></p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;mysql优化实战攻略&quot;&gt;&lt;a href=&quot;#mysql优化实战攻略&quot; class=&quot;headerlink&quot; title=&quot;mysql优化实战攻略&quot;&gt;&lt;/a&gt;mysql优化实战攻略&lt;/h3&gt;&lt;p&gt;最近对数据库查询进行了一些优化策略，总结如下：&lt;/p&gt;
+      
+      
+        &lt;h3 id=&quot;mysql优化实战攻略&quot;&gt;&lt;a href=&quot;#mysql优化实战攻略&quot; class=&quot;headerlink&quot; title=&quot;mysql优化实战攻略&quot;&gt;&lt;/a&gt;mysql优化实战攻略&lt;/h3&gt;&lt;p&gt;最近对数据库查询进行了一些优化策略，总结如下：&lt;/p&gt;
 &lt;h3 id
+      
     
     </summary>
     
@@ -50,14 +63,14 @@
     <published>2017-05-31T13:12:38.000Z</published>
     <updated>2017-05-31T13:47:11.000Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="为什么需要强制索引？"><a href="#为什么需要强制索引？" class="headerlink" title="为什么需要强制索引？"></a>为什么需要强制索引？</h4><p><code>数据库没有使用我们设想的索引进行sql查询，导致查询特别慢。</code></p>
-<h4 id="mysql强制索引查询语句"><a href="#mysql强制索引查询语句" class="headerlink" title="mysql强制索引查询语句"></a>mysql强制索引查询语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> tt = <span class="number">1</span> <span class="keyword">force</span> <span class="keyword">index</span>(idx_tt); // 强制索引</div><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> tt = <span class="number">1</span> <span class="keyword">use</span> <span class="keyword">index</span>(idx_tt); // 优先按照这种索引查找</div></pre></td></tr></table></figure>
-<h4 id="laravel中实现强制索引查询"><a href="#laravel中实现强制索引查询" class="headerlink" title="laravel中实现强制索引查询"></a>laravel中实现强制索引查询</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">$this</span>-&gt;model</div><div class="line">-&gt;setTable(DB::connection(<span class="string">'test_db'</span>)-&gt;raw(<span class="string">'test'</span> . <span class="string">' FORCE INDEX(tt)'</span>))</div><div class="line">-&gt;where(<span class="string">'tt'</span>, <span class="number">1</span>)</div><div class="line">-&gt;get();</div></pre></td></tr></table></figure>
-]]></content>
+    <content type="html"><![CDATA[<h4 id="为什么需要强制索引？"><a href="#为什么需要强制索引？" class="headerlink" title="为什么需要强制索引？"></a>为什么需要强制索引？</h4><p><code>数据库没有使用我们设想的索引进行sql查询，导致查询特别慢。</code></p><h4 id="mysql强制索引查询语句"><a href="#mysql强制索引查询语句" class="headerlink" title="mysql强制索引查询语句"></a>mysql强制索引查询语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> tt = <span class="number">1</span> <span class="keyword">force</span> <span class="keyword">index</span>(idx_tt); // 强制索引</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">test</span> <span class="keyword">where</span> tt = <span class="number">1</span> <span class="keyword">use</span> <span class="keyword">index</span>(idx_tt); // 优先按照这种索引查找</span><br></pre></td></tr></table></figure><h4 id="laravel中实现强制索引查询"><a href="#laravel中实现强制索引查询" class="headerlink" title="laravel中实现强制索引查询"></a>laravel中实现强制索引查询</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">$this</span>-&gt;model</span><br><span class="line">-&gt;setTable(DB::connection(<span class="string">'test_db'</span>)-&gt;raw(<span class="string">'test'</span> . <span class="string">' FORCE INDEX(tt)'</span>))</span><br><span class="line">-&gt;where(<span class="string">'tt'</span>, <span class="number">1</span>)</span><br><span class="line">-&gt;get();</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;为什么需要强制索引？&quot;&gt;&lt;a href=&quot;#为什么需要强制索引？&quot; class=&quot;headerlink&quot; title=&quot;为什么需要强制索引？&quot;&gt;&lt;/a&gt;为什么需要强制索引？&lt;/h4&gt;&lt;p&gt;&lt;code&gt;数据库没有使用我们设想的索引进行sql查询，导致查询特别慢。&lt;/
+      
+      
+        &lt;h4 id=&quot;为什么需要强制索引？&quot;&gt;&lt;a href=&quot;#为什么需要强制索引？&quot; class=&quot;headerlink&quot; title=&quot;为什么需要强制索引？&quot;&gt;&lt;/a&gt;为什么需要强制索引？&lt;/h4&gt;&lt;p&gt;&lt;code&gt;数据库没有使用我们设想的索引进行sql查询，导致查询特别慢。&lt;/
+      
     
     </summary>
     
@@ -77,15 +90,14 @@
     <published>2017-03-07T00:02:28.000Z</published>
     <updated>2017-03-11T01:06:41.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="一个美好的开始"><a href="#一个美好的开始" class="headerlink" title="一个美好的开始"></a>一个美好的开始</h3><p>原先的博客是通过jekyll生成的，现迁移到到hexo，通过原博客的xss文件完成文章的迁移</p>
-<h3 id="从xss迁移文章"><a href="#从xss迁移文章" class="headerlink" title="从xss迁移文章"></a>从xss迁移文章</h3><p>获取原博客的文章rss，放在博客根目录下，通过hexo-migrator-rss导入进来，十分高效，时间自动转化了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-migrator-rss --save</div><div class="line">hexo migrate rss old.xml</div></pre></td></tr></table></figure>
-<h3 id="迁移过程"><a href="#迁移过程" class="headerlink" title="迁移过程"></a>迁移过程</h3><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/hexo-migrate-xml.jpg" alt=""></p>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="一个美好的开始"><a href="#一个美好的开始" class="headerlink" title="一个美好的开始"></a>一个美好的开始</h3><p>原先的博客是通过jekyll生成的，现迁移到到hexo，通过原博客的xss文件完成文章的迁移</p><h3 id="从xss迁移文章"><a href="#从xss迁移文章" class="headerlink" title="从xss迁移文章"></a>从xss迁移文章</h3><p>获取原博客的文章rss，放在博客根目录下，通过hexo-migrator-rss导入进来，十分高效，时间自动转化了。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-migrator-rss --save</span><br><span class="line">hexo migrate rss old.xml</span><br></pre></td></tr></table></figure><h3 id="迁移过程"><a href="#迁移过程" class="headerlink" title="迁移过程"></a>迁移过程</h3><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/hexo-migrate-xml.jpg" alt=""></p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;一个美好的开始&quot;&gt;&lt;a href=&quot;#一个美好的开始&quot; class=&quot;headerlink&quot; title=&quot;一个美好的开始&quot;&gt;&lt;/a&gt;一个美好的开始&lt;/h3&gt;&lt;p&gt;原先的博客是通过jekyll生成的，现迁移到到hexo，通过原博客的xss文件完成文章的迁移&lt;/p&gt;
+      
+      
+        &lt;h3 id=&quot;一个美好的开始&quot;&gt;&lt;a href=&quot;#一个美好的开始&quot; class=&quot;headerlink&quot; title=&quot;一个美好的开始&quot;&gt;&lt;/a&gt;一个美好的开始&lt;/h3&gt;&lt;p&gt;原先的博客是通过jekyll生成的，现迁移到到hexo，通过原博客的xss文件完成文章的迁移&lt;/p&gt;
+      
     
     </summary>
     
@@ -105,41 +117,14 @@
     <published>2017-03-01T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="最近公司的一个需求，和外部对接需要用到xml。"><a href="#最近公司的一个需求，和外部对接需要用到xml。" class="headerlink" title="最近公司的一个需求，和外部对接需要用到xml。"></a>最近公司的一个需求，和外部对接需要用到xml。</h4><p>说明：XML本身不算复杂，但是，加上DTD、XSD、XPath、XSLT等一大堆复杂的规范以后，任何正常的软件开发人员碰到XML都会感觉头大了，最后大家发现，即使你努力钻研几个月，也未必搞得清楚XML的规范。&gt; 使用场景：请求外部webservie，对方以xml的形式的返回，我们需要拿到数据，看起来很简单，但不懂xml与xsd就有点麻烦了。</p>
-<h4 id="遇到问题-gt-发现问题"><a href="#遇到问题-gt-发现问题" class="headerlink" title="遇到问题 =&gt; 发现问题"></a>遇到问题 =&gt; 发现问题</h4><p>通过传统解析xmlToJson, xmlToArray，怎么样也获取不到数据分析返回的xml，发现是xsd，并且含有命名空间The problem here is that your attribute has a namespace, so you need to register the ns with SimpleXML XPath and use it in your XPath query.</p>
-<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p><a href="http://stackoverflow.com/questions/26511858/parsing-soap-xml-response-with-php/26512336#26512336" target="_blank" rel="external">http://stackoverflow.com/questions/26511858/parsing-soap-xml-response-with-php/26512336#26512336</a><div class="language-xml highlighter-rouge"></div></p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;DATARESULT xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://tempuri.org/&quot;&gt;
-  &lt;TABLE&gt;
-    &lt;diffgr:diffgram xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot; xmlns:diffgr=&quot;urn:schemas-microsoft-com:xml-diffgram-v1&quot;&gt;
-      &lt;DocumentElement xmlns=&quot;&quot;&gt;
-        &lt;DATA diffgr:id=&quot;TABLE1&quot; msdata:rowOrder=&quot;0&quot; diffgr:hasChanges=&quot;inserted&quot;&gt;
-          &lt;FIED1&gt;1221&lt;/FIED1&gt;
-          &lt;FIED2&gt;2332&lt;/FIED1&gt;
-        &lt;/DATA&gt;     
-        &lt;DATA diffgr:id=&quot;TABLE2&quot; msdata:rowOrder=&quot;0&quot; diffgr:hasChanges=&quot;inserted&quot;&gt;
-          &lt;FIED1&gt;1221&lt;/FIED1&gt;
-          &lt;FIED2&gt;2332&lt;/FIED1&gt;
-        &lt;/DATA&gt;    
-      &lt;/DocumentElement&gt;
-    &lt;/diffgr:diffgram&gt;
-  &lt;/TABLE&gt;
-  &lt;ResultMsg /&gt;
-&lt;/DATARESULT&gt;
-</code></pre><p>注册命名空间，匹配相应节点，取出数据</p>
-<pre><code>// request webservice for get data
-$client = new SoapClient($url, $params);
-$result = $client-&gt;getData();
-
-// parse data
-$xml = simplexml_load_string($result-&gt;responseXml);
-$xml-&gt;registerXPathNamespace(&apos;d&apos;, &apos;urn:schemas-microsoft-com:xml-diffgram-v1&apos;);
-$results = $xml-&gt;xpath(&apos;//Table&apos;);
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<h4 id="最近公司的一个需求，和外部对接需要用到xml。"><a href="#最近公司的一个需求，和外部对接需要用到xml。" class="headerlink" title="最近公司的一个需求，和外部对接需要用到xml。"></a>最近公司的一个需求，和外部对接需要用到xml。</h4><p>说明：XML本身不算复杂，但是，加上DTD、XSD、XPath、XSLT等一大堆复杂的规范以后，任何正常的软件开发人员碰到XML都会感觉头大了，最后大家发现，即使你努力钻研几个月，也未必搞得清楚XML的规范。&gt; 使用场景：请求外部webservie，对方以xml的形式的返回，我们需要拿到数据，看起来很简单，但不懂xml与xsd就有点麻烦了。</p><h4 id="遇到问题-gt-发现问题"><a href="#遇到问题-gt-发现问题" class="headerlink" title="遇到问题 =&gt; 发现问题"></a>遇到问题 =&gt; 发现问题</h4><p>通过传统解析xmlToJson, xmlToArray，怎么样也获取不到数据分析返回的xml，发现是xsd，并且含有命名空间The problem here is that your attribute has a namespace, so you need to register the ns with SimpleXML XPath and use it in your XPath query.</p><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p><a href="http://stackoverflow.com/questions/26511858/parsing-soap-xml-response-with-php/26512336#26512336" target="_blank" rel="noopener">http://stackoverflow.com/questions/26511858/parsing-soap-xml-response-with-php/26512336#26512336</a><div class="language-xml highlighter-rouge"></div></p><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;DATARESULT xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:xsd=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns=&quot;http://tempuri.org/&quot;&gt;  &lt;TABLE&gt;    &lt;diffgr:diffgram xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot; xmlns:diffgr=&quot;urn:schemas-microsoft-com:xml-diffgram-v1&quot;&gt;      &lt;DocumentElement xmlns=&quot;&quot;&gt;        &lt;DATA diffgr:id=&quot;TABLE1&quot; msdata:rowOrder=&quot;0&quot; diffgr:hasChanges=&quot;inserted&quot;&gt;          &lt;FIED1&gt;1221&lt;/FIED1&gt;          &lt;FIED2&gt;2332&lt;/FIED1&gt;        &lt;/DATA&gt;             &lt;DATA diffgr:id=&quot;TABLE2&quot; msdata:rowOrder=&quot;0&quot; diffgr:hasChanges=&quot;inserted&quot;&gt;          &lt;FIED1&gt;1221&lt;/FIED1&gt;          &lt;FIED2&gt;2332&lt;/FIED1&gt;        &lt;/DATA&gt;          &lt;/DocumentElement&gt;    &lt;/diffgr:diffgram&gt;  &lt;/TABLE&gt;  &lt;ResultMsg /&gt;&lt;/DATARESULT&gt;</code></pre><p>注册命名空间，匹配相应节点，取出数据</p><pre><code>// request webservice for get data$client = new SoapClient($url, $params);$result = $client-&gt;getData();// parse data$xml = simplexml_load_string($result-&gt;responseXml);$xml-&gt;registerXPathNamespace(&apos;d&apos;, &apos;urn:schemas-microsoft-com:xml-diffgram-v1&apos;);$results = $xml-&gt;xpath(&apos;//Table&apos;);</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;最近公司的一个需求，和外部对接需要用到xml。&quot;&gt;&lt;a href=&quot;#最近公司的一个需求，和外部对接需要用到xml。&quot; class=&quot;headerlink&quot; title=&quot;最近公司的一个需求，和外部对接需要用到xml。&quot;&gt;&lt;/a&gt;最近公司的一个需求，和外部对接需要
+      
+      
+        &lt;h4 id=&quot;最近公司的一个需求，和外部对接需要用到xml。&quot;&gt;&lt;a href=&quot;#最近公司的一个需求，和外部对接需要用到xml。&quot; class=&quot;headerlink&quot; title=&quot;最近公司的一个需求，和外部对接需要用到xml。&quot;&gt;&lt;/a&gt;最近公司的一个需求，和外部对接需要
+      
     
     </summary>
     
@@ -153,48 +138,18 @@ $results = $xml-&gt;xpath(&apos;//Table&apos;);
     <published>2016-12-12T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a>
-<h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><pre><code>h,j,k,l: 左下上右边
-ctrl+b/f：向上下翻页
-b/w: 上/下一个词
-$/0: 行首/尾
-(/): 上/下一个句子
-{/}: 段首/段尾
-gg/G: 文档开始/结束
-ngg: n行
-H/M/L: 屏幕顶端/中间/底部
-nj/k: 关标向上/下移动n行
-</code></pre><h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><pre><code>v/V: 字符/行选中
-</code></pre><h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><pre><code>i/a: 光标前/后插入
-I/A: 行首/尾插入
-o/O: 后/前插一行
-esc + o：另起一行编辑
-f/Fa: 光标移动到左/右边的第一个字符a上；
-dnb/w:  正/反向删除n个单词
-cnb/w:  正/反向删除n个单词
-cc: 修改光标所在行
-D: 删除到行尾
-rg: 替换光标下的字符为g
-x: 删除当前字母
-ddp: 调换当前行和下一行
-dd: 删除当前行，存入寄存器
-p: 粘贴
-yyp:复制当前行并粘贴
-u/ctrl+r: 撤销/重做
-&gt;&gt;/&lt;&lt;: 缩进/反缩进
-</code></pre><h3 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h3><pre><code>s/s1/s2: 将下一个s1替换为s2
-%s/s1/s2:全部替换
-s/s1/s2/g: 只替换当前行
-/string: 搜索下一处为n，搜索上一处为N
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<a id="more"></a><h3 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h3><pre><code>h,j,k,l: 左下上右边ctrl+b/f：向上下翻页b/w: 上/下一个词$/0: 行首/尾(/): 上/下一个句子{/}: 段首/段尾gg/G: 文档开始/结束ngg: n行H/M/L: 屏幕顶端/中间/底部nj/k: 关标向上/下移动n行</code></pre><h3 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h3><pre><code>v/V: 字符/行选中</code></pre><h3 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h3><pre><code>i/a: 光标前/后插入I/A: 行首/尾插入o/O: 后/前插一行esc + o：另起一行编辑f/Fa: 光标移动到左/右边的第一个字符a上；dnb/w:  正/反向删除n个单词cnb/w:  正/反向删除n个单词cc: 修改光标所在行D: 删除到行尾rg: 替换光标下的字符为gx: 删除当前字母ddp: 调换当前行和下一行dd: 删除当前行，存入寄存器p: 粘贴yyp:复制当前行并粘贴u/ctrl+r: 撤销/重做&gt;&gt;/&lt;&lt;: 缩进/反缩进</code></pre><h3 id="查找替换"><a href="#查找替换" class="headerlink" title="查找替换"></a>查找替换</h3><pre><code>s/s1/s2: 将下一个s1替换为s2%s/s1/s2:全部替换s/s1/s2/g: 只替换当前行/string: 搜索下一处为n，搜索上一处为N</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+      
+      
+        &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;h3 id=&quot;移动&quot;&gt;&lt;a href=&quot;#移动&quot; class=&quot;headerlink&quot; title=&quot;移动&quot;&gt;&lt;/a&gt;移动&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;h,j,k,l: 左下上右边
 ctrl+b/f：向上下翻页
 b/w: 上/下一个词
 $/
+      
     
     </summary>
     
@@ -208,23 +163,16 @@ $/
     <published>2016-08-12T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<ul>
-<li><p>mac下开启vim模式<br>sublime =&gt; preferences =&gt; settings-user</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="string">"ignored_packages"</span>：[],</div></pre></td></tr></table></figure>
-</li>
-<li><p>mac下使用shell以sublime方式打开文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ln -s <span class="string">"/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"</span> /usr/<span class="built_in">local</span>/bin/subl</div><div class="line">subl filename</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">h,j,k,l： 左，下，上，右。</div><div class="line">w：下一个词的词首。</div><div class="line">W：下一个单词(不含标点)。</div><div class="line">e：下一个词的词尾。</div><div class="line">E：不含标点。</div><div class="line">b：上一个词的词首。</div><div class="line">B：不含标点。</div><div class="line">gg：首。</div><div class="line">G： 尾。</div></pre></td></tr></table></figure>
-<h4 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ctrl+d：选中下一个相同的</div><div class="line">ctrl+command+G：选中所有相同的</div><div class="line">ctrl+l：选中整行，继续操作则继续选择下一行，效果和 shift+↓ 效果一样。</div><div class="line">ctrl+shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</div><div class="line">shift+↑：向上选中多行。</div><div class="line">shift+↓：向下选中多行。</div><div class="line">shift+←：向左选中文本。</div><div class="line">shift+→：向右选中文本。</div></pre></td></tr></table></figure>
-<h4 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">ctrl+delete： 删除</div><div class="line">ctrl+shif+D：复制当前行</div><div class="line">ctrl+/：注释d当前行，或取消注释</div><div class="line">ctrl+J： 向上折行</div><div class="line">ctrl+K+U：转换大写</div><div class="line">ctrl+K+L： 转换小写</div><div class="line">ctrl+K+K：从光标处开始删除代码至行尾。</div><div class="line">ctrl+Z： 撤销</div><div class="line">ctrl+Y： 恢复撤销</div><div class="line">ctrl+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</div><div class="line">ctrl+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</div><div class="line">ctrl+command+up： 向上移动当前行</div><div class="line">ctrl+command+down： 向下移动当前行</div><div class="line">shift+home： 选择到页首行头</div><div class="line">shift+end： 选择到页尾行</div><div class="line">Tab：向右缩进</div><div class="line">shfit+tab： 反缩进</div></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<ul><li><p>mac下开启vim模式<br>sublime =&gt; preferences =&gt; settings-user</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"ignored_packages"</span>：[],</span><br></pre></td></tr></table></figure></li><li><p>mac下使用shell以sublime方式打开文件：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s <span class="string">"/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"</span> /usr/<span class="built_in">local</span>/bin/subl</span><br><span class="line">subl filename</span><br></pre></td></tr></table></figure></li></ul><h4 id="移动"><a href="#移动" class="headerlink" title="移动"></a>移动</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">h,j,k,l： 左，下，上，右。</span><br><span class="line">w：下一个词的词首。</span><br><span class="line">W：下一个单词(不含标点)。</span><br><span class="line">e：下一个词的词尾。</span><br><span class="line">E：不含标点。</span><br><span class="line">b：上一个词的词首。</span><br><span class="line">B：不含标点。</span><br><span class="line">gg：首。</span><br><span class="line">G： 尾。</span><br></pre></td></tr></table></figure><h4 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ctrl+d：选中下一个相同的</span><br><span class="line">ctrl+command+G：选中所有相同的</span><br><span class="line">ctrl+l：选中整行，继续操作则继续选择下一行，效果和 shift+↓ 效果一样。</span><br><span class="line">ctrl+shift+L 先选中多行，再按下快捷键，会在每行行尾插入光标，即可同时编辑这些行。</span><br><span class="line">shift+↑：向上选中多行。</span><br><span class="line">shift+↓：向下选中多行。</span><br><span class="line">shift+←：向左选中文本。</span><br><span class="line">shift+→：向右选中文本。</span><br></pre></td></tr></table></figure><h4 id="编辑"><a href="#编辑" class="headerlink" title="编辑"></a>编辑</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">ctrl+delete： 删除</span><br><span class="line">ctrl+shif+D：复制当前行</span><br><span class="line">ctrl+/：注释d当前行，或取消注释</span><br><span class="line">ctrl+J： 向上折行</span><br><span class="line">ctrl+K+U：转换大写</span><br><span class="line">ctrl+K+L： 转换小写</span><br><span class="line">ctrl+K+K：从光标处开始删除代码至行尾。</span><br><span class="line">ctrl+Z： 撤销</span><br><span class="line">ctrl+Y： 恢复撤销</span><br><span class="line">ctrl+Enter 在下一行插入新行。举个栗子：即使光标不在行尾，也能快速向下插入一行。</span><br><span class="line">ctrl+Shift+Enter 在上一行插入新行。举个栗子：即使光标不在行首，也能快速向上插入一行。</span><br><span class="line">ctrl+command+up： 向上移动当前行</span><br><span class="line">ctrl+command+down： 向下移动当前行</span><br><span class="line">shift+home： 选择到页首行头</span><br><span class="line">shift+end： 选择到页尾行</span><br><span class="line">Tab：向右缩进</span><br><span class="line">shfit+tab： 反缩进</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;ul&gt;
+      
+      
+        &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;mac下开启vim模式&lt;br&gt;sublime =&amp;gt; preferences =&amp;gt; settings-user&lt;/p&gt;
 &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;p
+      
     
     </summary>
     
@@ -238,16 +186,15 @@ $/
     <published>2016-05-12T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<p>####使用cnpm</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g cnpm</div></pre></td></tr></table></figure>
-<p>####使用淘宝镜像</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass</div></pre></td></tr></table></figure>
-]]></content>
+    <content type="html"><![CDATA[<p>####使用cnpm</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm</span><br></pre></td></tr></table></figure><p>####使用淘宝镜像</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;####使用cnpm&lt;/p&gt;
-&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;p
+      
+      
+        &lt;p&gt;####使用cnpm&lt;/p&gt;
+&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;co
+      
     
     </summary>
     
@@ -261,49 +208,14 @@ $/
     <published>2016-04-12T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="vim语法高亮"><a href="#vim语法高亮" class="headerlink" title="vim语法高亮"></a>vim语法高亮</h3><p>在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中添加一行syntax on即可。</p>
-<h3 id="iterm2-zsh"><a href="#iterm2-zsh" class="headerlink" title="iterm2 + zsh"></a>iterm2 + zsh</h3><p>step1.安装iterm2</p>
-<p><a href="https://www.iterm2.com/" target="_blank" rel="external">https://www.iterm2.com/</a></p>
-<p>step2.安装zsh, oh-my-zsh</p>
-<p><a href="http://macshuo.com/?p=676" target="_blank" rel="external">http://macshuo.com/?p=676</a></p>
-<p>step3.设置默认shell为zsh</p>
-<pre><code>chsh -s /bin/zsh
-</code></pre><h3 id="chrome-lastpass插件"><a href="#chrome-lastpass插件" class="headerlink" title="chrome lastpass插件"></a>chrome lastpass插件</h3><pre><code>记住网站密码，不用重复输入密码
-</code></pre><h3 id="ssh免密码登录-参考"><a href="#ssh免密码登录-参考" class="headerlink" title="ssh免密码登录 参考"></a>ssh免密码登录 <a href="http://dhq.me/use-ssh-config-manage-ssh-session" target="_blank" rel="external">参考</a></h3><p>step1.生成密钥 </p>
-<pre><code>ssh-keygen -t rsa -C &quot;caijinlin2012@gmail.com&quot;
-这里使用 rsa 的加密方式（另外一种加密方式是 dsa），中间会询问密钥生成的位置，这里只输入 cjb，在当前位置生成名为 cjb 的密钥，接着会询问是否要设置一个密码(passphrase)，这里留空，直接按回车就行（本来就不想登陆输入密码了...），最后，会在当前目录路径下生成一个名为 cjb 的私钥，一个名为cjb.pub 的公钥。
-</code></pre><p>step2.上传公钥到服务器 (如果方法一不行采用第二种)</p>
-<pre><code>方法1.使用ssh-copy-id 
-    安装ssh-copy-id: curl -L https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh 
-    ssh-copy-id i ~/.ssh/cjl.pub root@182.92.5.70
-
-方法2.
-    把公钥 cjb.pub 上传到远程 cjb 服务器的 ~/.ssh/ 目录下：
-    scp cjl.pub root@182.92.5.70:~/.ssh/
-    上传完后，登录到服务器，把公钥 cjb.pub 的内容复制到 authorized_keys 文件里（不存在则新创建一个）：
-    cat cjb.pub &gt;&gt; authorized_keys
-</code></pre><p>step3. 加入配置文件</p>
-<pre><code>~/.ssh下新建配置文件config
-    Host        cjb
-        HostName        216.194.70.6
-        Port            22
-        User            user
-        IdentityFile    ~/.ssh/cjb  
-    Host        cjh
-        HostName    182.92.5.70
-        Port        22
-        User        user
-</code></pre><p>step4. ssh cjh </p>
-<pre><code>登录成功说明免密码登录成功了
-</code></pre><h3 id="sublime过滤文件夹搜索"><a href="#sublime过滤文件夹搜索" class="headerlink" title="sublime过滤文件夹搜索"></a>sublime过滤文件夹搜索</h3><pre><code>sublime text =&gt; Preferences =&gt; Setting - User 加入配置，过滤文件夹和文件类型
-
-&quot;folder_exclude_patterns&quot;: [&quot;Runtime&quot;, &quot;._d&quot;, &quot;.metadata&quot;, &quot;.settings&quot;],
-&quot;file_exclude_patterns&quot;: [&quot;*.pyc&quot;, &quot;*.pyo&quot;, &quot;.project&quot;]
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<h3 id="vim语法高亮"><a href="#vim语法高亮" class="headerlink" title="vim语法高亮"></a>vim语法高亮</h3><p>在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中添加一行syntax on即可。</p><h3 id="iterm2-zsh"><a href="#iterm2-zsh" class="headerlink" title="iterm2 + zsh"></a>iterm2 + zsh</h3><p>step1.安装iterm2</p><p><a href="https://www.iterm2.com/" target="_blank" rel="noopener">https://www.iterm2.com/</a></p><p>step2.安装zsh, oh-my-zsh</p><p><a href="http://macshuo.com/?p=676" target="_blank" rel="noopener">http://macshuo.com/?p=676</a></p><p>step3.设置默认shell为zsh</p><pre><code>chsh -s /bin/zsh</code></pre><h3 id="chrome-lastpass插件"><a href="#chrome-lastpass插件" class="headerlink" title="chrome lastpass插件"></a>chrome lastpass插件</h3><pre><code>记住网站密码，不用重复输入密码</code></pre><h3 id="ssh免密码登录-参考"><a href="#ssh免密码登录-参考" class="headerlink" title="ssh免密码登录 参考"></a>ssh免密码登录 <a href="http://dhq.me/use-ssh-config-manage-ssh-session" target="_blank" rel="noopener">参考</a></h3><p>step1.生成密钥 </p><pre><code>ssh-keygen -t rsa -C &quot;caijinlin2012@gmail.com&quot;这里使用 rsa 的加密方式（另外一种加密方式是 dsa），中间会询问密钥生成的位置，这里只输入 cjb，在当前位置生成名为 cjb 的密钥，接着会询问是否要设置一个密码(passphrase)，这里留空，直接按回车就行（本来就不想登陆输入密码了...），最后，会在当前目录路径下生成一个名为 cjb 的私钥，一个名为cjb.pub 的公钥。</code></pre><p>step2.上传公钥到服务器 (如果方法一不行采用第二种)</p><pre><code>方法1.使用ssh-copy-id     安装ssh-copy-id: curl -L https://raw.githubusercontent.com/beautifulcode/ssh-copy-id-for-OSX/master/install.sh | sh     ssh-copy-id i ~/.ssh/cjl.pub root@182.92.5.70方法2.    把公钥 cjb.pub 上传到远程 cjb 服务器的 ~/.ssh/ 目录下：    scp cjl.pub root@182.92.5.70:~/.ssh/    上传完后，登录到服务器，把公钥 cjb.pub 的内容复制到 authorized_keys 文件里（不存在则新创建一个）：    cat cjb.pub &gt;&gt; authorized_keys</code></pre><p>step3. 加入配置文件</p><pre><code>~/.ssh下新建配置文件config    Host        cjb        HostName        216.194.70.6        Port            22        User            user        IdentityFile    ~/.ssh/cjb      Host        cjh        HostName    182.92.5.70        Port        22        User        user</code></pre><p>step4. ssh cjh </p><pre><code>登录成功说明免密码登录成功了</code></pre><h3 id="sublime过滤文件夹搜索"><a href="#sublime过滤文件夹搜索" class="headerlink" title="sublime过滤文件夹搜索"></a>sublime过滤文件夹搜索</h3><pre><code>sublime text =&gt; Preferences =&gt; Setting - User 加入配置，过滤文件夹和文件类型&quot;folder_exclude_patterns&quot;: [&quot;Runtime&quot;, &quot;._d&quot;, &quot;.metadata&quot;, &quot;.settings&quot;],&quot;file_exclude_patterns&quot;: [&quot;*.pyc&quot;, &quot;*.pyo&quot;, &quot;.project&quot;]</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;vim语法高亮&quot;&gt;&lt;a href=&quot;#vim语法高亮&quot; class=&quot;headerlink&quot; title=&quot;vim语法高亮&quot;&gt;&lt;/a&gt;vim语法高亮&lt;/h3&gt;&lt;p&gt;在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中
+      
+      
+        &lt;h3 id=&quot;vim语法高亮&quot;&gt;&lt;a href=&quot;#vim语法高亮&quot; class=&quot;headerlink&quot; title=&quot;vim语法高亮&quot;&gt;&lt;/a&gt;vim语法高亮&lt;/h3&gt;&lt;p&gt;在vim中输入命令:syntax on激活语法高亮，若需要Vim启动时自动激活，在~/.vimrc中
+      
     
     </summary>
     
@@ -317,53 +229,15 @@ $/
     <published>2016-03-01T00:00:00.000Z</published>
     <updated>2017-03-08T12:15:52.000Z</updated>
     
-    <content type="html"><![CDATA[<p>手机端网页输入表情时，显示的时候会乱码。而且android和iphone两种机型对emoji表情的解码不一样，导致一些不兼容问题。需要一种方案处理emoji表情，自己在做的时候，总结下三种方案。</p>
-<h4 id="三种方案"><a href="#三种方案" class="headerlink" title="三种方案"></a>三种方案</h4><pre><code>1.使用utf8mb4存储（但不完美）
-2.使用现有的php-emoji库
-3.composer require mojione/emojione
-</code></pre><h4 id="方案一-utf8mb4"><a href="#方案一-utf8mb4" class="headerlink" title="方案一(utf8mb4)"></a>方案一(utf8mb4)</h4><pre><code>修改编码, utf8mb4兼容utf8，且比utf8能表示更多的字符。可以存储emoji表情字符
-
-修改如下：
-
-1.设置表编码和相应字段编码为utf8mb4
-2.设置连接数据库编码为utf8mb4
-
-ALTER TABLE `users` CHARACTER  SET utf8mb4 COLLATE utf8mb4_general_ci;
-ALTER TABLE `users` CHANGE `comment` `comment` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;
-
-DB_CHARSET =&gt; &apos;utf8mb4&apos;; //如果thinkphp，配置文件中修改连接数据库编码
-
-缺点: iphone手机上不能显示android手机发的表情
-优点:  简单，不用修改代码
-</code></pre><h4 id="方案二-https-github-com-iamcal-php-emoji"><a href="#方案二-https-github-com-iamcal-php-emoji" class="headerlink" title="方案二 (https://github.com/iamcal/php-emoji)"></a>方案二 <a href="https://github.com/iamcal/php-emoji" target="_blank" rel="external">(https://github.com/iamcal/php-emoji)</a></h4><pre><code>使用php-emoji库处理，原理是: 手机发的表情字符存入到数据库中是一段html, 显示的时候通过引用emoji库的css， 显示表情。
-
-修改如下:
-
-1.引入emoji.css, 并确保emoji.png引入到css中指定的位置
-
-2.引入emoji.php, post过来的内容作如下处理：
-
-$content = emoji_docomo_to_unified($content);
-$html = emoji_unified_to_html($content);
-
-//将$html存入数据库，$html类似&lt;span class=&quot;emoji emoji1f609&quot;&gt;&lt;/span&gt;
-
-缺点: 通过css实现，需要加载emoji.css和emoji.png和emoji.php, 依赖外部
-优点: 兼容性好，web, android, iphone都可查看表情
-</code></pre><h4 id="方案三-https-packagist-org-packages-emojione-emojione"><a href="#方案三-https-packagist-org-packages-emojione-emojione" class="headerlink" title="方案三 (https://packagist.org/packages/emojione/emojione)"></a>方案三 <a href="https://packagist.org/packages/emojione/emojione" target="_blank" rel="external">(https://packagist.org/packages/emojione/emojione)</a></h4><pre><code>通过composer引入: `composer require mojione/emojione`
-
-保存时: Emojione::toShort($comment));
-
-显示时: Emojione::shortnameToUnicode($comment);
-
-缺点：第三方输入法（比如百度输入法）的表情不是完全支持
-优点：目前为止兼容性最好的
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>手机端网页输入表情时，显示的时候会乱码。而且android和iphone两种机型对emoji表情的解码不一样，导致一些不兼容问题。需要一种方案处理emoji表情，自己在做的时候，总结下三种方案。</p><h4 id="三种方案"><a href="#三种方案" class="headerlink" title="三种方案"></a>三种方案</h4><pre><code>1.使用utf8mb4存储（但不完美）2.使用现有的php-emoji库3.composer require mojione/emojione</code></pre><h4 id="方案一-utf8mb4"><a href="#方案一-utf8mb4" class="headerlink" title="方案一(utf8mb4)"></a>方案一(utf8mb4)</h4><pre><code>修改编码, utf8mb4兼容utf8，且比utf8能表示更多的字符。可以存储emoji表情字符修改如下：1.设置表编码和相应字段编码为utf8mb42.设置连接数据库编码为utf8mb4ALTER TABLE `users` CHARACTER  SET utf8mb4 COLLATE utf8mb4_general_ci;ALTER TABLE `users` CHANGE `comment` `comment` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL;DB_CHARSET =&gt; &apos;utf8mb4&apos;; //如果thinkphp，配置文件中修改连接数据库编码缺点: iphone手机上不能显示android手机发的表情优点:  简单，不用修改代码</code></pre><h4 id="方案二-https-github-com-iamcal-php-emoji"><a href="#方案二-https-github-com-iamcal-php-emoji" class="headerlink" title="方案二 (https://github.com/iamcal/php-emoji)"></a>方案二 <a href="https://github.com/iamcal/php-emoji" target="_blank" rel="noopener">(https://github.com/iamcal/php-emoji)</a></h4><pre><code>使用php-emoji库处理，原理是: 手机发的表情字符存入到数据库中是一段html, 显示的时候通过引用emoji库的css， 显示表情。修改如下:1.引入emoji.css, 并确保emoji.png引入到css中指定的位置2.引入emoji.php, post过来的内容作如下处理：$content = emoji_docomo_to_unified($content);$html = emoji_unified_to_html($content);//将$html存入数据库，$html类似&lt;span class=&quot;emoji emoji1f609&quot;&gt;&lt;/span&gt;缺点: 通过css实现，需要加载emoji.css和emoji.png和emoji.php, 依赖外部优点: 兼容性好，web, android, iphone都可查看表情</code></pre><h4 id="方案三-https-packagist-org-packages-emojione-emojione"><a href="#方案三-https-packagist-org-packages-emojione-emojione" class="headerlink" title="方案三 (https://packagist.org/packages/emojione/emojione)"></a>方案三 <a href="https://packagist.org/packages/emojione/emojione" target="_blank" rel="noopener">(https://packagist.org/packages/emojione/emojione)</a></h4><pre><code>通过composer引入: `composer require mojione/emojione`保存时: Emojione::toShort($comment));显示时: Emojione::shortnameToUnicode($comment);缺点：第三方输入法（比如百度输入法）的表情不是完全支持优点：目前为止兼容性最好的</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;手机端网页输入表情时，显示的时候会乱码。而且android和iphone两种机型对emoji表情的解码不一样，导致一些不兼容问题。需要一种方案处理emoji表情，自己在做的时候，总结下三种方案。&lt;/p&gt;
+      
+      
+        &lt;p&gt;手机端网页输入表情时，显示的时候会乱码。而且android和iphone两种机型对emoji表情的解码不一样，导致一些不兼容问题。需要一种方案处理emoji表情，自己在做的时候，总结下三种方案。&lt;/p&gt;
 &lt;h4 id=&quot;三种方案&quot;&gt;&lt;a href=&quot;#三种方案&quot; class
+      
     
     </summary>
     
@@ -377,23 +251,15 @@ $html = emoji_unified_to_html($content);
     <published>2015-12-01T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="登陆mysql客户端"><a href="#登陆mysql客户端" class="headerlink" title="登陆mysql客户端"></a>登陆mysql客户端</h4><pre><code>mysql -uroot -p123456
-</code></pre><h4 id="开启检查"><a href="#开启检查" class="headerlink" title="开启检查"></a>开启检查</h4><pre><code>show variables like &apos;slow_query_log&apos;;
-</code></pre><h4 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h4><pre><code>show variables like &apos;%log%&apos;;
-</code></pre><h4 id="开启"><a href="#开启" class="headerlink" title="开启"></a>开启</h4><pre><code>set global log_queries_not_using_indexes = on;
-</code></pre><h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><pre><code>show variables like &apos;long_query_time&apos;;
-</code></pre><h4 id="开启慢查询日志"><a href="#开启慢查询日志" class="headerlink" title="开启慢查询日志"></a>开启慢查询日志</h4><pre><code>set global slow_query_log = on;
-</code></pre><h4 id="查找慢查询日志记录位置"><a href="#查找慢查询日志记录位置" class="headerlink" title="查找慢查询日志记录位置"></a>查找慢查询日志记录位置</h4><pre><code>show variables like &apos;slow%&apos;;
-</code></pre><p>#mysqldumpslow -t 3 /usr/local/var/mysql/caijinlindeMBP-slow.log</p>
-<pre><code>log-slow-queries=&quot;/usr/local/val/log/mysql-slow.log&quot;
-long_query_time = 4
-log-queries-not-using-indexes
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<h4 id="登陆mysql客户端"><a href="#登陆mysql客户端" class="headerlink" title="登陆mysql客户端"></a>登陆mysql客户端</h4><pre><code>mysql -uroot -p123456</code></pre><h4 id="开启检查"><a href="#开启检查" class="headerlink" title="开启检查"></a>开启检查</h4><pre><code>show variables like &apos;slow_query_log&apos;;</code></pre><h4 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h4><pre><code>show variables like &apos;%log%&apos;;</code></pre><h4 id="开启"><a href="#开启" class="headerlink" title="开启"></a>开启</h4><pre><code>set global log_queries_not_using_indexes = on;</code></pre><h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><pre><code>show variables like &apos;long_query_time&apos;;</code></pre><h4 id="开启慢查询日志"><a href="#开启慢查询日志" class="headerlink" title="开启慢查询日志"></a>开启慢查询日志</h4><pre><code>set global slow_query_log = on;</code></pre><h4 id="查找慢查询日志记录位置"><a href="#查找慢查询日志记录位置" class="headerlink" title="查找慢查询日志记录位置"></a>查找慢查询日志记录位置</h4><pre><code>show variables like &apos;slow%&apos;;</code></pre><p>#mysqldumpslow -t 3 /usr/local/var/mysql/caijinlindeMBP-slow.log</p><pre><code>log-slow-queries=&quot;/usr/local/val/log/mysql-slow.log&quot;long_query_time = 4log-queries-not-using-indexes</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h4 id=&quot;登陆mysql客户端&quot;&gt;&lt;a href=&quot;#登陆mysql客户端&quot; class=&quot;headerlink&quot; title=&quot;登陆mysql客户端&quot;&gt;&lt;/a&gt;登陆mysql客户端&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;mysql -uroot -p123456
+      
+      
+        &lt;h4 id=&quot;登陆mysql客户端&quot;&gt;&lt;a href=&quot;#登陆mysql客户端&quot; class=&quot;headerlink&quot; title=&quot;登陆mysql客户端&quot;&gt;&lt;/a&gt;登陆mysql客户端&lt;/h4&gt;&lt;pre&gt;&lt;code&gt;mysql -uroot -p123456
 &lt;/code&gt;&lt;
+      
     
     </summary>
     
@@ -407,19 +273,16 @@ log-queries-not-using-indexes
     <published>2015-11-18T00:00:00.000Z</published>
     <updated>2017-03-08T12:19:29.000Z</updated>
     
-    <content type="html"><![CDATA[<p>基于lnmp安装的php-fpm启动后，发现并没有看到9000进程，加了网站配置文件后，出现502错误。</p>
-<p>php-fpm可以正常启动，php-fpm默认在9000端口监听, 但是netstat并没有看到9000进程</p>
-<h4 id="启动查找进程"><a href="#启动查找进程" class="headerlink" title="启动查找进程"></a>启动查找进程</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/php-fpm start</div><div class="line">netstat -anp | grep <span class="number">9000</span></div></pre></td></tr></table></figure>
-<h4 id="查看php-fpm配置文件"><a href="#查看php-fpm配置文件" class="headerlink" title="查看php-fpm配置文件"></a>查看php-fpm配置文件</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">vim /usr/local/php/etc/php-fpm.conf</div><div class="line">[<span class="keyword">global</span>]</div><div class="line">pid = /usr/local/php/<span class="keyword">var</span>/run/php-fpm.pid</div><div class="line">error_log = /usr/local/php/<span class="keyword">var</span>/log/php-fpm.log</div><div class="line">log_level = notice</div><div class="line"></div><div class="line">[www]</div><div class="line">listen = /tmp/php-cgi.sock  <span class="comment">#监听，改成127.0.0.1:9000</span></div><div class="line">listen.backlog = <span class="number">-1</span></div><div class="line">listen.allowed_clients = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></div><div class="line">listen.owner = www</div><div class="line">listen.group = www</div><div class="line">listen.mode = <span class="number">0666</span></div><div class="line">user = www</div><div class="line">group = www</div><div class="line">pm = dynamic</div><div class="line">pm.max_children = <span class="number">10</span></div><div class="line">pm.start_servers = <span class="number">2</span></div><div class="line">pm.min_spare_servers = <span class="number">1</span></div><div class="line">pm.max_spare_servers = <span class="number">6</span></div><div class="line">request_terminate_timeout = <span class="number">100</span></div><div class="line">request_slowlog_timeout = <span class="number">0</span></div><div class="line">slowlog = <span class="keyword">var</span>/log/slow.log</div></pre></td></tr></table></figure>
-<h4 id="网站配置文件test-com-conf"><a href="#网站配置文件test-com-conf" class="headerlink" title="网站配置文件test.com.conf"></a>网站配置文件test.com.conf</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen <span class="number">80</span>;</div><div class="line">    server_name test.com;</div><div class="line">    index index.html index.shtml index.php;</div><div class="line">    root /home/wwwroot/<span class="keyword">default</span>/test;</div><div class="line">    <span class="keyword">include</span> /home/wwwroot/<span class="keyword">default</span>/test/nginx_rewrite.conf;</div><div class="line">    location ~ .*\.(php|php5)?$</div><div class="line">    &#123;</div><div class="line">        fastcgi_pass <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>; <span class="comment">#9000端口</span></div><div class="line">        fastcgi_index index.php;</div><div class="line">        <span class="keyword">include</span> fastcgi.conf;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|woff)$</div><div class="line">    &#123;</div><div class="line">        expires <span class="number">30</span>d;</div><div class="line">        access_log        off;</div><div class="line">        log_not_found     off;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(js|css)?$</div><div class="line">    &#123;</div><div class="line">        expires <span class="number">7</span>d;</div><div class="line">        access_log        off;</div><div class="line">        log_not_found     off;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(htaccess)?$</div><div class="line">    &#123;</div><div class="line">        deny all;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样"><a href="#对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样" class="headerlink" title="对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样"></a>对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">两者需要将监听形式改成一样，比如都是<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>或者/tmp/php-cgi.sock</div></pre></td></tr></table></figure>
-]]></content>
+    <content type="html"><![CDATA[<p>基于lnmp安装的php-fpm启动后，发现并没有看到9000进程，加了网站配置文件后，出现502错误。</p><p>php-fpm可以正常启动，php-fpm默认在9000端口监听, 但是netstat并没有看到9000进程</p><h4 id="启动查找进程"><a href="#启动查找进程" class="headerlink" title="启动查找进程"></a>启动查找进程</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/php-fpm start</span><br><span class="line">netstat -anp | grep <span class="number">9000</span></span><br></pre></td></tr></table></figure><h4 id="查看php-fpm配置文件"><a href="#查看php-fpm配置文件" class="headerlink" title="查看php-fpm配置文件"></a>查看php-fpm配置文件</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/php/etc/php-fpm.conf</span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line">pid = /usr/local/php/<span class="keyword">var</span>/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php/<span class="keyword">var</span>/log/php-fpm.log</span><br><span class="line">log_level = notice</span><br><span class="line"></span><br><span class="line">[www]</span><br><span class="line">listen = /tmp/php-cgi.sock  <span class="comment">#监听，改成127.0.0.1:9000</span></span><br><span class="line">listen.backlog = <span class="number">-1</span></span><br><span class="line">listen.allowed_clients = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">listen.owner = www</span><br><span class="line">listen.group = www</span><br><span class="line">listen.mode = <span class="number">0666</span></span><br><span class="line">user = www</span><br><span class="line">group = www</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = <span class="number">10</span></span><br><span class="line">pm.start_servers = <span class="number">2</span></span><br><span class="line">pm.min_spare_servers = <span class="number">1</span></span><br><span class="line">pm.max_spare_servers = <span class="number">6</span></span><br><span class="line">request_terminate_timeout = <span class="number">100</span></span><br><span class="line">request_slowlog_timeout = <span class="number">0</span></span><br><span class="line">slowlog = <span class="keyword">var</span>/log/slow.log</span><br></pre></td></tr></table></figure><h4 id="网站配置文件test-com-conf"><a href="#网站配置文件test-com-conf" class="headerlink" title="网站配置文件test.com.conf"></a>网站配置文件test.com.conf</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen <span class="number">80</span>;</span><br><span class="line">    server_name test.com;</span><br><span class="line">    index index.html index.shtml index.php;</span><br><span class="line">    root /home/wwwroot/<span class="keyword">default</span>/test;</span><br><span class="line">    <span class="keyword">include</span> /home/wwwroot/<span class="keyword">default</span>/test/nginx_rewrite.conf;</span><br><span class="line">    location ~ .*\.(php|php5)?$</span><br><span class="line">    &#123;</span><br><span class="line">        fastcgi_pass <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>; <span class="comment">#9000端口</span></span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        <span class="keyword">include</span> fastcgi.conf;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|woff)$</span><br><span class="line">    &#123;</span><br><span class="line">        expires <span class="number">30</span>d;</span><br><span class="line">        access_log        off;</span><br><span class="line">        log_not_found     off;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ .*\.(js|css)?$</span><br><span class="line">    &#123;</span><br><span class="line">        expires <span class="number">7</span>d;</span><br><span class="line">        access_log        off;</span><br><span class="line">        log_not_found     off;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ .*\.(htaccess)?$</span><br><span class="line">    &#123;</span><br><span class="line">        deny all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样"><a href="#对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样" class="headerlink" title="对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样"></a>对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">两者需要将监听形式改成一样，比如都是<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>或者/tmp/php-cgi.sock</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;基于lnmp安装的php-fpm启动后，发现并没有看到9000进程，加了网站配置文件后，出现502错误。&lt;/p&gt;
+      
+      
+        &lt;p&gt;基于lnmp安装的php-fpm启动后，发现并没有看到9000进程，加了网站配置文件后，出现502错误。&lt;/p&gt;
 &lt;p&gt;php-fpm可以正常启动，php-fpm默认在9000端口监听, 但是netstat并没有看到9000进程&lt;/p&gt;
 &lt;h4 id=&quot;启动查找进程&quot;&gt;&lt;a
+      
     
     </summary>
     
@@ -433,17 +296,7 @@ log-queries-not-using-indexes
     <published>2015-11-17T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<p>基于php数组操作，最近遇到两个坑，记录在这里</p>
-<a id="more"></a>
-<p>之前做一个搜索功能的时候，有一个需求是希望加一个“-”选项，以便可以取消搜索项</p>
-<h4 id="第一次的做法"><a href="#第一次的做法" class="headerlink" title="第一次的做法"></a>第一次的做法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$arr = array_merge(<span class="keyword">array</span>(<span class="string">' '</span> =&gt; <span class="string">"-"</span>), $arr);</div></pre></td></tr></table></figure>
-<p><a href="http://stackoverflow.com/questions/3292044/php-merge-two-arrays-while-keeping-keys-instead-of-reindexing" target="_blank" rel="external">why not recommend array_merge</a></p>
-<p>隐患： array_merge合并时会重新索引，最后导致搜索的时候匹配失败</p>
-<h4 id="第二次的做法"><a href="#第二次的做法" class="headerlink" title="第二次的做法"></a>第二次的做法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$arr = <span class="keyword">array</span>(<span class="string">' '</span> =&gt; <span class="string">"-"</span>) + $arr;</div></pre></td></tr></table></figure>
-<p>隐患: 如果$arr不是数组，就会发生意料的隐患</p>
-<h4 id="最终做法"><a href="#最终做法" class="headerlink" title="最终做法"></a>最终做法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">settype($a, <span class="string">'array'</span>);</div><div class="line">$arr = <span class="keyword">array</span>(<span class="string">' '</span> =&gt; <span class="string">"-"</span>) + $arr;</div></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>小小的一个功能，如果不注意也会引发一些问题。</p>
-]]></content>
+    <content type="html"><![CDATA[<p>基于php数组操作，最近遇到两个坑，记录在这里</p><a id="more"></a><p>之前做一个搜索功能的时候，有一个需求是希望加一个“-”选项，以便可以取消搜索项</p><h4 id="第一次的做法"><a href="#第一次的做法" class="headerlink" title="第一次的做法"></a>第一次的做法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$arr = array_merge(<span class="keyword">array</span>(<span class="string">' '</span> =&gt; <span class="string">"-"</span>), $arr);</span><br></pre></td></tr></table></figure><p><a href="http://stackoverflow.com/questions/3292044/php-merge-two-arrays-while-keeping-keys-instead-of-reindexing" target="_blank" rel="noopener">why not recommend array_merge</a></p><p>隐患： array_merge合并时会重新索引，最后导致搜索的时候匹配失败</p><h4 id="第二次的做法"><a href="#第二次的做法" class="headerlink" title="第二次的做法"></a>第二次的做法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$arr = <span class="keyword">array</span>(<span class="string">' '</span> =&gt; <span class="string">"-"</span>) + $arr;</span><br></pre></td></tr></table></figure><p>隐患: 如果$arr不是数组，就会发生意料的隐患</p><h4 id="最终做法"><a href="#最终做法" class="headerlink" title="最终做法"></a>最终做法</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">settype($a, <span class="string">'array'</span>);</span><br><span class="line">$arr = <span class="keyword">array</span>(<span class="string">' '</span> =&gt; <span class="string">"-"</span>) + $arr;</span><br></pre></td></tr></table></figure><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>小小的一个功能，如果不注意也会引发一些问题。</p>]]></content>
     
     <summary type="html">
     
@@ -461,15 +314,14 @@ log-queries-not-using-indexes
     <published>2015-11-11T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="记录一下昨晚遇到的坑"><a href="#记录一下昨晚遇到的坑" class="headerlink" title="记录一下昨晚遇到的坑"></a>记录一下昨晚遇到的坑</h3><p>在页面中使用加密函数加密id时，发现解密的时候不正确，原以为是加密函数或者解密函数的问题，但以前用的时候都没有问题，突然出现这个问题应该不是加密函数或者解密函数的问题。</p>
-<h4 id="页面中是这样写的"><a href="#页面中是这样写的" class="headerlink" title="页面中是这样写的"></a>页面中是这样写的</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;a class="btn btn-default" href="__URL__/edit#!/&#123;:encrypt_id($_one.id)&#125;/step4" title="查看"&gt;</div><div class="line">    &lt;i class="gi gi-search"&gt;&lt;/i&gt;&amp;nbsp;预览</div><div class="line">&lt;/a&gt;</div></pre></td></tr></table></figure>
-<h4 id="数据排查"><a href="#数据排查" class="headerlink" title="数据排查"></a>数据排查</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$_one.id也能读出数据</div></pre></td></tr></table></figure>
-<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">页面中使用php时，函数中参数有 “.” 的话，thinkphp解析的时候加密错误，多么大的一个坑啊，改为$_one[<span class="string">'id'</span>]就好</div></pre></td></tr></table></figure>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="记录一下昨晚遇到的坑"><a href="#记录一下昨晚遇到的坑" class="headerlink" title="记录一下昨晚遇到的坑"></a>记录一下昨晚遇到的坑</h3><p>在页面中使用加密函数加密id时，发现解密的时候不正确，原以为是加密函数或者解密函数的问题，但以前用的时候都没有问题，突然出现这个问题应该不是加密函数或者解密函数的问题。</p><h4 id="页面中是这样写的"><a href="#页面中是这样写的" class="headerlink" title="页面中是这样写的"></a>页面中是这样写的</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a class="btn btn-default" href="__URL__/edit#!/&#123;:encrypt_id($_one.id)&#125;/step4" title="查看"&gt;</span><br><span class="line">    &lt;i class="gi gi-search"&gt;&lt;/i&gt;&amp;nbsp;预览</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure><h4 id="数据排查"><a href="#数据排查" class="headerlink" title="数据排查"></a>数据排查</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_one.id也能读出数据</span><br></pre></td></tr></table></figure><h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">页面中使用php时，函数中参数有 “.” 的话，thinkphp解析的时候加密错误，多么大的一个坑啊，改为$_one[<span class="string">'id'</span>]就好</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;记录一下昨晚遇到的坑&quot;&gt;&lt;a href=&quot;#记录一下昨晚遇到的坑&quot; class=&quot;headerlink&quot; title=&quot;记录一下昨晚遇到的坑&quot;&gt;&lt;/a&gt;记录一下昨晚遇到的坑&lt;/h3&gt;&lt;p&gt;在页面中使用加密函数加密id时，发现解密的时候不正确，原以为是加密函数或者解
+      
+      
+        &lt;h3 id=&quot;记录一下昨晚遇到的坑&quot;&gt;&lt;a href=&quot;#记录一下昨晚遇到的坑&quot; class=&quot;headerlink&quot; title=&quot;记录一下昨晚遇到的坑&quot;&gt;&lt;/a&gt;记录一下昨晚遇到的坑&lt;/h3&gt;&lt;p&gt;在页面中使用加密函数加密id时，发现解密的时候不正确，原以为是加密函数或者解
+      
     
     </summary>
     
@@ -483,195 +335,15 @@ log-queries-not-using-indexes
     <published>2015-10-25T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<p>最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。</p>
-<h4 id="node-npm安装"><a href="#node-npm安装" class="headerlink" title="node,npm安装"></a>node,npm安装</h4><p>brew是mac下不错的包管理工具</p>
-<pre><code>brew install node . 该命令执行后，自动装好node和npm
-</code></pre><p>下面的bower,gulp需要依赖node</p>
-<h4 id="gulp安装"><a href="#gulp安装" class="headerlink" title="gulp安装"></a>gulp安装</h4><pre><code>全局安装 npm isntall gulp -g
-cd 项目目录
-npm install --save-dev gulp
-package.json包含了我们所需要的npm包， 建立package.json
-npm install(生成文件在node_modules中)
-配置文件:gulpfile.js， 完成前端打包等工作
-</code></pre><h4 id="bower安装"><a href="#bower安装" class="headerlink" title="bower安装"></a>bower安装</h4><pre><code>全局安装 npm install bower -g
-cd 项目目录
-npm install --save-dev bower
-配置文件:bower.json包含了我们所需要的库文件, 建立bower.json
-bower install(生成文件在bower_components中)
-</code></pre><h4 id="composer安装"><a href="#composer安装" class="headerlink" title="composer安装"></a>composer安装</h4><pre><code>brew install composer
-配置文件:composer.json, 建立composer.json
-composer install(生成文件在vendor中)
-</code></pre><h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><p>所需要依赖的node包</p>
-<pre><code>{
-  &quot;repository&quot;: {},
-  &quot;devDependencies&quot;: {
-    &quot;del&quot;: &quot;^0.1.2&quot;,
-    &quot;gulp&quot;: &quot;^3.9.0&quot;,
-    &quot;gulp-autoprefixer&quot;: &quot;0.0.10&quot;,
-    &quot;gulp-concat&quot;: &quot;^2.3.4&quot;,
-    &quot;gulp-less&quot;: &quot;^3.0.3&quot;,
-    &quot;gulp-minify-css&quot;: &quot;^0.3.7&quot;,
-    &quot;gulp-rename&quot;: &quot;^1.2.2&quot;,
-    &quot;gulp-rev&quot;: &quot;^1.1.0&quot;,
-    &quot;gulp-uglify&quot;: &quot;^1.0.0&quot;,
-    &quot;laravel-elixir&quot;: &quot;*&quot;
-  }
-}
-</code></pre><h4 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h4><p>for example: 完成css,js压缩打包，加版本号等</p>
-<pre><code>var elixir = require(&apos;laravel-elixir&apos;);
-var gulp = require(&apos;gulp&apos;);
-var less = require(&apos;gulp-less&apos;);
-var autoprefixer = require(&apos;gulp-autoprefixer&apos;);
-var uglify = require(&apos;gulp-uglify&apos;);
-var concat = require(&apos;gulp-concat&apos;);
-var rev = require(&apos;gulp-rev&apos;);
-var del = require(&apos;del&apos;);
-var minifycss = require(&apos;gulp-minify-css&apos;);
-var rename = require(&apos;gulp-rename&apos;);
-
-
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Less
- | file for our application, as well as publishing vendor resources.
- |
- */
-
-elixir(function(mix) {
-    mix.task([&apos;build&apos;, &apos;watch&apos;]);
-});
-
-
-// CSS task
-gulp.task(&apos;css&apos;, function() {
-
-    // Cleanup old assets
-    del([&apos;public/build/css/*.css&apos;], function (err) {});
-
-    // Convert scss first
-    gulp.src(&apos;resources/assets/less/*.less&apos;)
-        .pipe(less())
-        .pipe(autoprefixer(&apos;last 10 version&apos;))
-        .pipe(concat(&apos;app.css&apos;))
-        .pipe(minifycss())
-        .pipe(rename(function (path) {
-            path.basename += &quot;.min&quot;
-        }))
-        .pipe(rev())
-        .pipe(gulp.dest(&apos;public/build/css&apos;));
-});
-
-// JavaScript task
-gulp.task(&apos;js&apos;, function() {
-    // Cleanup old assets
-    del([&apos;public/build/js/*.js&apos;], function (err) {});
-
-    // Concat and uglify the JavaScript assets
-    // Afterwards add the MD5 hash to the filename
-    gulp.src(&apos;resources/assets/js/*.js&apos;)
-        .pipe(concat(&apos;app.js&apos;))
-        .pipe(uglify())
-        .pipe(rename(function (path) {
-            path.basename += &quot;.min&quot;
-        }))
-        .pipe(rev())
-        .pipe(gulp.dest(&apos;public/build/js&apos;));
-});
-
-//image task
-gulp.task(&apos;copy:image&apos;, function () {
-  gulp.src(&apos;resources/images/**/*&apos;)
-    .pipe(gulp.dest(&apos;public/build/images&apos;));
-});
-
-
-gulp.task(&apos;build&apos;, [&apos;css&apos;, &apos;js&apos;, &apos;copy:image&apos;]);
-
-gulp.task(&apos;watch&apos;, function(){
-    gulp.watch(&apos;resources/assets/css/**/*.css&apos;, [&apos;css&apos;]);
-    gulp.watch(&apos;resources/assets/js/**/*.js&apos;, [&apos;js&apos;]);
-});
-
-// The default task (called when you run `gulp` from cli)
-// gulp.task(&apos;default&apos;, [&apos;build&apos;, &apos;watch&apos;]);
-</code></pre><h4 id="bower-json"><a href="#bower-json" class="headerlink" title="bower.json"></a>bower.json</h4><p>for example: 安装项目所需要的组件</p>
-<pre><code>{
-  &quot;name&quot;: &quot;laravel&quot;,
-  &quot;version&quot;: &quot;1.0.0&quot;,
-  &quot;authors&quot;: [
-    &quot;caijinlin &lt;caijinlin2012@gmail.com&gt;&quot;
-  ],
-  &quot;license&quot;: &quot;MIT&quot;,
-  &quot;ignore&quot;: [
-    &quot;**/.*&quot;,
-    &quot;node_modules&quot;,
-    &quot;bower_components&quot;,
-    &quot;test&quot;,
-    &quot;tests&quot;
-  ],
-  &quot;dependencies&quot;: {
-    &quot;bootstrap&quot;: &quot;3.1.1&quot;,
-    &quot;jquery&quot;: &quot;1.11.3&quot;,
-    &quot;remarkable-bootstrap-notify&quot;: &quot;3.1.3&quot;,
-    &quot;jquery_lazyload&quot;: &quot;~1.9.1&quot;
-  }
-}
-</code></pre><h4 id="composer-json"><a href="#composer-json" class="headerlink" title="composer.json"></a>composer.json</h4><p>for example: 依赖laravel框架</p>
-<pre><code>{
-    &quot;name&quot;: &quot;laravel/laravel&quot;,
-    &quot;description&quot;: &quot;The Laravel Framework.&quot;,
-    &quot;keywords&quot;: [&quot;framework&quot;, &quot;laravel&quot;],
-    &quot;license&quot;: &quot;MIT&quot;,
-    &quot;type&quot;: &quot;project&quot;,
-    &quot;require&quot;: {
-        &quot;laravel/framework&quot;: &quot;5.0.*&quot;
-    },
-    &quot;require-dev&quot;: {
-        &quot;phpunit/phpunit&quot;: &quot;~4.0&quot;,
-        &quot;phpspec/phpspec&quot;: &quot;~2.1&quot;,
-        &quot;barryvdh/laravel-debugbar&quot;: &quot;~2.0&quot;
-    },
-    &quot;autoload&quot;: {
-        &quot;classmap&quot;: [
-            &quot;database&quot;
-        ],
-        &quot;psr-4&quot;: {
-            &quot;App\\&quot;: &quot;app/&quot;
-        }
-    },
-    &quot;autoload-dev&quot;: {
-        &quot;classmap&quot;: [
-            &quot;tests/TestCase.php&quot;
-        ]
-    },
-    &quot;scripts&quot;: {
-        &quot;post-install-cmd&quot;: [
-            &quot;php artisan clear-compiled&quot;,
-            &quot;php artisan optimize&quot;
-        ],
-        &quot;post-update-cmd&quot;: [
-            &quot;php artisan clear-compiled&quot;,
-            &quot;php artisan optimize&quot;
-        ],
-        &quot;post-create-project-cmd&quot;: [
-            &quot;php -r \&quot;copy(&apos;.env.example&apos;, &apos;.env&apos;);\&quot;&quot;,
-            &quot;php artisan key:generate&quot;
-        ]
-    },
-    &quot;config&quot;: {
-        &quot;preferred-install&quot;: &quot;dist&quot;
-    }
-}
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。</p><h4 id="node-npm安装"><a href="#node-npm安装" class="headerlink" title="node,npm安装"></a>node,npm安装</h4><p>brew是mac下不错的包管理工具</p><pre><code>brew install node . 该命令执行后，自动装好node和npm</code></pre><p>下面的bower,gulp需要依赖node</p><h4 id="gulp安装"><a href="#gulp安装" class="headerlink" title="gulp安装"></a>gulp安装</h4><pre><code>全局安装 npm isntall gulp -gcd 项目目录npm install --save-dev gulppackage.json包含了我们所需要的npm包， 建立package.jsonnpm install(生成文件在node_modules中)配置文件:gulpfile.js， 完成前端打包等工作</code></pre><h4 id="bower安装"><a href="#bower安装" class="headerlink" title="bower安装"></a>bower安装</h4><pre><code>全局安装 npm install bower -gcd 项目目录npm install --save-dev bower配置文件:bower.json包含了我们所需要的库文件, 建立bower.jsonbower install(生成文件在bower_components中)</code></pre><h4 id="composer安装"><a href="#composer安装" class="headerlink" title="composer安装"></a>composer安装</h4><pre><code>brew install composer配置文件:composer.json, 建立composer.jsoncomposer install(生成文件在vendor中)</code></pre><h4 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h4><p>所需要依赖的node包</p><pre><code>{  &quot;repository&quot;: {},  &quot;devDependencies&quot;: {    &quot;del&quot;: &quot;^0.1.2&quot;,    &quot;gulp&quot;: &quot;^3.9.0&quot;,    &quot;gulp-autoprefixer&quot;: &quot;0.0.10&quot;,    &quot;gulp-concat&quot;: &quot;^2.3.4&quot;,    &quot;gulp-less&quot;: &quot;^3.0.3&quot;,    &quot;gulp-minify-css&quot;: &quot;^0.3.7&quot;,    &quot;gulp-rename&quot;: &quot;^1.2.2&quot;,    &quot;gulp-rev&quot;: &quot;^1.1.0&quot;,    &quot;gulp-uglify&quot;: &quot;^1.0.0&quot;,    &quot;laravel-elixir&quot;: &quot;*&quot;  }}</code></pre><h4 id="gulpfile-js"><a href="#gulpfile-js" class="headerlink" title="gulpfile.js"></a>gulpfile.js</h4><p>for example: 完成css,js压缩打包，加版本号等</p><pre><code>var elixir = require(&apos;laravel-elixir&apos;);var gulp = require(&apos;gulp&apos;);var less = require(&apos;gulp-less&apos;);var autoprefixer = require(&apos;gulp-autoprefixer&apos;);var uglify = require(&apos;gulp-uglify&apos;);var concat = require(&apos;gulp-concat&apos;);var rev = require(&apos;gulp-rev&apos;);var del = require(&apos;del&apos;);var minifycss = require(&apos;gulp-minify-css&apos;);var rename = require(&apos;gulp-rename&apos;);/* |-------------------------------------------------------------------------- | Elixir Asset Management |-------------------------------------------------------------------------- | | Elixir provides a clean, fluent API for defining some basic Gulp tasks | for your Laravel application. By default, we are compiling the Less | file for our application, as well as publishing vendor resources. | */elixir(function(mix) {    mix.task([&apos;build&apos;, &apos;watch&apos;]);});// CSS taskgulp.task(&apos;css&apos;, function() {    // Cleanup old assets    del([&apos;public/build/css/*.css&apos;], function (err) {});    // Convert scss first    gulp.src(&apos;resources/assets/less/*.less&apos;)        .pipe(less())        .pipe(autoprefixer(&apos;last 10 version&apos;))        .pipe(concat(&apos;app.css&apos;))        .pipe(minifycss())        .pipe(rename(function (path) {            path.basename += &quot;.min&quot;        }))        .pipe(rev())        .pipe(gulp.dest(&apos;public/build/css&apos;));});// JavaScript taskgulp.task(&apos;js&apos;, function() {    // Cleanup old assets    del([&apos;public/build/js/*.js&apos;], function (err) {});    // Concat and uglify the JavaScript assets    // Afterwards add the MD5 hash to the filename    gulp.src(&apos;resources/assets/js/*.js&apos;)        .pipe(concat(&apos;app.js&apos;))        .pipe(uglify())        .pipe(rename(function (path) {            path.basename += &quot;.min&quot;        }))        .pipe(rev())        .pipe(gulp.dest(&apos;public/build/js&apos;));});//image taskgulp.task(&apos;copy:image&apos;, function () {  gulp.src(&apos;resources/images/**/*&apos;)    .pipe(gulp.dest(&apos;public/build/images&apos;));});gulp.task(&apos;build&apos;, [&apos;css&apos;, &apos;js&apos;, &apos;copy:image&apos;]);gulp.task(&apos;watch&apos;, function(){    gulp.watch(&apos;resources/assets/css/**/*.css&apos;, [&apos;css&apos;]);    gulp.watch(&apos;resources/assets/js/**/*.js&apos;, [&apos;js&apos;]);});// The default task (called when you run `gulp` from cli)// gulp.task(&apos;default&apos;, [&apos;build&apos;, &apos;watch&apos;]);</code></pre><h4 id="bower-json"><a href="#bower-json" class="headerlink" title="bower.json"></a>bower.json</h4><p>for example: 安装项目所需要的组件</p><pre><code>{  &quot;name&quot;: &quot;laravel&quot;,  &quot;version&quot;: &quot;1.0.0&quot;,  &quot;authors&quot;: [    &quot;caijinlin &lt;caijinlin2012@gmail.com&gt;&quot;  ],  &quot;license&quot;: &quot;MIT&quot;,  &quot;ignore&quot;: [    &quot;**/.*&quot;,    &quot;node_modules&quot;,    &quot;bower_components&quot;,    &quot;test&quot;,    &quot;tests&quot;  ],  &quot;dependencies&quot;: {    &quot;bootstrap&quot;: &quot;3.1.1&quot;,    &quot;jquery&quot;: &quot;1.11.3&quot;,    &quot;remarkable-bootstrap-notify&quot;: &quot;3.1.3&quot;,    &quot;jquery_lazyload&quot;: &quot;~1.9.1&quot;  }}</code></pre><h4 id="composer-json"><a href="#composer-json" class="headerlink" title="composer.json"></a>composer.json</h4><p>for example: 依赖laravel框架</p><pre><code>{    &quot;name&quot;: &quot;laravel/laravel&quot;,    &quot;description&quot;: &quot;The Laravel Framework.&quot;,    &quot;keywords&quot;: [&quot;framework&quot;, &quot;laravel&quot;],    &quot;license&quot;: &quot;MIT&quot;,    &quot;type&quot;: &quot;project&quot;,    &quot;require&quot;: {        &quot;laravel/framework&quot;: &quot;5.0.*&quot;    },    &quot;require-dev&quot;: {        &quot;phpunit/phpunit&quot;: &quot;~4.0&quot;,        &quot;phpspec/phpspec&quot;: &quot;~2.1&quot;,        &quot;barryvdh/laravel-debugbar&quot;: &quot;~2.0&quot;    },    &quot;autoload&quot;: {        &quot;classmap&quot;: [            &quot;database&quot;        ],        &quot;psr-4&quot;: {            &quot;App\\&quot;: &quot;app/&quot;        }    },    &quot;autoload-dev&quot;: {        &quot;classmap&quot;: [            &quot;tests/TestCase.php&quot;        ]    },    &quot;scripts&quot;: {        &quot;post-install-cmd&quot;: [            &quot;php artisan clear-compiled&quot;,            &quot;php artisan optimize&quot;        ],        &quot;post-update-cmd&quot;: [            &quot;php artisan clear-compiled&quot;,            &quot;php artisan optimize&quot;        ],        &quot;post-create-project-cmd&quot;: [            &quot;php -r \&quot;copy(&apos;.env.example&apos;, &apos;.env&apos;);\&quot;&quot;,            &quot;php artisan key:generate&quot;        ]    },    &quot;config&quot;: {        &quot;preferred-install&quot;: &quot;dist&quot;    }}</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。&lt;/p&gt;
+      
+      
+        &lt;p&gt;最近基于laravel框架，使用gulp构建前端自动化工作流, 提高开发效率， 记录一下， go !以下基于mac进行，其它环境使用相应的包管理工具安装。&lt;/p&gt;
 &lt;h4 id=&quot;node-npm安装&quot;&gt;&lt;a href=&quot;#node-npm安装&quot; class=&quot;header
+      
     
     </summary>
     
@@ -685,15 +357,15 @@ gulp.task(&apos;watch&apos;, function(){
     <published>2015-10-10T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="简单缓存服务SCS"><a href="#简单缓存服务SCS" class="headerlink" title="简单缓存服务SCS"></a>简单缓存服务SCS</h3><p>高性能、高可用的分布式缓存服务，兼容Memcache/Redis协议。</p>
-<h4 id="使用SCS中的redis时-遇到”redis-read-error-on-connection”的错误，-经过一番搜索找到解决方法。"><a href="#使用SCS中的redis时-遇到”redis-read-error-on-connection”的错误，-经过一番搜索找到解决方法。" class="headerlink" title="使用SCS中的redis时, 遇到”redis read error on connection”的错误， 经过一番搜索找到解决方法。"></a>使用SCS中的redis时, 遇到”redis read error on connection”的错误， 经过一番搜索找到解决方法。</h4><p>登录百度云后台，需将访问改集群的服务器设置为白名单</p>
-<pre><code>简单缓存服务SCS =&gt; 集群名称 =&gt; 添加白名单 =》 选择服务器
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<h3 id="简单缓存服务SCS"><a href="#简单缓存服务SCS" class="headerlink" title="简单缓存服务SCS"></a>简单缓存服务SCS</h3><p>高性能、高可用的分布式缓存服务，兼容Memcache/Redis协议。</p><h4 id="使用SCS中的redis时-遇到”redis-read-error-on-connection”的错误，-经过一番搜索找到解决方法。"><a href="#使用SCS中的redis时-遇到”redis-read-error-on-connection”的错误，-经过一番搜索找到解决方法。" class="headerlink" title="使用SCS中的redis时, 遇到”redis read error on connection”的错误， 经过一番搜索找到解决方法。"></a>使用SCS中的redis时, 遇到”redis read error on connection”的错误， 经过一番搜索找到解决方法。</h4><p>登录百度云后台，需将访问改集群的服务器设置为白名单</p><pre><code>简单缓存服务SCS =&gt; 集群名称 =&gt; 添加白名单 =》 选择服务器</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;简单缓存服务SCS&quot;&gt;&lt;a href=&quot;#简单缓存服务SCS&quot; class=&quot;headerlink&quot; title=&quot;简单缓存服务SCS&quot;&gt;&lt;/a&gt;简单缓存服务SCS&lt;/h3&gt;&lt;p&gt;高性能、高可用的分布式缓存服务，兼容Memcache/Redis协议。&lt;/p&gt;
+      
+      
+        &lt;h3 id=&quot;简单缓存服务SCS&quot;&gt;&lt;a href=&quot;#简单缓存服务SCS&quot; class=&quot;headerlink&quot; title=&quot;简单缓存服务SCS&quot;&gt;&lt;/a&gt;简单缓存服务SCS&lt;/h3&gt;&lt;p&gt;高性能、高可用的分布式缓存服务，兼容Memcache/Redis协议。&lt;/p&gt;
 &lt;h
+      
     
     </summary>
     
@@ -707,12 +379,14 @@ gulp.task(&apos;watch&apos;, function(){
     <published>2015-05-01T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="mysql不稳定排序问题"><a href="#mysql不稳定排序问题" class="headerlink" title="mysql不稳定排序问题"></a>mysql不稳定排序问题</h3><p>mysql根据某一个字段排序，如果数据库中这个字段可能存在相同数值，仅仅通过该字段排序是不稳定的，如果加上了limit，可能会造成有一些结果没有显示，有些重复，这时候加上再id排序，才能得到正确地排序结果。</p>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="mysql不稳定排序问题"><a href="#mysql不稳定排序问题" class="headerlink" title="mysql不稳定排序问题"></a>mysql不稳定排序问题</h3><p>mysql根据某一个字段排序，如果数据库中这个字段可能存在相同数值，仅仅通过该字段排序是不稳定的，如果加上了limit，可能会造成有一些结果没有显示，有些重复，这时候加上再id排序，才能得到正确地排序结果。</p>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;mysql不稳定排序问题&quot;&gt;&lt;a href=&quot;#mysql不稳定排序问题&quot; class=&quot;headerlink&quot; title=&quot;mysql不稳定排序问题&quot;&gt;&lt;/a&gt;mysql不稳定排序问题&lt;/h3&gt;&lt;p&gt;mysql根据某一个字段排序，如果数据库中这个字段可能存在相
+      
+      
+        &lt;h3 id=&quot;mysql不稳定排序问题&quot;&gt;&lt;a href=&quot;#mysql不稳定排序问题&quot; class=&quot;headerlink&quot; title=&quot;mysql不稳定排序问题&quot;&gt;&lt;/a&gt;mysql不稳定排序问题&lt;/h3&gt;&lt;p&gt;mysql根据某一个字段排序，如果数据库中这个字段可能存在相
+      
     
     </summary>
     
@@ -726,19 +400,14 @@ gulp.task(&apos;watch&apos;, function(){
     <published>2015-04-26T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="搜索技巧和资源整合"><a href="#搜索技巧和资源整合" class="headerlink" title="搜索技巧和资源整合"></a>搜索技巧和资源整合</h3><pre><code>在这个信息爆炸的时代，我们如何用更短的时间获取到更有效的知识，我以前感到很苦恼。于是整理了一些关于知识整理和搜索技巧方面的东西(但是还是不够)。
-</code></pre><p>分享主题:搜索技巧和资源整合以及一些有用的工具及插件，网址.</p>
-<p>分享ppt地址:<a href="http://www.ipresst.com/play/5534b2e66309648f2a000af6" target="_blank" rel="external">http://www.ipresst.com/play/5534b2e66309648f2a000af6</a></p>
-<p>以后若有更多内容，或关于生活，或关于技术，我将毫不吝啬地分享，希望能够有所帮助。最近多在翻墙，英语式的阅读，可以理解为装逼式地学习，成长中，感悟中.</p>
-<p>reply:</p>
-<pre><code>from 个人邮件: 　caijinlin2012@gmail.com
-from 个人博客：　http://caijinlin.github.io
-from 个人微信公众订阅号: susetips
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<h3 id="搜索技巧和资源整合"><a href="#搜索技巧和资源整合" class="headerlink" title="搜索技巧和资源整合"></a>搜索技巧和资源整合</h3><pre><code>在这个信息爆炸的时代，我们如何用更短的时间获取到更有效的知识，我以前感到很苦恼。于是整理了一些关于知识整理和搜索技巧方面的东西(但是还是不够)。</code></pre><p>分享主题:搜索技巧和资源整合以及一些有用的工具及插件，网址.</p><p>分享ppt地址:<a href="http://www.ipresst.com/play/5534b2e66309648f2a000af6" target="_blank" rel="noopener">http://www.ipresst.com/play/5534b2e66309648f2a000af6</a></p><p>以后若有更多内容，或关于生活，或关于技术，我将毫不吝啬地分享，希望能够有所帮助。最近多在翻墙，英语式的阅读，可以理解为装逼式地学习，成长中，感悟中.</p><p>reply:</p><pre><code>from 个人邮件: 　caijinlin2012@gmail.comfrom 个人博客：　http://caijinlin.github.iofrom 个人微信公众订阅号: susetips</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;搜索技巧和资源整合&quot;&gt;&lt;a href=&quot;#搜索技巧和资源整合&quot; class=&quot;headerlink&quot; title=&quot;搜索技巧和资源整合&quot;&gt;&lt;/a&gt;搜索技巧和资源整合&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;在这个信息爆炸的时代，我们如何用更短的时间获取到更有效的知识，我以前
+      
+      
+        &lt;h3 id=&quot;搜索技巧和资源整合&quot;&gt;&lt;a href=&quot;#搜索技巧和资源整合&quot; class=&quot;headerlink&quot; title=&quot;搜索技巧和资源整合&quot;&gt;&lt;/a&gt;搜索技巧和资源整合&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;在这个信息爆炸的时代，我们如何用更短的时间获取到更有效的知识，我以前
+      
     
     </summary>
     
@@ -752,41 +421,14 @@ from 个人微信公众订阅号: susetips
     <published>2015-04-20T00:00:00.000Z</published>
     <updated>2017-03-08T12:28:51.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题"><a href="#查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题" class="headerlink" title="查询json字段需要过滤特殊字符, 数据量大了之后可能存在性能问题"></a>查询json字段需要过滤特殊字符, 数据量大了之后可能存在性能问题</h3><pre><code>比如donate_form_data存取 
-
-{
-    &quot;name&quot;:&quot;\u79d1\u5fe0&quot;,
-    &quot;new_item_6&quot;:&quot;\u7535\u5b50\u90ae\u7bb1&quot;,
-    &quot;title&quot;:&quot;这是一段描述&quot;,
-    &quot;mobile&quot;:&quot;&quot;,
-    &quot;gender&quot;:&quot;\u7537&quot;,
-    &quot;new_item_1&quot;:&quot;\u4e0d\u662f&quot;,
-    &quot;new_item_2&quot;:&quot;&quot;,
-    &quot;new_item_3&quot;:&quot;&quot;,
-    &quot;new_item_4&quot;:&quot;&quot;,
-    &quot;new_item_5&quot;:&quot;\u5426&quot;,
-    &quot;address_widget_province&quot;:&quot;&quot;,
-    &quot;address&quot;:&quot;&quot;,
-    &quot;browser_user_agent&quot;:&quot;Mozilla\/5.0 (Linux; U; Android 5.1.1; en-us; HUAWEI P7-L00 Build\/HuaweiP7-L00) AppleWebKit\/533.1 (KHTML, like Gecko)Version\/4.0 MQQBrowser\/5.4 TBS\/025440 Mobile Safari\/533.1 MicroMessenger\/6.2.5.50_rbb77fd6.621 NetType\/WIFI Language\/en&quot;,
-}
-
-需要查询donate_form_data 中的title
- $sql = &quot;
-    SELECT 
-        sum(cd.donate_amount) donate_amount, count(cd.donate_amount) donate_count
-    FROM 
-        donates cd
-    WHERE 
-        and cd.donate_form_data like &apos;%s&apos;
-    &quot;;
-$query = &apos;这是一段&apos;;
-$title = str_replace(&apos;\\&apos;, &apos;_&apos;, json_encode($query));
-$donates[$item[&apos;id&apos;]] = M(&quot;&quot;)-&gt;query($sql, &apos;%&apos; . $title . &apos;%&apos;);
-</code></pre>]]></content>
+    <content type="html"><![CDATA[<h3 id="查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题"><a href="#查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题" class="headerlink" title="查询json字段需要过滤特殊字符, 数据量大了之后可能存在性能问题"></a>查询json字段需要过滤特殊字符, 数据量大了之后可能存在性能问题</h3><pre><code>比如donate_form_data存取 {    &quot;name&quot;:&quot;\u79d1\u5fe0&quot;,    &quot;new_item_6&quot;:&quot;\u7535\u5b50\u90ae\u7bb1&quot;,    &quot;title&quot;:&quot;这是一段描述&quot;,    &quot;mobile&quot;:&quot;&quot;,    &quot;gender&quot;:&quot;\u7537&quot;,    &quot;new_item_1&quot;:&quot;\u4e0d\u662f&quot;,    &quot;new_item_2&quot;:&quot;&quot;,    &quot;new_item_3&quot;:&quot;&quot;,    &quot;new_item_4&quot;:&quot;&quot;,    &quot;new_item_5&quot;:&quot;\u5426&quot;,    &quot;address_widget_province&quot;:&quot;&quot;,    &quot;address&quot;:&quot;&quot;,    &quot;browser_user_agent&quot;:&quot;Mozilla\/5.0 (Linux; U; Android 5.1.1; en-us; HUAWEI P7-L00 Build\/HuaweiP7-L00) AppleWebKit\/533.1 (KHTML, like Gecko)Version\/4.0 MQQBrowser\/5.4 TBS\/025440 Mobile Safari\/533.1 MicroMessenger\/6.2.5.50_rbb77fd6.621 NetType\/WIFI Language\/en&quot;,}需要查询donate_form_data 中的title $sql = &quot;    SELECT         sum(cd.donate_amount) donate_amount, count(cd.donate_amount) donate_count    FROM         donates cd    WHERE         and cd.donate_form_data like &apos;%s&apos;    &quot;;$query = &apos;这是一段&apos;;$title = str_replace(&apos;\\&apos;, &apos;_&apos;, json_encode($query));$donates[$item[&apos;id&apos;]] = M(&quot;&quot;)-&gt;query($sql, &apos;%&apos; . $title . &apos;%&apos;);</code></pre>]]></content>
     
     <summary type="html">
     
-      &lt;h3 id=&quot;查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题&quot;&gt;&lt;a href=&quot;#查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题&quot; class=&quot;headerlink&quot; title=&quot;查询json字段需要过滤特殊字符, 数据量大了之后可能存
+      
+      
+        &lt;h3 id=&quot;查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题&quot;&gt;&lt;a href=&quot;#查询json字段需要过滤特殊字符-数据量大了之后可能存在性能问题&quot; class=&quot;headerlink&quot; title=&quot;查询json字段需要过滤特殊字符, 数据量大了之后可能存
+      
     
     </summary>
     
@@ -800,16 +442,7 @@ $donates[$item[&apos;id&apos;]] = M(&quot;&quot;)-&gt;query($sql, &apos;%&apos; 
     <published>2015-04-08T00:00:00.000Z</published>
     <updated>2017-08-26T15:38:44.000Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="php一些注意的点"><a href="#php一些注意的点" class="headerlink" title="php一些注意的点"></a>php一些注意的点</h3><p>最近在php开发时，发现业务多了，经常会遇见因为php细节注意不当而导致的bug，影响开发效率，记录在这里。</p>
-<a id="more"></a>
-<p>php作为一种弱类型语言，所以强制类型转化有时就变得特别重要</p>
-<h4 id="判断某个变量是否存在建议用isset-即使-a等于0也不会有问题"><a href="#判断某个变量是否存在建议用isset-即使-a等于0也不会有问题" class="headerlink" title="判断某个变量是否存在建议用isset,即使$a等于0也不会有问题"></a>判断某个变量是否存在建议用isset,即使$a等于0也不会有问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($a)) &#123;            <span class="keyword">if</span> ($a) &#123;</div><div class="line">                    not=》</div><div class="line">&#125;                           &#125;</div></pre></td></tr></table></figure>
-<h4 id="define常量时，判断一下"><a href="#define常量时，判断一下" class="headerlink" title="define常量时，判断一下"></a>define常量时，判断一下</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">!defined(<span class="string">'PROJECT_ID'</span>) &amp;&amp; defined(<span class="string">'PROJECT_ID'</span>, <span class="number">2</span>);</div><div class="line">如果PROJECT_ID没有定义时，输出PROJECT_ID ,则会打印出<span class="string">"PROJECT_ID"</span>字符串，</div><div class="line">所以使用的时候需要(int) PROJECT_ID判断下，是否存在。</div></pre></td></tr></table></figure>
-<h4 id="不需要使用的变量，尽量unset，节约内存"><a href="#不需要使用的变量，尽量unset，节约内存" class="headerlink" title="不需要使用的变量，尽量unset，节约内存"></a>不需要使用的变量，尽量unset，节约内存</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">unset</span>($a);</div></pre></td></tr></table></figure>
-<h4 id="在某些情况下，你可以使用isset-技巧加速执行你的代码。"><a href="#在某些情况下，你可以使用isset-技巧加速执行你的代码。" class="headerlink" title="在某些情况下，你可以使用isset() 技巧加速执行你的代码。"></a>在某些情况下，你可以使用isset() 技巧加速执行你的代码。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">（举例如下） if (strlen($foo) &lt; 5) &#123; echo &apos;Foo is too short&apos;; &#125; </div><div class="line">（与下面的技巧做比较） if (!isset($foo[5])) &#123; echo &apos;Foo is too short&apos;; &#125;</div></pre></td></tr></table></figure>
-<p>调用isset()恰巧比strlen()快，因为与后者不同的是，isset()作为一种语言结构，意味着它的执行不需要函数查找和字母小写化。</p>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>很多php细节需要注意，一直在路上！</p>
-]]></content>
+    <content type="html"><![CDATA[<h3 id="php一些注意的点"><a href="#php一些注意的点" class="headerlink" title="php一些注意的点"></a>php一些注意的点</h3><p>最近在php开发时，发现业务多了，经常会遇见因为php细节注意不当而导致的bug，影响开发效率，记录在这里。</p><a id="more"></a><p>php作为一种弱类型语言，所以强制类型转化有时就变得特别重要</p><h4 id="判断某个变量是否存在建议用isset-即使-a等于0也不会有问题"><a href="#判断某个变量是否存在建议用isset-即使-a等于0也不会有问题" class="headerlink" title="判断某个变量是否存在建议用isset,即使$a等于0也不会有问题"></a>判断某个变量是否存在建议用isset,即使$a等于0也不会有问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="keyword">isset</span>($a)) &#123;            <span class="keyword">if</span> ($a) &#123;</span><br><span class="line">                    not=》</span><br><span class="line">&#125;                           &#125;</span><br></pre></td></tr></table></figure><h4 id="define常量时，判断一下"><a href="#define常量时，判断一下" class="headerlink" title="define常量时，判断一下"></a>define常量时，判断一下</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!defined(<span class="string">'PROJECT_ID'</span>) &amp;&amp; defined(<span class="string">'PROJECT_ID'</span>, <span class="number">2</span>);</span><br><span class="line">如果PROJECT_ID没有定义时，输出PROJECT_ID ,则会打印出<span class="string">"PROJECT_ID"</span>字符串，</span><br><span class="line">所以使用的时候需要(int) PROJECT_ID判断下，是否存在。</span><br></pre></td></tr></table></figure><h4 id="不需要使用的变量，尽量unset，节约内存"><a href="#不需要使用的变量，尽量unset，节约内存" class="headerlink" title="不需要使用的变量，尽量unset，节约内存"></a>不需要使用的变量，尽量unset，节约内存</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">unset</span>($a);</span><br></pre></td></tr></table></figure><h4 id="在某些情况下，你可以使用isset-技巧加速执行你的代码。"><a href="#在某些情况下，你可以使用isset-技巧加速执行你的代码。" class="headerlink" title="在某些情况下，你可以使用isset() 技巧加速执行你的代码。"></a>在某些情况下，你可以使用isset() 技巧加速执行你的代码。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（举例如下） if (strlen($foo) &lt; 5) &#123; echo &apos;Foo is too short&apos;; &#125; </span><br><span class="line">（与下面的技巧做比较） if (!isset($foo[5])) &#123; echo &apos;Foo is too short&apos;; &#125;</span><br></pre></td></tr></table></figure><p>调用isset()恰巧比strlen()快，因为与后者不同的是，isset()作为一种语言结构，意味着它的执行不需要函数查找和字母小写化。</p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>很多php细节需要注意，一直在路上！</p>]]></content>
     
     <summary type="html">
     
@@ -817,98 +450,6 @@ $donates[$item[&apos;id&apos;]] = M(&quot;&quot;)-&gt;query($sql, &apos;%&apos; 
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>贪心算法</title>
-    <link href="http://www.caijinlin.com/2015/03/07/algorithm-greedy/"/>
-    <id>http://www.caijinlin.com/2015/03/07/algorithm-greedy/</id>
-    <published>2015-03-07T14:01:34.000Z</published>
-    <updated>2017-08-26T15:38:44.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="贪心算法（自顶向下，局部最优）"><a href="#贪心算法（自顶向下，局部最优）" class="headerlink" title="贪心算法（自顶向下，局部最优）"></a>贪心算法（自顶向下，局部最优）</h3><p>贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。</p>
-<h4 id="贪心算法的基本思想"><a href="#贪心算法的基本思想" class="headerlink" title="贪心算法的基本思想"></a>贪心算法的基本思想</h4><p>找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。</p>
-<h4 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h4><pre><code>1.整体的最优解可以通过局部的最优解来求出；
-2.一个整体能够被分为多个局部，并且这些局部都能够求出最优解。
-</code></pre><p>使用贪心算法当中的两个典型问题是活动安排问题和背包问题。</p>
-<h4 id="贪心算法的基本步骤"><a href="#贪心算法的基本步骤" class="headerlink" title="贪心算法的基本步骤"></a>贪心算法的基本步骤</h4><pre><code>1、从问题的某个初始解出发。
-2、采用循环语句，当可以向求解目标前进一步时，就根据局部最优策略，得到一个部分解，缩小问题的范围或规模。
-3、将所有部分解综合起来，得到问题的最终解。
-</code></pre><h4 id="经典案例-活动安排问题-背包等"><a href="#经典案例-活动安排问题-背包等" class="headerlink" title="经典案例:活动安排问题,背包等"></a>经典案例:活动安排问题,背包等</h4><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/backpack.png-scale600" alt="背包问题"></p>
-<h4 id="案例分析-平衡负载"><a href="#案例分析-平衡负载" class="headerlink" title="案例分析:平衡负载"></a>案例分析:平衡负载</h4><p>2013年百度之星区域赛中的第一题”平衡负载”，主要就利用贪心进行分段，在我们理工的acm平台上有这道题，闲着也是闲着，贴出这道题自己的c++版本code。</p>
-<p>平衡负载</p>
-<p>Du熊正在负责一个大型的项目，目前有K台服务器，有N个任务需要用这K台服务器来完成，所以要把这些任务分成K个部分来完成，在同上台服务器上执行的任务必须是连续的任务，每个任务有各自需要的执行时间。<br>例如N=5,K=2，每个任务需要时间分别为5,3,1,4,7分钟，那么我们可以分成(5)(3 1 4 7)两部分，这样第一台服务器所花时间就是5分钟，而第二台机器需要花15分钟，当然，所有任务完成的时间是按最迟完成的那台服务器的时间，即这样划分的话完成所有任务所需要的时间就是15分钟。而另外一种划分方法是(5 3 1)(4 7)，这种划分方案完成所有任务的时间就是11分钟，也是最优的一种划分方案。<br>现在你的任务就是根据给定的N,K和每个任务要花费的时间，找出使完成所有任务时间最短的方案。</p>
-<p>输入：多组输入。</p>
-<p>第一行输入N和K（1&lt;=K&lt;=N&lt;=10000）。</p>
-<p>第二行输入N个不大于1000的正整数，表示各个任要花费的时间。N=K=0表示输入结束。</p>
-<p>输出：</p>
-<p>每行输出一个整数，对应对于每个数据（除了N=K=0不用输出）。</p>
-<p>样例输入：</p>
-<pre><code>5 1
-5 3 1 4 7
-5 2
-5 3 1 4 7
-5 3
-</code></pre><h4 id="算法实现code"><a href="#算法实现code" class="headerlink" title="算法实现code"></a>算法实现code</h4><pre><code>#include&lt;stdio.h&gt;
-#include&lt;iostream&gt;
-using namespace std;
-int a[10005];
-bool check(int a[], int k,int m, int n) //数组，分k段,用来分段的m值,数组个数（检测m值是否可以将数组分为k段）
-{
-    int i,sum=0,count=0;
-    for(i=0;i&lt;n;i++)
-    {
-        sum+=a[i];//前i项求和
-        if(sum&gt;m) //若超过m值，则前i-1项分为一段,重新寻求下一段，同时段数加1
-        {
-            sum=a[i];
-            count++;
-        }
-    }
-    count++;//加上最后一段
-    return count&lt;=k;
-}
-int main()
-{
-    int i=0,j=0,n,k,l,r,mid=0;
-    while(cin&gt;&gt;n&gt;&gt;k&amp;&amp;n!=0&amp;&amp;k!=0)
-    {
-       l=0;//最左边
-       r=0;//最右边
-       for(i=0;i&lt;n;i++)
-       {
-           cin&gt;&gt;a[i];
-           r+=a[i];
-       }
-       while(l&lt;r)
-       {
-           mid=(l+r)/2;
-           if(check(a,k,mid,n)) //m值分段数小于k，则要分段的m值应该减少，承受的项的个数更少，段数增加
-           {
-              r=mid;
-           }
-           else //m值分段数大于k，则要分段的m值应该增加，可承受更多项的和，段数减少
-           {
-              l=mid+1;
-           }
-       }
-       printf(&quot;%d\n&quot;,l);//输出时间
-    }
-    return 0;
-}
-</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h3 id=&quot;贪心算法（自顶向下，局部最优）&quot;&gt;&lt;a href=&quot;#贪心算法（自顶向下，局部最优）&quot; class=&quot;headerlink&quot; title=&quot;贪心算法（自顶向下，局部最优）&quot;&gt;&lt;/a&gt;贪心算法（自顶向下，局部最优）&lt;/h3&gt;&lt;p&gt;贪心算法（又称贪婪算法）：在对问题求
-    
-    </summary>
-    
-      <category term="algorithm" scheme="http://www.caijinlin.com/categories/algorithm/"/>
-    
-    
-      <category term="algorithm" scheme="http://www.caijinlin.com/tags/algorithm/"/>
     
   </entry>
   

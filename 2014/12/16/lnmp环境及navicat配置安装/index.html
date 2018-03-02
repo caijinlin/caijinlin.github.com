@@ -96,14 +96,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="lnmp环境安装及解决遇到的问题"><a href="#lnmp环境安装及解决遇到的问题" class="headerlink" title="lnmp环境安装及解决遇到的问题"></a>lnmp环境安装及解决遇到的问题</h3><p>今天搭建了2台linux服务器lnmp环境，安装的过程中也是遇到一些问题。总结一下：如果nginx，mysql，php安装了多次，即使卸载，但是进程仍然在运行，所以每次重新安装的时候，最好kill掉原进程。在解决问题的过程中，还学了一些平时没怎么用的linux命令，算是另外的收获吧，折腾一天也值了。</p>
-<h4 id="shell命令一键安装lnmp："><a href="#shell命令一键安装lnmp：" class="headerlink" title="shell命令一键安装lnmp："></a>shell命令一键安装lnmp：</h4><p>CentOS系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="external">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./centos.sh</p>
-<p>Debian系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="external">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./debian.sh</p>
-<p>Ubuntu系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="external">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./ubuntu.sh</p>
+<h4 id="shell命令一键安装lnmp："><a href="#shell命令一键安装lnmp：" class="headerlink" title="shell命令一键安装lnmp："></a>shell命令一键安装lnmp：</h4><p>CentOS系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="noopener">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./centos.sh</p>
+<p>Debian系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="noopener">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./debian.sh</p>
+<p>Ubuntu系统下执行：wget -c <a href="http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz" target="_blank" rel="noopener">http://soft.vpser.net/lnmp/lnmp1.1-full.tar.gz</a> &amp;&amp; tar zxf lnmp1.1-full.tar.gz &amp;&amp; cd lnmp1.1-full &amp;&amp; ./ubuntu.sh</p>
 <p>更多了解访问<a href="http://lnmp.org/install.html" target="_blank">lnmp官网</a></p>
 <p>测试lnmp安装是否成功：</p>
 <pre><code>service nginx status;
 service mysql status;
-</code></pre><h4 id="navicat软件下载-数据库管理软件-可以连接远程数据库"><a href="#navicat软件下载-数据库管理软件-可以连接远程数据库" class="headerlink" title="navicat软件下载(数据库管理软件,可以连接远程数据库)"></a>navicat软件下载(数据库管理软件,可以连接远程数据库)</h4><p><a href="http://pan.baidu.com/s/1qW6uj5y" target="_blank" rel="external">点击下载</a></p>
+</code></pre><h4 id="navicat软件下载-数据库管理软件-可以连接远程数据库"><a href="#navicat软件下载-数据库管理软件-可以连接远程数据库" class="headerlink" title="navicat软件下载(数据库管理软件,可以连接远程数据库)"></a>navicat软件下载(数据库管理软件,可以连接远程数据库)</h4><p><a href="http://pan.baidu.com/s/1qW6uj5y" target="_blank" rel="noopener">点击下载</a></p>
 <h4 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h4><h4 id="1-mysql-Unknown-OS-character-set-‘GB18030’"><a href="#1-mysql-Unknown-OS-character-set-‘GB18030’" class="headerlink" title="1.mysql: Unknown OS character set ‘GB18030’."></a>1.mysql: Unknown OS character set ‘GB18030’.</h4><pre><code>mysql: Switching to the default character set &apos;latin1&apos;.
 </code></pre><p>问题所在：操作系统编码问题</p>
 <p>解决方案：</p>
@@ -134,7 +134,7 @@ step3.立刻生效环境更改
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/12/16/lnmp环境及navicat配置安装/" data-id="cj6u9wwrt000j2o5pvjw4h6ca" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/12/16/lnmp环境及navicat配置安装/" data-id="cje9bl4li000qxq5pygbunykl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +200,7 @@ step3.立刻生效环境更改
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
     </div>
   </div>
 
@@ -211,6 +211,10 @@ step3.立刻生效环境更改
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/27/Mac-hotkey/">Mac-hotkey</a>
+          </li>
         
           <li>
             <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
@@ -228,10 +232,6 @@ step3.立刻生效环境更改
             <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
           </li>
         
-          <li>
-            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -244,7 +244,7 @@ step3.立刻生效环境更改
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Caspar<br>
+      &copy; 2018 Caspar<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

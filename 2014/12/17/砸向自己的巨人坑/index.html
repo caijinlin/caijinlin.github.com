@@ -100,7 +100,7 @@
 html注释风格：&lt;!-- --&gt;
 </code></pre><h4 id="开始挖坑"><a href="#开始挖坑" class="headerlink" title="开始挖坑"></a>开始挖坑</h4><p>今天我在写一个ajax异步请求的时候，主要是测试一段代码。</p>
 <p>业务逻辑很简单： 入口页面填写用户名和密码，点击注册按钮，触发引入js文件中的ajax的异步请求，向远程数据库插入数据。</p>
-<p>连接数据库连接部分还是一如既往写了一个类，还写了4行注释，现在来看，这样来连数据库绝对是菜鸟。由于这4行不在&lt;?php ?&gt;标签内，所以是<b><color="red">html注释</color="red"></b>。</p>
+<p>连接数据库连接部分还是一如既往写了一个类，还写了4行注释，现在来看，这样来连数据库绝对是菜鸟。由于这4行不在&lt;?php ?&gt;标签内，所以是<b>&lt;color=”red”&gt;html注释</b>。</p>
 <pre><code>&lt;!--
     数据库类
     author:caijl
@@ -176,9 +176,9 @@ html注释风格：&lt;!-- --&gt;
 ?&gt;
 </code></pre><p>报错结果： object xmlHttprequest ,但是数据插入到数据库中了，相当纳闷。</p>
 <h4 id="爬出坑"><a href="#爬出坑" class="headerlink" title="爬出坑"></a>爬出坑</h4><pre><code>为了解决这个问题,我用了echo,var_dump函数进行输出测试，但都石沉大海。不甘心就此结局。
-</code></pre><p>搬来google浏览器自带调试工具，开始学习ajax调试。看到<a href="http://www.cnblogs.com/mybest/archive/2011/12/13/2285730.html" style="color:red;" target="_blank" rel="external">Jquery.Ajax之错误调试帮助信息</a>，开始了<br>疯狂的调试之旅。在js文件中设置断点还不够，对错误信息进行全面分析。<br><img src="/assets/images/JqueryAjax.png" alt="Jquery.Ajax请求"></p>
+</code></pre><p>搬来google浏览器自带调试工具，开始学习ajax调试。看到<a href="http://www.cnblogs.com/mybest/archive/2011/12/13/2285730.html" style="color:red;" target="_blank" rel="noopener">Jquery.Ajax之错误调试帮助信息</a>，开始了<br>疯狂的调试之旅。在js文件中设置断点还不够，对错误信息进行全面分析。<br><img src="/assets/images/JqueryAjax.png" alt="Jquery.Ajax请求"></p>
 <p>单步调试一番后，错误详情为parseerror.难道是返回数据类型不是json,看下图<br><img src="/assets/images/parseerror.png" alt="json数据错误"></p>
-<p>终于找到错误:<b> <color="red">Invalid Json</color="red"></b></p>
+<p>终于找到错误:<b> &lt;color=”red”&gt;Invalid Json</b></p>
 <p>竟然还有我在数据库连接类中的注释信息？难道注释不起作用了？</p>
 <h4 id="脱离坑"><a href="#脱离坑" class="headerlink" title="脱离坑"></a>脱离坑</h4><pre><code>原来是在类文件中，前四行是作为html注释，引入到处理请求的文件中，由于该段内容在php标签内，所以注释格式应该是/* */,看到此番注释，php当然不识别。
 </code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><pre><code>之所以遇到坑，就是还太嫩了。不过收获的是：更加会利用google浏览器调试一些信息。
@@ -186,7 +186,7 @@ html注释风格：&lt;!-- --&gt;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2014/12/17/砸向自己的巨人坑/" data-id="cj6u9wwu500222o5pye5sd7s4" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2014/12/17/砸向自己的巨人坑/" data-id="cje9bl4n70024xq5pf83x1pbf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,11 +195,11 @@ html注释风格：&lt;!-- --&gt;
     
 <nav id="article-nav">
   
-    <a href="/2014/12/18/轻松实现多台服务器数据库备份/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/12/18/Sublime-JsFormat插件安装及使用/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          轻松实现多台服务器数据库备份
+          Sublime JsFormat插件安装及使用
         
       </div>
     </a>
@@ -252,7 +252,7 @@ html注释风格：&lt;!-- --&gt;
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
     </div>
   </div>
 
@@ -263,6 +263,10 @@ html注释风格：&lt;!-- --&gt;
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/27/Mac-hotkey/">Mac-hotkey</a>
+          </li>
         
           <li>
             <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
@@ -280,10 +284,6 @@ html注释风格：&lt;!-- --&gt;
             <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
           </li>
         
-          <li>
-            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -296,7 +296,7 @@ html注释风格：&lt;!-- --&gt;
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Caspar<br>
+      &copy; 2018 Caspar<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

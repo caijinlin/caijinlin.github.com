@@ -68,6 +68,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-mysql开启慢查询日志" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/12/01/mysql开启慢查询日志/" class="article-date">
+  <time datetime="2015-12-01T00:00:00.000Z" itemprop="datePublished">2015-12-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/01/mysql开启慢查询日志/">mysql开启慢查询日志</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="登陆mysql客户端"><a href="#登陆mysql客户端" class="headerlink" title="登陆mysql客户端"></a>登陆mysql客户端</h4><pre><code>mysql -uroot -p123456
+</code></pre><h4 id="开启检查"><a href="#开启检查" class="headerlink" title="开启检查"></a>开启检查</h4><pre><code>show variables like &apos;slow_query_log&apos;;
+</code></pre><h4 id="相关配置"><a href="#相关配置" class="headerlink" title="相关配置"></a>相关配置</h4><pre><code>show variables like &apos;%log%&apos;;
+</code></pre><h4 id="开启"><a href="#开启" class="headerlink" title="开启"></a>开启</h4><pre><code>set global log_queries_not_using_indexes = on;
+</code></pre><h4 id="时间"><a href="#时间" class="headerlink" title="时间"></a>时间</h4><pre><code>show variables like &apos;long_query_time&apos;;
+</code></pre><h4 id="开启慢查询日志"><a href="#开启慢查询日志" class="headerlink" title="开启慢查询日志"></a>开启慢查询日志</h4><pre><code>set global slow_query_log = on;
+</code></pre><h4 id="查找慢查询日志记录位置"><a href="#查找慢查询日志记录位置" class="headerlink" title="查找慢查询日志记录位置"></a>查找慢查询日志记录位置</h4><pre><code>show variables like &apos;slow%&apos;;
+</code></pre><p>#mysqldumpslow -t 3 /usr/local/var/mysql/caijinlindeMBP-slow.log</p>
+<pre><code>log-slow-queries=&quot;/usr/local/val/log/mysql-slow.log&quot;
+long_query_time = 4
+log-queries-not-using-indexes
+</code></pre>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.caijinlin.com/2015/12/01/mysql开启慢查询日志/" data-id="cje9bl4ls0013xq5pqsh4yv88" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-php-fpm-502" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/11/18/php-fpm-502/" class="article-date">
@@ -92,15 +139,15 @@
       
         <p>基于lnmp安装的php-fpm启动后，发现并没有看到9000进程，加了网站配置文件后，出现502错误。</p>
 <p>php-fpm可以正常启动，php-fpm默认在9000端口监听, 但是netstat并没有看到9000进程</p>
-<h4 id="启动查找进程"><a href="#启动查找进程" class="headerlink" title="启动查找进程"></a>启动查找进程</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/php-fpm start</div><div class="line">netstat -anp | grep <span class="number">9000</span></div></pre></td></tr></table></figure>
-<h4 id="查看php-fpm配置文件"><a href="#查看php-fpm配置文件" class="headerlink" title="查看php-fpm配置文件"></a>查看php-fpm配置文件</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">vim /usr/local/php/etc/php-fpm.conf</div><div class="line">[<span class="keyword">global</span>]</div><div class="line">pid = /usr/local/php/<span class="keyword">var</span>/run/php-fpm.pid</div><div class="line">error_log = /usr/local/php/<span class="keyword">var</span>/log/php-fpm.log</div><div class="line">log_level = notice</div><div class="line"></div><div class="line">[www]</div><div class="line">listen = /tmp/php-cgi.sock  <span class="comment">#监听，改成127.0.0.1:9000</span></div><div class="line">listen.backlog = <span class="number">-1</span></div><div class="line">listen.allowed_clients = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></div><div class="line">listen.owner = www</div><div class="line">listen.group = www</div><div class="line">listen.mode = <span class="number">0666</span></div><div class="line">user = www</div><div class="line">group = www</div><div class="line">pm = dynamic</div><div class="line">pm.max_children = <span class="number">10</span></div><div class="line">pm.start_servers = <span class="number">2</span></div><div class="line">pm.min_spare_servers = <span class="number">1</span></div><div class="line">pm.max_spare_servers = <span class="number">6</span></div><div class="line">request_terminate_timeout = <span class="number">100</span></div><div class="line">request_slowlog_timeout = <span class="number">0</span></div><div class="line">slowlog = <span class="keyword">var</span>/log/slow.log</div></pre></td></tr></table></figure>
-<h4 id="网站配置文件test-com-conf"><a href="#网站配置文件test-com-conf" class="headerlink" title="网站配置文件test.com.conf"></a>网站配置文件test.com.conf</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen <span class="number">80</span>;</div><div class="line">    server_name test.com;</div><div class="line">    index index.html index.shtml index.php;</div><div class="line">    root /home/wwwroot/<span class="keyword">default</span>/test;</div><div class="line">    <span class="keyword">include</span> /home/wwwroot/<span class="keyword">default</span>/test/nginx_rewrite.conf;</div><div class="line">    location ~ .*\.(php|php5)?$</div><div class="line">    &#123;</div><div class="line">        fastcgi_pass <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>; <span class="comment">#9000端口</span></div><div class="line">        fastcgi_index index.php;</div><div class="line">        <span class="keyword">include</span> fastcgi.conf;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|woff)$</div><div class="line">    &#123;</div><div class="line">        expires <span class="number">30</span>d;</div><div class="line">        access_log        off;</div><div class="line">        log_not_found     off;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(js|css)?$</div><div class="line">    &#123;</div><div class="line">        expires <span class="number">7</span>d;</div><div class="line">        access_log        off;</div><div class="line">        log_not_found     off;</div><div class="line">    &#125;</div><div class="line">    location ~ .*\.(htaccess)?$</div><div class="line">    &#123;</div><div class="line">        deny all;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样"><a href="#对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样" class="headerlink" title="对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样"></a>对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">两者需要将监听形式改成一样，比如都是<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>或者/tmp/php-cgi.sock</div></pre></td></tr></table></figure>
+<h4 id="启动查找进程"><a href="#启动查找进程" class="headerlink" title="启动查找进程"></a>启动查找进程</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/php-fpm start</span><br><span class="line">netstat -anp | grep <span class="number">9000</span></span><br></pre></td></tr></table></figure>
+<h4 id="查看php-fpm配置文件"><a href="#查看php-fpm配置文件" class="headerlink" title="查看php-fpm配置文件"></a>查看php-fpm配置文件</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/php/etc/php-fpm.conf</span><br><span class="line">[<span class="keyword">global</span>]</span><br><span class="line">pid = /usr/local/php/<span class="keyword">var</span>/run/php-fpm.pid</span><br><span class="line">error_log = /usr/local/php/<span class="keyword">var</span>/log/php-fpm.log</span><br><span class="line">log_level = notice</span><br><span class="line"></span><br><span class="line">[www]</span><br><span class="line">listen = /tmp/php-cgi.sock  <span class="comment">#监听，改成127.0.0.1:9000</span></span><br><span class="line">listen.backlog = <span class="number">-1</span></span><br><span class="line">listen.allowed_clients = <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span></span><br><span class="line">listen.owner = www</span><br><span class="line">listen.group = www</span><br><span class="line">listen.mode = <span class="number">0666</span></span><br><span class="line">user = www</span><br><span class="line">group = www</span><br><span class="line">pm = dynamic</span><br><span class="line">pm.max_children = <span class="number">10</span></span><br><span class="line">pm.start_servers = <span class="number">2</span></span><br><span class="line">pm.min_spare_servers = <span class="number">1</span></span><br><span class="line">pm.max_spare_servers = <span class="number">6</span></span><br><span class="line">request_terminate_timeout = <span class="number">100</span></span><br><span class="line">request_slowlog_timeout = <span class="number">0</span></span><br><span class="line">slowlog = <span class="keyword">var</span>/log/slow.log</span><br></pre></td></tr></table></figure>
+<h4 id="网站配置文件test-com-conf"><a href="#网站配置文件test-com-conf" class="headerlink" title="网站配置文件test.com.conf"></a>网站配置文件test.com.conf</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen <span class="number">80</span>;</span><br><span class="line">    server_name test.com;</span><br><span class="line">    index index.html index.shtml index.php;</span><br><span class="line">    root /home/wwwroot/<span class="keyword">default</span>/test;</span><br><span class="line">    <span class="keyword">include</span> /home/wwwroot/<span class="keyword">default</span>/test/nginx_rewrite.conf;</span><br><span class="line">    location ~ .*\.(php|php5)?$</span><br><span class="line">    &#123;</span><br><span class="line">        fastcgi_pass <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>; <span class="comment">#9000端口</span></span><br><span class="line">        fastcgi_index index.php;</span><br><span class="line">        <span class="keyword">include</span> fastcgi.conf;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf|woff)$</span><br><span class="line">    &#123;</span><br><span class="line">        expires <span class="number">30</span>d;</span><br><span class="line">        access_log        off;</span><br><span class="line">        log_not_found     off;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ .*\.(js|css)?$</span><br><span class="line">    &#123;</span><br><span class="line">        expires <span class="number">7</span>d;</span><br><span class="line">        access_log        off;</span><br><span class="line">        log_not_found     off;</span><br><span class="line">    &#125;</span><br><span class="line">    location ~ .*\.(htaccess)?$</span><br><span class="line">    &#123;</span><br><span class="line">        deny all;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样"><a href="#对比php-fpm-conf与test-com-conf发现php-fpm的监听和fastcgi-pass不太一样" class="headerlink" title="对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样"></a>对比php-fpm.conf与test.com.conf发现php-fpm的监听和fastcgi_pass不太一样</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">两者需要将监听形式改成一样，比如都是<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">9000</span>或者/tmp/php-cgi.sock</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/11/18/php-fpm-502/" data-id="cj6u9wwsv001b2o5p12u7ugx1" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/11/18/php-fpm-502/" data-id="cje9bl4m4001bxq5pwycligv9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/11/17/php-array-merge/" data-id="cj6u9wwsd00122o5pa1r8f5u1" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/11/17/php-array-merge/" data-id="cje9bl4lw0018xq5prhjfbz9n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -174,14 +221,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="记录一下昨晚遇到的坑"><a href="#记录一下昨晚遇到的坑" class="headerlink" title="记录一下昨晚遇到的坑"></a>记录一下昨晚遇到的坑</h3><p>在页面中使用加密函数加密id时，发现解密的时候不正确，原以为是加密函数或者解密函数的问题，但以前用的时候都没有问题，突然出现这个问题应该不是加密函数或者解密函数的问题。</p>
-<h4 id="页面中是这样写的"><a href="#页面中是这样写的" class="headerlink" title="页面中是这样写的"></a>页面中是这样写的</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;a class="btn btn-default" href="__URL__/edit#!/&#123;:encrypt_id($_one.id)&#125;/step4" title="查看"&gt;</div><div class="line">    &lt;i class="gi gi-search"&gt;&lt;/i&gt;&amp;nbsp;预览</div><div class="line">&lt;/a&gt;</div></pre></td></tr></table></figure>
-<h4 id="数据排查"><a href="#数据排查" class="headerlink" title="数据排查"></a>数据排查</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$_one.id也能读出数据</div></pre></td></tr></table></figure>
-<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">页面中使用php时，函数中参数有 “.” 的话，thinkphp解析的时候加密错误，多么大的一个坑啊，改为$_one[<span class="string">'id'</span>]就好</div></pre></td></tr></table></figure>
+<h4 id="页面中是这样写的"><a href="#页面中是这样写的" class="headerlink" title="页面中是这样写的"></a>页面中是这样写的</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a class="btn btn-default" href="__URL__/edit#!/&#123;:encrypt_id($_one.id)&#125;/step4" title="查看"&gt;</span><br><span class="line">    &lt;i class="gi gi-search"&gt;&lt;/i&gt;&amp;nbsp;预览</span><br><span class="line">&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="数据排查"><a href="#数据排查" class="headerlink" title="数据排查"></a>数据排查</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$_one.id也能读出数据</span><br></pre></td></tr></table></figure>
+<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">页面中使用php时，函数中参数有 “.” 的话，thinkphp解析的时候加密错误，多么大的一个坑啊，改为$_one[<span class="string">'id'</span>]就好</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/11/11/thinkphp-hollow/" data-id="cj6u9wwt9001l2o5pe5do9pjv" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/11/11/thinkphp-hollow/" data-id="cje9bl4mi001nxq5pqqvegmjg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -400,7 +447,7 @@ gulp.task(&apos;watch&apos;, function(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/10/25/laravel-npm-gulp-composer-bower/" data-id="cj6u9wwrr000f2o5pq8t36s3h" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/10/25/laravel-npm-gulp-composer-bower/" data-id="cje9bl4l8000hxq5pv4kspt3q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -439,7 +486,7 @@ gulp.task(&apos;watch&apos;, function(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/10/10/redis-read-error-on-connection/" data-id="cj6u9wwsy001f2o5p5ih7ggmi" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/10/10/redis-read-error-on-connection/" data-id="cje9bl4mb001fxq5pp2g55g0n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -476,7 +523,7 @@ gulp.task(&apos;watch&apos;, function(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/05/01/mysql-sort/" data-id="cj6u9wwsb000y2o5pkf7pkxmo" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/05/01/mysql-sort/" data-id="cje9bl4lr0011xq5pfymq6umn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -510,7 +557,7 @@ gulp.task(&apos;watch&apos;, function(){
       
         <h3 id="搜索技巧和资源整合"><a href="#搜索技巧和资源整合" class="headerlink" title="搜索技巧和资源整合"></a>搜索技巧和资源整合</h3><pre><code>在这个信息爆炸的时代，我们如何用更短的时间获取到更有效的知识，我以前感到很苦恼。于是整理了一些关于知识整理和搜索技巧方面的东西(但是还是不够)。
 </code></pre><p>分享主题:搜索技巧和资源整合以及一些有用的工具及插件，网址.</p>
-<p>分享ppt地址:<a href="http://www.ipresst.com/play/5534b2e66309648f2a000af6" target="_blank" rel="external">http://www.ipresst.com/play/5534b2e66309648f2a000af6</a></p>
+<p>分享ppt地址:<a href="http://www.ipresst.com/play/5534b2e66309648f2a000af6" target="_blank" rel="noopener">http://www.ipresst.com/play/5534b2e66309648f2a000af6</a></p>
 <p>以后若有更多内容，或关于生活，或关于技术，我将毫不吝啬地分享，希望能够有所帮助。最近多在翻墙，英语式的阅读，可以理解为装逼式地学习，成长中，感悟中.</p>
 <p>reply:</p>
 <pre><code>from 个人邮件: 　caijinlin2012@gmail.com
@@ -520,7 +567,7 @@ from 个人微信公众订阅号: susetips
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/04/26/person-share/" data-id="cj6u9wwsh00152o5p4qd2bjo1" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/04/26/person-share/" data-id="cje9bl4lt0015xq5psi37t7uj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -586,7 +633,7 @@ $donates[$item[&apos;id&apos;]] = M(&quot;&quot;)-&gt;query($sql, &apos;%&apos; 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/04/20/php-like-query/" data-id="cj6u9wwss00192o5phjviyv7q" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/04/20/php-like-query/" data-id="cje9bl4m6001cxq5pskuo9ukb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -627,121 +674,9 @@ $donates[$item[&apos;id&apos;]] = M(&quot;&quot;)-&gt;query($sql, &apos;%&apos; 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/04/08/php-details/" data-id="cj6u9wwsk00172o5p2o809g7z" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2015/04/08/php-details/" data-id="cje9bl4lx0019xq5p5ortm5zr" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-algorithm-greedy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/07/algorithm-greedy/" class="article-date">
-  <time datetime="2015-03-07T14:01:34.000Z" itemprop="datePublished">2015-03-07</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/algorithm/">algorithm</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/07/algorithm-greedy/">贪心算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="贪心算法（自顶向下，局部最优）"><a href="#贪心算法（自顶向下，局部最优）" class="headerlink" title="贪心算法（自顶向下，局部最优）"></a>贪心算法（自顶向下，局部最优）</h3><p>贪心算法（又称贪婪算法）：在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的仅是在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，但对范围相当广泛的许多问题他能产生整体最优解或者是整体最优解的近似解。</p>
-<h4 id="贪心算法的基本思想"><a href="#贪心算法的基本思想" class="headerlink" title="贪心算法的基本思想"></a>贪心算法的基本思想</h4><p>找出整体当中每个小的局部的最优解，并且将所有的这些局部最优解合起来形成整体上的一个最优解。</p>
-<h4 id="贪心选择性质"><a href="#贪心选择性质" class="headerlink" title="贪心选择性质"></a>贪心选择性质</h4><pre><code>1.整体的最优解可以通过局部的最优解来求出；
-2.一个整体能够被分为多个局部，并且这些局部都能够求出最优解。
-</code></pre><p>使用贪心算法当中的两个典型问题是活动安排问题和背包问题。</p>
-<h4 id="贪心算法的基本步骤"><a href="#贪心算法的基本步骤" class="headerlink" title="贪心算法的基本步骤"></a>贪心算法的基本步骤</h4><pre><code>1、从问题的某个初始解出发。
-2、采用循环语句，当可以向求解目标前进一步时，就根据局部最优策略，得到一个部分解，缩小问题的范围或规模。
-3、将所有部分解综合起来，得到问题的最终解。
-</code></pre><h4 id="经典案例-活动安排问题-背包等"><a href="#经典案例-活动安排问题-背包等" class="headerlink" title="经典案例:活动安排问题,背包等"></a>经典案例:活动安排问题,背包等</h4><p><img src="http://7xirhj.com1.z0.glb.clouddn.com/blog/assert/images/backpack.png-scale600" alt="背包问题"></p>
-<h4 id="案例分析-平衡负载"><a href="#案例分析-平衡负载" class="headerlink" title="案例分析:平衡负载"></a>案例分析:平衡负载</h4><p>2013年百度之星区域赛中的第一题”平衡负载”，主要就利用贪心进行分段，在我们理工的acm平台上有这道题，闲着也是闲着，贴出这道题自己的c++版本code。</p>
-<p>平衡负载</p>
-<p>Du熊正在负责一个大型的项目，目前有K台服务器，有N个任务需要用这K台服务器来完成，所以要把这些任务分成K个部分来完成，在同上台服务器上执行的任务必须是连续的任务，每个任务有各自需要的执行时间。<br>例如N=5,K=2，每个任务需要时间分别为5,3,1,4,7分钟，那么我们可以分成(5)(3 1 4 7)两部分，这样第一台服务器所花时间就是5分钟，而第二台机器需要花15分钟，当然，所有任务完成的时间是按最迟完成的那台服务器的时间，即这样划分的话完成所有任务所需要的时间就是15分钟。而另外一种划分方法是(5 3 1)(4 7)，这种划分方案完成所有任务的时间就是11分钟，也是最优的一种划分方案。<br>现在你的任务就是根据给定的N,K和每个任务要花费的时间，找出使完成所有任务时间最短的方案。</p>
-<p>输入：多组输入。</p>
-<p>第一行输入N和K（1&lt;=K&lt;=N&lt;=10000）。</p>
-<p>第二行输入N个不大于1000的正整数，表示各个任要花费的时间。N=K=0表示输入结束。</p>
-<p>输出：</p>
-<p>每行输出一个整数，对应对于每个数据（除了N=K=0不用输出）。</p>
-<p>样例输入：</p>
-<pre><code>5 1
-5 3 1 4 7
-5 2
-5 3 1 4 7
-5 3
-</code></pre><h4 id="算法实现code"><a href="#算法实现code" class="headerlink" title="算法实现code"></a>算法实现code</h4><pre><code>#include&lt;stdio.h&gt;
-#include&lt;iostream&gt;
-using namespace std;
-int a[10005];
-bool check(int a[], int k,int m, int n) //数组，分k段,用来分段的m值,数组个数（检测m值是否可以将数组分为k段）
-{
-    int i,sum=0,count=0;
-    for(i=0;i&lt;n;i++)
-    {
-        sum+=a[i];//前i项求和
-        if(sum&gt;m) //若超过m值，则前i-1项分为一段,重新寻求下一段，同时段数加1
-        {
-            sum=a[i];
-            count++;
-        }
-    }
-    count++;//加上最后一段
-    return count&lt;=k;
-}
-int main()
-{
-    int i=0,j=0,n,k,l,r,mid=0;
-    while(cin&gt;&gt;n&gt;&gt;k&amp;&amp;n!=0&amp;&amp;k!=0)
-    {
-       l=0;//最左边
-       r=0;//最右边
-       for(i=0;i&lt;n;i++)
-       {
-           cin&gt;&gt;a[i];
-           r+=a[i];
-       }
-       while(l&lt;r)
-       {
-           mid=(l+r)/2;
-           if(check(a,k,mid,n)) //m值分段数小于k，则要分段的m值应该减少，承受的项的个数更少，段数增加
-           {
-              r=mid;
-           }
-           else //m值分段数大于k，则要分段的m值应该增加，可承受更多项的和，段数减少
-           {
-              l=mid+1;
-           }
-       }
-       printf(&quot;%d\n&quot;,l);//输出时间
-    }
-    return 0;
-}
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2015/03/07/algorithm-greedy/" data-id="cj6u9wwrd00092o5p8bwgmxzu" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
-
     </footer>
   </div>
   
@@ -791,7 +726,7 @@ int main()
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
     </div>
   </div>
 
@@ -802,6 +737,10 @@ int main()
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/27/Mac-hotkey/">Mac-hotkey</a>
+          </li>
         
           <li>
             <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
@@ -819,10 +758,6 @@ int main()
             <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
           </li>
         
-          <li>
-            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -835,7 +770,7 @@ int main()
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Caspar<br>
+      &copy; 2018 Caspar<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

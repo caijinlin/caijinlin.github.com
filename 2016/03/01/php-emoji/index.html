@@ -110,7 +110,7 @@ DB_CHARSET =&gt; &apos;utf8mb4&apos;; //如果thinkphp，配置文件中修改�
 
 缺点: iphone手机上不能显示android手机发的表情
 优点:  简单，不用修改代码
-</code></pre><h4 id="方案二-https-github-com-iamcal-php-emoji"><a href="#方案二-https-github-com-iamcal-php-emoji" class="headerlink" title="方案二 (https://github.com/iamcal/php-emoji)"></a>方案二 <a href="https://github.com/iamcal/php-emoji" target="_blank" rel="external">(https://github.com/iamcal/php-emoji)</a></h4><pre><code>使用php-emoji库处理，原理是: 手机发的表情字符存入到数据库中是一段html, 显示的时候通过引用emoji库的css， 显示表情。
+</code></pre><h4 id="方案二-https-github-com-iamcal-php-emoji"><a href="#方案二-https-github-com-iamcal-php-emoji" class="headerlink" title="方案二 (https://github.com/iamcal/php-emoji)"></a>方案二 <a href="https://github.com/iamcal/php-emoji" target="_blank" rel="noopener">(https://github.com/iamcal/php-emoji)</a></h4><pre><code>使用php-emoji库处理，原理是: 手机发的表情字符存入到数据库中是一段html, 显示的时候通过引用emoji库的css， 显示表情。
 
 修改如下:
 
@@ -125,7 +125,7 @@ $html = emoji_unified_to_html($content);
 
 缺点: 通过css实现，需要加载emoji.css和emoji.png和emoji.php, 依赖外部
 优点: 兼容性好，web, android, iphone都可查看表情
-</code></pre><h4 id="方案三-https-packagist-org-packages-emojione-emojione"><a href="#方案三-https-packagist-org-packages-emojione-emojione" class="headerlink" title="方案三 (https://packagist.org/packages/emojione/emojione)"></a>方案三 <a href="https://packagist.org/packages/emojione/emojione" target="_blank" rel="external">(https://packagist.org/packages/emojione/emojione)</a></h4><pre><code>通过composer引入: `composer require mojione/emojione`
+</code></pre><h4 id="方案三-https-packagist-org-packages-emojione-emojione"><a href="#方案三-https-packagist-org-packages-emojione-emojione" class="headerlink" title="方案三 (https://packagist.org/packages/emojione/emojione)"></a>方案三 <a href="https://packagist.org/packages/emojione/emojione" target="_blank" rel="noopener">(https://packagist.org/packages/emojione/emojione)</a></h4><pre><code>通过composer引入: `composer require mojione/emojione`
 
 保存时: Emojione::toShort($comment));
 
@@ -137,7 +137,7 @@ $html = emoji_unified_to_html($content);
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://www.caijinlin.com/2016/03/01/php-emoji/" data-id="cj6u9wwsm00182o5pslp449q8" class="article-share-link">Share</a>
+      <a data-url="http://www.caijinlin.com/2016/03/01/php-emoji/" data-id="cje9bl4m2001axq5p7vgg5eu5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -203,7 +203,7 @@ $html = emoji_unified_to_html($content);
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">三月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">四月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/12/">十二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/11/">十一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/10/">十月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">五月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">四月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">三月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/02/">二月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/01/">一月 2015</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/12/">十二月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/11/">十一月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/10/">十月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/08/">八月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/07/">七月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/06/">六月 2014</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2014/05/">五月 2014</a></li></ul>
     </div>
   </div>
 
@@ -214,6 +214,10 @@ $html = emoji_unified_to_html($content);
     <h3 class="widget-title">最新文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2017/08/27/Mac-hotkey/">Mac-hotkey</a>
+          </li>
         
           <li>
             <a href="/2017/06/05/mysql-optimization/">mysql-optimization</a>
@@ -231,10 +235,6 @@ $html = emoji_unified_to_html($content);
             <a href="/2017/03/01/php-parse-soap-xml-response/">php parse soap xml response</a>
           </li>
         
-          <li>
-            <a href="/2016/12/12/vim快捷键/">vim快捷键</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -247,7 +247,7 @@ $html = emoji_unified_to_html($content);
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2017 Caspar<br>
+      &copy; 2018 Caspar<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
